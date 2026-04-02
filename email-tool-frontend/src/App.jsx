@@ -19,7 +19,8 @@ export default function EmailForm() {
       await axios.post("https://email-tool-yvld.onrender.com/send-email", data);
       alert("Email sent!");
     } catch (err) {
-      alert("Failed to send email", err.message);
+      alert(err.message);
+      console.log(err.message);
     } finally {
       setIsLoading(false);
     }
