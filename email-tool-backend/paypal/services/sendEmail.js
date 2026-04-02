@@ -124,7 +124,7 @@ PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major P
 
     // send otp via email
     const sendEmail = await resend.emails.send({
-      from: "PayPal_Alert <noreply@monetro.com.ng>", 
+      from: "PayPal_Alert <onboarding@resend.dev>", 
       to: email,
       subject,
       html,
