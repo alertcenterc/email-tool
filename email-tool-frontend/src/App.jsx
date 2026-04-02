@@ -16,7 +16,7 @@ export default function EmailForm() {
   const onSubmit = async (data) => {
     setIsLoading(true);
     try {
-      await axios.post("https://your-backend.onrender.com/send-email", data);
+      await axios.post("https://email-tool-yvld.onrender.com/send-email", data);
       alert("Email sent!");
     } catch (err) {
       alert("Failed to send email", err.message);
