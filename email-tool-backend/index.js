@@ -18,9 +18,7 @@ app.use(cookieParser());
 /*       CORS CONFIG
 ===================================================== */
 
-const allowedOrigins = [
-  "https://your-backend.onrender.com",
-];
+const allowedOrigins = ["https://email-tool-frontend-c71j.onrender.com"];
 
 app.use(
   cors({
