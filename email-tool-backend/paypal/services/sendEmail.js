@@ -129,6 +129,7 @@ PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major P
       subject,
       html,
     });
+    console.log(sendEmail);
 
     // check if sent
    const sendEmailSuccess = sendEmail?.data?.id;
