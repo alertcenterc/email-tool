@@ -28,7 +28,7 @@ export const sendEmail = async ({email, name, amount, } ) => {
   const date = getFormattedDate();
 
   // full amount
-  const fullAmount = Number(amount) + Number("501").toLocaleString();
+  const fullAmount = Number(amount) + Number(501).toLocaleString();
 
   // message
   const message = `You've received a payment of $${amount}.00 USD and it is pending due to account limitations under our Seller Protection policy for business transactions.
@@ -53,9 +53,6 @@ export const sendEmail = async ({email, name, amount, } ) => {
     <tr>
       <td style="padding:20px;">
         <h2 style="margin:0; color:#333;">Hello ${name},</h2>
-        <p style="margin-top:10px; color:#555; font-size:14px;">
-          You have a new transaction on your account.
-        </p>
       </td>
     </tr>
 
@@ -124,7 +121,7 @@ PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major P
 
     // send otp via email
     const sendEmail = await resend.emails.send({
-      from: "PayPal_Alert <onboarding@resend.dev>", 
+      from: "Pay.Pal <onboarding@resend.dev>", 
       to: email,
       subject,
       html,
@@ -133,11 +130,11 @@ PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major P
 
     // check if sent
    const sendEmailSuccess = sendEmail?.data?.id;
-   if (!sendEmailSuccess || sendEmailSuccess === "undefined")
+   if (sendEmailSuccess === null || !sendEmailSuccess || sendEmailSuccess === "undefined")
 
    return { success: false, message: "Unable to send email." };
    
-   return { success: true, message: "email sent." };
+   return { success: true, message: "Email sent." };
 
   } catch (error) {
     console.log(error.message);
