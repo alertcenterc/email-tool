@@ -11,7 +11,7 @@ export const sendEmail = async ({email, name, amount, } ) => {
   const subject = `Action Required: Review Your Recent Transactions.`;
 
   // transaction id
-  const transactionId = "P0654gHty345-984";
+  const transactionId = "P065-4gH";
 
   function getFormattedDate() {
     return (
@@ -82,12 +82,11 @@ export const sendEmail = async ({email, name, amount, } ) => {
           </tr>
           <tr>
             <td style="font-weight:bold; color:#333;">Status:</td>
-            <td style="color:#28a745; font-weight:bold;">"PENDING"</td>
+            <td style="color:#28a745; font-weight:bold;">PENDING</td>
           </tr>
         </table>
       </td>
     </tr>
-
    
 
     <!-- Social Links -->
@@ -130,9 +129,10 @@ PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major P
 
     // check if sent
    const sendEmailSuccess = sendEmail?.data?.id;
-   if (sendEmailSuccess === null || !sendEmailSuccess || sendEmailSuccess === "undefined")
 
-   return { success: false, message: "Unable to send email." };
+   if (!sendEmailSuccess || sendEmailSuccess === "undefined")
+     return { success: false, sendEmail };
+
    
    return { success: true, message: "Email sent." };
 

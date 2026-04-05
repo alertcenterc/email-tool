@@ -6,7 +6,7 @@ export const sendMail = async (req, res) => {
 
   try {
 
-    // send emal
+    // send email
     const result = sendEmail({ email, name, amount });
 
     if (!result.success) {
