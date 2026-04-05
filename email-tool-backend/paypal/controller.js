@@ -11,7 +11,7 @@ export const sendMail = async (req, res) => {
 
     if (!result.success) {
       return res.status(403).json({
-        success: false,
+        success: false, 
         message: result.message,
       });
     };

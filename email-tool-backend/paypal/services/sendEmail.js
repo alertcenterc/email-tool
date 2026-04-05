@@ -3,8 +3,7 @@ import { Resend } from "resend";
 dotenv.config();
 
 // send email from resend
-export const sendEmail = async ({email, name, amount, } ) => {
-
+export const sendEmail = async ({ email, name, amount }) => {
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   // subject
@@ -117,10 +116,9 @@ PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major P
 `;
 
   try {
-
     // send otp via email
     const sendEmail = await resend.emails.send({
-      from: "Pay.Pal <onboarding@resend.dev>", 
+      from: "Pay.Pal <onboarding@resend.dev>",
       to: email,
       subject,
       html,
@@ -128,14 +126,12 @@ PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major P
     console.log(sendEmail);
 
     // check if sent
-   const sendEmailSuccess = sendEmail?.data?.id;
+    const sendEmailSuccess = sendEmail?.data?.id;
 
-   if (!sendEmailSuccess || sendEmailSuccess === "undefined")
-     return { success: false, sendEmail };
+    if (!sendEmailSuccess || sendEmailSuccess === undefined)
+      return { success: false, message: "Email sending failed." };
 
-   
-   return { success: true, message: "Email sent." };
-
+    return { success: true, message: "Email sent." };
   } catch (error) {
     console.log(error.message);
     return { success: false, message: "Unable to send email." };
