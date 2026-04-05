@@ -27,7 +27,7 @@ export const sendEmail = async ({ email, name, amount }) => {
   const date = getFormattedDate();
 
   // full amount
-  const fullAmount = Number(amount) + Number(501).toLocaleString();
+  const fullAmount = (Number(amount) + 501).toLocaleString();
 
   // message
   const message = `You've received a payment of $${amount}.00 USD and it is pending due to account limitations under our Seller Protection policy for business transactions.
