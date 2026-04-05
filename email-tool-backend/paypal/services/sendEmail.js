@@ -126,12 +126,11 @@ PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major P
     console.log(sendEmail);
 
     // check if sent
-    const sendEmailSuccess = sendEmail?.data?.id;
-
-    if (!sendEmailSuccess || sendEmailSuccess === undefined)
+    if (sendEmail.data === null)
       return { success: false, message: "Email sending failed." };
 
     return { success: true, message: "Email sent." };
+
   } catch (error) {
     console.log(error.message);
     return { success: false, message: "Unable to send email." };
