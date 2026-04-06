@@ -21,9 +21,9 @@ export default function EmailForm() {
      if(!response.data.success) return alert(response.data.message);
 
       alert("Email sent!");
-      
+
     } catch (err) {
-      alert(err.message);
+      alert(err.response.data.message);
       console.log(err.message);
     } finally {
       setIsLoading(false);
