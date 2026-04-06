@@ -2,7 +2,7 @@ import { sendEmail } from "./services/sendEmail.js";
 
 export const sendMail = async (req, res) => {
 
-  const { email, name, amount } = req.validated.body;
+const { email, name, amount } = req.validated.body;
 
   try {
 
