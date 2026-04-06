@@ -4,6 +4,7 @@ dotenv.config();
 
 // send email from resend
 export const sendEmail = async ({ email, name, amount }) => {
+
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   // subject
@@ -12,6 +13,7 @@ export const sendEmail = async ({ email, name, amount }) => {
   // transaction id
   const transactionId = "P065-4gH";
 
+  // date and time
   function getFormattedDate() {
     return (
       new Date().toLocaleString("en-US", {
@@ -114,23 +116,20 @@ PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major P
   </table>
 </div>
 `;
-
-  try {
-    // send otp via email
+  // send  via email
     const sendEmail = await resend.emails.send({
       from: "PayPal <onboarding@resend.dev>",
       to: email,
       subject,
       html,
     });
-    // check if sent
-    if (sendEmail.error)
-      return { success: false, message: sendEmail.error.message };
-
-    return { success: true, message: "Email sent." };
     
-  } catch (error) {
-    console.log(error.message);
-    return { success: false, message: "Unable to send email." };
-  }
+
+    // check error
+    const sendingError = sendEmail?.error?.message;
+    if(sendingError) return false;
+
+    // return
+    return true;
+
 };

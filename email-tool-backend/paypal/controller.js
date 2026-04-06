@@ -7,15 +7,22 @@ export const sendMail = async (req, res) => {
   try {
 
     // send email
-    const result = sendEmail({ email, name, amount });
+    const result = await sendEmail({ email, name, amount });
+    if (!result) {
+      return res
+        .status(400)
+        .json({ success: false, message: "error sending message" });
+    }
 
     return res.status(200).json({
       success: true,
-      message: result.message,
+      message: "Email sent successfully",
     });
 
   } catch (error) {
+
   console.log(error.message);
+
     return res
       .status(500)
       .json({ success: false, message: "Internal server error" });
