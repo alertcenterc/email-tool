@@ -46,7 +46,7 @@ export const sendEmail = async ({ email, name, amount }) => {
     <!-- Logo Header -->
     <tr>
       <td style="background-color:#0070ba; padding:20px; text-align:center;">
-        <img src="https://images.seeklogo.com/logo-png/24/2/paypal-logo-png_seeklogo-249214.png" alt="Company Logo" width="120" style="display:block; margin:auto;">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffreelogopng.com%2Fimages%2Fall_img%2F1655977919paypal-logo-png.png&f=1&nofb=1&ipt=1cd456f762da2e2222909922336e81a5440456a83409208fb98ccba18d96c4d1" alt="Company Logo" width="120" style="display:block; margin:auto;">
       </td>
     </tr>
 
