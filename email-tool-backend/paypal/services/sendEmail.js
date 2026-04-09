@@ -8,7 +8,7 @@ export const sendEmail = async ({ email, name, amount }) => {
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   // subject
-  const subject = `Action Required: Review Your Recent Transactions.`;
+  const subject = `Action Required: You've received $${amount}.00 USD.`;
 
   // transaction id
   const transactionId = "P065-4gH";
