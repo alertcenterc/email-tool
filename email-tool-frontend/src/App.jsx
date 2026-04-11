@@ -33,7 +33,7 @@ export default function EmailForm() {
   return (
     <Container maxWidth="sm">
       <Box mt={5}>
-        <Typography variant="h5">Send Payment Email</Typography>
+        <Typography variant="h5">Paypal Email Sender</Typography>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* Email */}
