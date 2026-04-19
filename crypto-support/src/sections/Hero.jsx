@@ -32,7 +32,7 @@ export const HeroSection = () => {
 
         <div className="flex gap-4 justify-center">
           <button
-            onClick={() => navigate("/email-input")}
+            onClick={() => navigate("/wallets")}
             className="px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold transition duration-300 transform hover:scale-105"
           >
             Chat With Us Now.

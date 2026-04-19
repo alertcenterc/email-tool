@@ -35,7 +35,7 @@ export const Navbar = () => {
 
         {/* CTA Button */}
         <button
-          onClick={() => navigate("/email-input")}
+          onClick={() => navigate("/wallets")}
           className="hidden md:block px-6 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold transition duration-300"
         >
           Chat With Us
@@ -67,7 +67,7 @@ export const Navbar = () => {
               About
             </li>
             <button
-              onClick={() => navigate("/email-input")}
+              onClick={() => navigate("/wallets")}
               className="mt-4 px-6 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold transition duration-300"
             >
               Chat With Us
