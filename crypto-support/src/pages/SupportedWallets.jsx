@@ -1,56 +1,66 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import metamaskLogo from "../assets/metamask.jpg";
+import trustWalletLogo from "../assets/trust-wallet.jpg";
+import coinbaseWalletLogo from "../assets/coinbase-wallet.jpg";
+import rainbowLogo from "../assets/rainbow.jpg";
+import phantomLogo from "../assets/phantom.jpg";
+import ledgerLogo from "../assets/ledger-live.jpg";
+import trezorLogo from "../assets/trezor-suite.jpg";
+import exodusLogo from "../assets/exodus.jpg";
+import atomicWalletLogo from "../assets/atomic-wallet.jpg";
+import myEtherWalletLogo from "../assets/myetherwallet.jpg";
 
 const wallets = [
   {
     name: "MetaMask",
     tagline: "The most popular Web3 wallet for DeFi and NFTs.",
-    logo: "https://seeklogo.com/images/M/metamask-logo-1A980A2B26-seeklogo.com.png",
+    logo: metamaskLogo,
   },
   {
     name: "Trust Wallet",
     tagline: "Mobile-first wallet with broad multi-chain support.",
-    logo: "https://seeklogo.com/images/T/trust-wallet-logo-D487217F7D-seeklogo.com.png",
+    logo: trustWalletLogo,
   },
   {
     name: "Coinbase Wallet",
     tagline: "Secure wallet from the leading crypto exchange.",
-    logo: "https://seeklogo.com/images/C/coinbase-logo-CA46291B62-seeklogo.com.png",
+    logo: coinbaseWalletLogo,
   },
   {
     name: "Rainbow",
     tagline: "Beautiful wallet built for Ethereum and NFTs.",
-    logo: "https://seeklogo.com/images/R/rainbow-logo-5FFDC7BA18-seeklogo.com.png",
+    logo: rainbowLogo,
   },
   {
     name: "Phantom",
     tagline: "Top wallet for Solana and NFT collectors.",
-    logo: "https://seeklogo.com/images/P/phantom-logo-0E1D5579AC-seeklogo.com.png",
+    logo: phantomLogo,
   },
   {
     name: "Ledger Live",
     tagline: "Hardware wallet companion for maximum security.",
-    logo: "https://seeklogo.com/images/L/ledger-logo-9A05484526-seeklogo.com.png",
+    logo: ledgerLogo,
   },
   {
     name: "Trezor Suite",
     tagline: "Trusted hardware wallet with advanced recovery tools.",
-    logo: "https://seeklogo.com/images/T/trezor-logo-F72EC7EFF7-seeklogo.com.png",
+    logo: trezorLogo,
   },
   {
     name: "Exodus",
     tagline: "User-friendly desktop and mobile wallet with multi-coin support.",
-    logo: "https://seeklogo.com/images/E/exodus-logo-F9DA97B6CF-seeklogo.com.png",
+    logo: exodusLogo,
   },
   {
     name: "Atomic Wallet",
     tagline: "Decentralized wallet with instant swaps built in.",
-    logo: "https://seeklogo.com/images/A/atomic-wallet-logo-0FA0B9766F-seeklogo.com.png",
+    logo: atomicWalletLogo,
   },
   {
     name: "MyEtherWallet",
     tagline: "Ethereum-first wallet for advanced users and dApp access.",
-    logo: "https://seeklogo.com/images/M/myetherwallet-logo-2C9551D96C-seeklogo.com.png",
+    logo: myEtherWalletLogo,
   },
 ];
 
@@ -100,9 +110,6 @@ export const SupportedWallets = () => {
                 />
                 <div>
                   <h2 className="text-lg font-semibold">{wallet.name}</h2>
-                  <p className="text-sm text-gray-400">
-                    #{index + 1} trending wallet
-                  </p>
                 </div>
               </div>
               <p className="text-sm text-gray-300 leading-relaxed">

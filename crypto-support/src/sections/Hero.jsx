@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import heroImage from "../assets/hero.jpg";
 
 export const HeroSection = () => {
   const navigate = useNavigate();
@@ -6,8 +7,7 @@ export const HeroSection = () => {
     <section
       className="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24 relative overflow-hidden"
       style={{
-        backgroundImage:
-          "url(https://tradersync.com/wp-content/uploads/2025/06/12-CRYPTO-SUPPORT-1.jpg)",
+        backgroundImage: `url(${heroImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
