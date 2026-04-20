@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import metamaskLogo from "../assets/metamask.jpg";
 import trustWalletLogo from "../assets/trust-wallet.jpg";
@@ -71,12 +70,10 @@ const wallets = [
 ];
 
 export const SupportedWallets = () => {
-  const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
 
-  const handleContinue = () => {
-    if (!selected) return;
-    localStorage.setItem("selectedWallet", selected);
+  const handleContinue = (wallet) => {
+    localStorage.setItem("selectedWallet", wallet);
     navigate("/email-input");
   };
 
@@ -88,8 +85,8 @@ export const SupportedWallets = () => {
             Choose your crypto wallet
           </h1>
           <p className="max-w-3xl mx-auto text-gray-400 text-base md:text-lg leading-relaxed">
-            Select the wallet you use so we can connect you to the
-            right support path.
+            Select the wallet you use so we can connect you to the right support
+            path.
           </p>
         </div>
 
@@ -97,12 +94,10 @@ export const SupportedWallets = () => {
           {wallets.map((wallet, index) => (
             <button
               key={wallet.name}
-              onClick={() => setSelected(wallet.name)}
-              className={`group text-left p-5 border rounded-3xl transition duration-300 hover:border-orange-500 ${
-                selected === wallet.name
-                  ? "border-orange-500 bg-gray-900"
-                  : "border-gray-800 bg-gray-950"
-              }`}
+              onClick={() => handleContinue(wallet.name)}
+              className={
+                "text-left p-5 border rounded-3xl transition duration-300 hover:border-orange-500"
+              }
             >
               <div className="flex items-center gap-4 mb-4">
                 <img
@@ -116,23 +111,6 @@ export const SupportedWallets = () => {
               </div>
             </button>
           ))}
-        </div>
-
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-gray-400">
-              {selected
-                ? `Selected wallet: ${selected}`
-                : "Pick one wallet to continue."}
-            </p>
-          </div>
-          <button
-            onClick={handleContinue}
-            disabled={!selected}
-            className="inline-flex items-center justify-center px-6 py-3 bg-orange-500 hover:bg-orange-600 disabled:bg-gray-700 text-white rounded-xl font-semibold transition duration-300 disabled:cursor-not-allowed"
-          >
-            Continue to Email
-          </button>
         </div>
       </div>
     </div>
