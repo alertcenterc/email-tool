@@ -62,6 +62,12 @@ const wallets = [
     tagline: "Ethereum-first wallet for advanced users and dApp access.",
     logo: myEtherWalletLogo,
   },
+
+  {
+    name: "(Select this if your wallet is not listed here)",
+    tagline: "Ethereum-first wallet for advanced users and dApp access.",
+    logo: myEtherWalletLogo,
+  },
 ];
 
 export const SupportedWallets = () => {
@@ -78,16 +84,12 @@ export const SupportedWallets = () => {
     <div className="min-h-screen bg-black text-white px-4 py-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10">
-          <p className="text-sm uppercase tracking-[0.3em] text-orange-500 mb-3">
-            Wallet Selection
-          </p>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Choose your crypto wallet
           </h1>
           <p className="max-w-3xl mx-auto text-gray-400 text-base md:text-lg leading-relaxed">
-            Select the wallet you use most often so we can connect you to the
-            right support path. These are the top trending wallets trusted by
-            crypto users worldwide.
+            Select the wallet you use so we can connect you to the
+            right support path.
           </p>
         </div>
 
@@ -112,9 +114,6 @@ export const SupportedWallets = () => {
                   <h2 className="text-lg font-semibold">{wallet.name}</h2>
                 </div>
               </div>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                {wallet.tagline}
-              </p>
             </button>
           ))}
         </div>

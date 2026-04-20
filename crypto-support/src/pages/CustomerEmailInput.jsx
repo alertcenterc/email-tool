@@ -36,7 +36,7 @@ export const CustomerEmailInput = () => {
       localStorage.setItem("userEmail", email);
 
       // Redirect to OTP verification
-      navigate("/otp-input");
+      navigate("/chat-support");
     } catch (err) {
       setError("Something went wrong. Please try again.", err.message);
     } finally {

@@ -1,56 +1,64 @@
-import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+
+const CRISP_WEBSITE_ID = "30ef0ba9-d531-477d-8ece-42ba40d7f564";
+
+// Define where chat is allowed
+const ALLOWED_ROUTES = ["/chat-support"];
 
 export const ChatSupport = () => {
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      text: "Welcome to CryptoSupport! 👋 How can we help you today?",
-      sender: "support",
-      timestamp: new Date(),
-    },
-  ]);
-  const [inputValue, setInputValue] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const messagesEndRef = useRef(null);
+  const location = useLocation();
   const navigate = useNavigate();
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
+  // Load Crisp once
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+    if (window.CRISP_LOADED) return;
 
-  const handleSendMessage = async (e) => {
-    e.preventDefault();
+    window.$crisp = window.$crisp || [];
+    window.CRISP_WEBSITE_ID = CRISP_WEBSITE_ID;
 
-    if (!inputValue.trim()) return;
+    const script = document.createElement("script");
+    script.src = "https://client.crisp.chat/l.js";
+    script.async = true;
 
-    // Add user message
-    const userMessage = {
-      id: messages.length + 1,
-      text: inputValue,
-      sender: "user",
-      timestamp: new Date(),
+    script.onload = () => {
+      window.CRISP_LOADED = true;
     };
 
-    setMessages((prev) => [...prev, userMessage]);
-    setInputValue("");
-    setIsLoading(true);
+    document.head.appendChild(script);
+  }, []);
 
-    // Simulate support response
-    setTimeout(() => {
-      const supportResponse = {
-        id: messages.length + 2,
-        text: "Thank you for your message. Our team will review it and get back to you shortly. Average response time is 2 minutes.",
-        sender: "support",
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, supportResponse]);
-      setIsLoading(false);
-    }, 1000);
+  // Set user email and selected wallet
+  useEffect(() => {
+    const email = localStorage.getItem("userEmail");
+    const wallet = localStorage.getItem("selectedWallet");
+    if (!window.$crisp) return;
+
+    if (email) {
+      window.$crisp.push(["set", "user:email", email]);
+    }
+    if (wallet) {
+      window.$crisp.push(["set", "session:data", [["wallet", wallet]]]);
+    }
+  }, []);
+
+  // Control visibility based on route
+  useEffect(() => {
+    if (!window.$crisp) return;
+
+    const isAllowed = ALLOWED_ROUTES.includes(location.pathname);
+
+    if (isAllowed) {
+      window.$crisp.push(["do", "chat:show"]);
+    } else {
+      window.$crisp.push(["do", "chat:hide"]);
+    }
+  }, [location.pathname]);
+
+  const handleChatClick = () => {
+    if (window.$crisp) {
+      window.$crisp.push(["do", "chat:open"]);
+    }
   };
 
   return (
@@ -64,92 +72,50 @@ export const ChatSupport = () => {
               viewBox="0 0 24 24"
               fill="currentColor"
             >
-              <path d="M23.638 14.904c-1.28 1.821-4.481 6.449-10.638 6.449-11.023 0-12.419-9.084-12.419-9.084l2.034-1.764c-.105-2.007.291-3.686.291-3.686s2.317 1.507 7.279 1.507c5.665 0 8.538-3.964 8.538-3.964s.57 2.621-.159 5.624l1.841 1.773c-.666.381-1.231.823-1.231.823s.279 1.473.279 3.457c0 2.093-.32 3.875-.32 3.875s1.04 1.073 1.04 2.82c0 1.636-.279 2.561-.279 2.561s.279 1.28.279 2.561c0 1.636-.279 2.561-.279 2.561s.279 1.28.279 2.561c0 1.636-.279 2.561-.279 2.561s.279 1.28.279 2.561c0 1.636-.279 2.561-.279 2.561z" />
+              <path d="M23.638 14.904c-1.28 1.821-4.481 6.449-10.638 6.449-11.023 0-12.419-9.084-12.419-9.084l2.034-1.764c-.105-2.007.291-3.686.291-3.686s2.317 1.507 7.279 1.507c5.665 0 8.538-3.964 8.538-3.964s.57 2.621-.159 5.624l1.841 1.773c-.666.381-1.231.823-1.231.823s.279 1.473.279 3.457c0 2.093-.32 3.875-.32 3.875s1.04 1.073 1.04 2.82c0 1.636-.279 2.561-.279 2.561s.279 1.28.279 2.561c0 1.636-.279 2.561-.279 2.561s.279 1.28.279 2.561c0 1.636-.279 2.561-.279 2.561s.279 1.28.279 2.561c0 1.636-.279 2.561-.279 2.561s.279 1.28.279 2.561c0 1.636-.279 2.561-.279 2.561z" />
             </svg>
             <div>
               <h1 className="font-bold text-lg">CryptoSupport</h1>
               <p className="text-xs text-gray-400">
-                Online • 2 min avg response
+                150 active agents available
               </p>
             </div>
           </div>
           <button
             onClick={() => navigate("/")}
             className="text-gray-400 hover:text-white text-2xl transition"
+            aria-label="Close chat"
           >
             ×
           </button>
         </div>
       </div>
 
-      {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 pb-24">
-        {messages.map((message) => (
-          <div
-            key={message.id}
-            className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
-          >
-            <div
-              className={`px-4 py-2 rounded-lg break-words ${
-                message.sender === "user"
-                  ? "bg-orange-500 text-white rounded-br-none"
-                  : "bg-gray-800 text-gray-100 rounded-bl-none"
-              }`}
-              style={{ maxWidth: "85%" }}
-            >
-              <p className="text-sm">{message.text}</p>
-              <p className="text-xs mt-1 opacity-70">
-                {message.timestamp.toLocaleTimeString([], {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
-              </p>
-            </div>
-          </div>
-        ))}
-        {isLoading && (
-          <div className="flex justify-start">
-            <div className="bg-gray-800 px-4 py-2 rounded-lg rounded-bl-none">
-              <div className="flex space-x-2">
-                <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
-                <div
-                  className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"
-                  style={{ animationDelay: "0.15s" }}
-                ></div>
-                <div
-                  className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"
-                  style={{ animationDelay: "0.3s" }}
-                ></div>
-              </div>
-            </div>
-          </div>
-        )}
-        <div ref={messagesEndRef} />
-      </div>
-
-      {/* Input Area */}
-      <div className="bg-gray-900 border-t border-gray-800 p-4 fixed bottom-0 left-0 right-0">
-        <form onSubmit={handleSendMessage} className="flex gap-2 mb-2">
-          <input
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Type message..."
-            className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-orange-500 text-white placeholder-gray-500 text-sm"
-            disabled={isLoading}
-            autoFocus
-          />
+      {/* Centered Chat Icon */}
+      <div className="flex-1 flex items-center justify-center p-6">
+        <div className="text-center">
           <button
-            type="submit"
-            disabled={isLoading || !inputValue.trim()}
-            className="px-4 py-2 bg-orange-500 hover:bg-orange-600 disabled:bg-gray-700 text-white rounded-lg transition duration-300 font-semibold text-sm w-20"
+            onClick={handleChatClick}
+            className="group relative inline-flex items-center justify-center w-32 h-32 bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-full shadow-2xl shadow-orange-500/25 transition-all duration-300 hover:scale-110 hover:shadow-orange-500/40"
+            aria-label="Open chat support"
           >
-            Send
+            <svg
+              className="w-16 h-16 text-white group-hover:scale-110 transition-transform duration-300"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3.05 1.05 4.42L2 22l5.58-1.05C9.95 21.64 11.46 22 13 22h7c1.1 0 2-.9 2-2V12c0-5.52-4.48-10-10-10zM8 10h2v2H8v-2zm0 4h8v2H8v-2z" />
+            </svg>
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+              Click to chat
+            </div>
           </button>
-        </form>
-        <p className="text-xs text-gray-500 text-center">
-          💬 24/7 Support • 🔒 Encrypted • ✅ 100% Guarantee
-        </p>
+
+          <p className="mt-6 text-lg font-semibold text-white">
+            Click the chat icon above to start a conversation with our support
+            team.
+          </p>
+        </div>
       </div>
     </div>
   );
