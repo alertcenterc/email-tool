@@ -62,25 +62,16 @@ export const ChatSupport = () => {
     window.$crisp?.push(["do", "chat:open"]);
   };
 
-  // ✅ THIS WAS MISSING
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center">
       <div className="text-center">
-        <h2 className="text-xl font-semibold mb-4">Need Help?</h2>
-
         <button
           onClick={handleChatClick}
-          className="px-6 py-3 bg-orange-500 rounded-lg hover:bg-orange-600"
+          className="px-6 py-3 bg-orange-500 rounded-lg hover:bg-orange-600 text-xl font-bold"
         >
           Open Chat
         </button>
 
-        <button
-          onClick={() => navigate("/")}
-          className="block mt-4 text-gray-400"
-        >
-          Go Back
-        </button>
       </div>
     </div>
   );

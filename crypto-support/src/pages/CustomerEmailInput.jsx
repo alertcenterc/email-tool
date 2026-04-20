@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 export const CustomerEmailInput = () => {
   const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   const validateEmail = (email) => {
@@ -27,22 +26,19 @@ export const CustomerEmailInput = () => {
       return;
     }
 
-    setIsLoading(true);
+    // Store email in localStorage
+    localStorage.setItem("userEmail", email);
 
-    try {
-      // backend call
+    // Redirect to OTP verification
+    navigate("/chat-support");
 
-      // Store email in localStorage for OTP and chat
-      localStorage.setItem("userEmail", email);
+    // Store email in localStorage
+    localStorage.setItem("userEmail", email);
 
-      // Redirect to OTP verification
-      navigate("/chat-support");
-    } catch (err) {
-      setError("Something went wrong. Please try again.", err.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    // Redirect to OTP verification
+    navigate("/chat-support");
+
+  };;
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center px-4">
@@ -62,14 +58,14 @@ export const CustomerEmailInput = () => {
             Welcome to CryptoSupport
           </h1>
           <p className="text-gray-400">
-            Enter your email to start a secure support session
+            Enter your email to start a secure support session.
           </p>
         </div>
 
         {/* Form */}
         <form
           onSubmit={handleSubmit}
-          className="bg-gray-900 rounded-2xl p-8 border border-gray-800"
+          className=" rounded-2xl p-8 border border-gray-800"
         >
           <div className="mb-6">
             <label
@@ -85,7 +81,6 @@ export const CustomerEmailInput = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 text-white placeholder-gray-500 transition duration-300"
               placeholder="your@email.com"
-              disabled={isLoading}
             />
             {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
           </div>
@@ -121,36 +116,8 @@ export const CustomerEmailInput = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={isLoading}
             className="w-full py-3 px-4 bg-orange-500 hover:bg-orange-600 disabled:bg-orange-400 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-900"
-          >
-            {isLoading ? (
-              <div className="flex items-center justify-center">
-                <svg
-                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-                Starting Support Session...
-              </div>
-            ) : (
-              "Continue to Support Chat"
-            )}
+          > Continue to Support Chat
           </button>
 
           {/* Additional Info */}
