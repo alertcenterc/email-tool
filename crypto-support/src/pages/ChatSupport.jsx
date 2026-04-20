@@ -13,9 +13,10 @@ export const ChatSupport = () => {
 
     const email = localStorage.getItem("userEmail");
     const wallet = localStorage.getItem("selectedWallet");
+    const fullData = `${email} - wallet: ${wallet}`
 
     if (email) {
-      window.$crisp.push(["set", "user:email", email]);
+      window.$crisp.push(["set", "user:email", fullData]);
     }
 
     if (wallet) {
