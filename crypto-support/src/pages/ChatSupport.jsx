@@ -1,77 +1,76 @@
-import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
-const CRISP_WEBSITE_ID = "30ef0ba9-d531-477d-8ece-42ba40d7f564";
-const ALLOWED_ROUTES = ["/chat-support"];
+const TAWK_SRC = "https://embed.tawk.to/69e6bf7344c3731c357f8fa8/1jmmlnn5l";
 
 export const ChatSupport = () => {
-  const location = useLocation();
   const navigate = useNavigate();
+  const tawkReady = useRef(false);
 
-  const syncCrispData = () => {
-    if (!window.$crisp) return;
+  // ✅ MOVE THIS UP
+  const setUserData = () => {
+    const email = localStorage.getItem("user_email");
+    const walletType = localStorage.getItem("wallet_type");
 
-    const email = localStorage.getItem("userEmail");
-    const wallet = localStorage.getItem("selectedWallet");
-    const fullData = `${email} - wallet: ${wallet}`
+    if (!window.Tawk_API || !tawkReady.current) return;
 
-    if (email) {
-      window.$crisp.push(["set", "user:email", fullData]);
-    }
-
-    if (wallet) {
-      window.$crisp.push(["set", "user:company", wallet]);
-      window.$crisp.push(["set", "session:data", [["wallet", wallet]]]);
-    }
+    window.Tawk_API.setAttributes(
+      {
+        email: email || "",
+        walletType: walletType || "unknown",
+      },
+      (error) => {
+        if (error) console.error("Tawk attribute error:", error);
+      },
+    );
   };
 
   useEffect(() => {
-    if (window.CRISP_LOADED) return;
+    window.Tawk_API = window.Tawk_API || {};
+    window.Tawk_LoadStart = new Date();
 
-    window.$crisp = [];
-    window.CRISP_WEBSITE_ID = CRISP_WEBSITE_ID;
-
-    const script = document.createElement("script");
-    script.src = "https://client.crisp.chat/l.js";
-    script.async = true;
-
-    script.onload = () => {
-      window.CRISP_LOADED = true;
-      syncCrispData();
-      window.$crisp.push(["do", "chat:open"]);
+    window.Tawk_API.onLoad = () => {
+      tawkReady.current = true;
+      setUserData(); // ✅ now safe
     };
 
-    document.head.appendChild(script);
+    const script = document.createElement("script");
+    script.src = TAWK_SRC;
+    script.async = true;
+
+    document.body.appendChild(script);
   }, []);
 
-  useEffect(() => {
-    if (window.CRISP_LOADED) {
-      syncCrispData();
+  const handleOpenChat = () => {
+    if (!tawkReady.current) {
+      console.log("Tawk not ready yet");
+      return;
     }
-  }, [location.pathname]);
 
-  useEffect(() => {
-    if (!window.$crisp) return;
-
-    const isAllowed = ALLOWED_ROUTES.includes(location.pathname);
-
-    window.$crisp.push(["do", isAllowed ? "chat:show" : "chat:hide"]);
-  }, [location.pathname]);
-
-  const handleChatClick = () => {
-    window.$crisp?.push(["do", "chat:open"]);
+    window.Tawk_API.showWidget();
+    window.Tawk_API.maximize();
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center">
-      <div className="text-center">
+    <div className="min-h-screen bg-black text-white flex items-center justify-center px-4">
+      <div className="text-center max-w-sm w-full">
+        <h2 className="text-2xl font-bold mb-3">
+          Talk to our support team instantly.
+        </h2>
+
         <button
-          onClick={handleChatClick}
-          className="px-6 py-3 bg-orange-500 rounded-lg hover:bg-orange-600 text-xl font-bold"
+          onClick={handleOpenChat}
+          className="w-full py-3 rounded-lg bg-orange-500 hover:bg-orange-600"
         >
-          Open Chat
+          Open Live Chat
         </button>
 
+        <button
+          onClick={() => navigate("/")}
+          className="mt-4 text-sm text-gray-500 hover:text-white"
+        >
+          Go back
+        </button>
       </div>
     </div>
   );
