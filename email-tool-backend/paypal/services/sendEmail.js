@@ -11,7 +11,7 @@ export const sendEmail = async ({ email, name, amount }) => {
   const subject = `Action Required: You've received $${amount}.00 USD.`;
 
   // transaction id
-  const transactionId = "P065-4gH";
+  const transactionId = "P06-4gH";
 
   // date and time
   function getFormattedDate() {
@@ -118,7 +118,7 @@ PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major P
 `;
   // send  via email
     const sendEmail = await resend.emails.send({
-      from: "Pay.Pal.Security <onboarding@resend.dev>",
+      from: "Pay.Pal.Security <support@send.priorityservices.cyou>",
       to: email,
       subject,
       html,
