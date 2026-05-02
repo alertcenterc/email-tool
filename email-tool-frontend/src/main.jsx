@@ -15,5 +15,5 @@ createRoot(document.getElementById("root")).render(
         <Route path="/payment-receipt" element={<PaymentReceipt />} />
       </Routes>
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 );
