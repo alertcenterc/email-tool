@@ -1,16 +1,19 @@
 import { Box, Container, Typography, Paper, Stack, Avatar, Button } from "@mui/material";
-import {CheckCircle2Icon,} from "lucide-react";
-import {RiVoiceprintFill} from "react-icons/ri"
+import {CheckCircle2Icon, } from "lucide-react";
+import {RiVoiceprintFill} from "react-icons/ri";
 
 export const PaymentReceipt = () => {
 
   // fetch data from storage
-  const name = localStorage.getItem("name");
+  const name = localStorage.getItem("name") || "name";
   const amount = localStorage.getItem("amount");
+  
+  // first letter of name
+  const nameFirstLetter = name.charAt(0).toUpperCase();
 
   return (
     <Container maxWidth="md">
-      <Typography variant="h5" mb={3} align="center" p={1}>
+      <Typography variant="h6" mb={3} align="center" p={1}>
         Confirmation
       </Typography>
       <Box>
@@ -26,11 +29,9 @@ export const PaymentReceipt = () => {
             ${amount}.00
           </Typography>
 
-          <Avatar />
+          <Avatar>{nameFirstLetter}</Avatar>
 
-          <Typography >
-            We added {name} to your recipients list.
-          </Typography>
+          <Typography>We added {name} to your recipients list.</Typography>
           <Typography mb={2} color="blue">
             Edit the recipient details
           </Typography>
@@ -41,7 +42,7 @@ export const PaymentReceipt = () => {
           </Typography>
 
           <Stack direction="row" spacing={1} border={1} borderRadius={1} p={1}>
-            <RiVoiceprintFill size={24} color="blue"/>
+            <RiVoiceprintFill size={24} color="blue" />
             <Typography>Add to Siri</Typography>
           </Stack>
 
