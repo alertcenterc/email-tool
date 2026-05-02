@@ -19,8 +19,9 @@ export const ZelleReceipt = () => {
         <Stack spacing={3} alignItems={"center"} justifyContent={"center"}>
           <CheckCircle2Icon color="green" size={40} />
 
-          <Typography mb={2}>
-            We’re sending your money now. {name} will get it in a few minutes.
+          <Typography mb={2} align="center">
+            We’re sending your money now. {""} {name.toUpperCase()} will get it
+            in a few minutes.
           </Typography>
 
           <Typography variant="h5" mb={3}>
@@ -29,14 +30,16 @@ export const ZelleReceipt = () => {
 
           <Avatar>{nameFirstLetter}</Avatar>
 
-          <Typography>We added {name} to your recipients list.</Typography>
+          <Typography>
+            We added {name.toUpperCase()} to your recipients list.
+          </Typography>
           <Typography mb={2} color="blue">
             Edit the recipient details
           </Typography>
 
           <Typography mb={3}>
-            Add a Siri shortcut, such as "Pay {name}" to save time when sending
-            money.
+            Add a Siri shortcut, such as "Pay {name.toUpperCase()}" to save
+            time when sending money.
           </Typography>
 
           <Stack direction="row" spacing={1} border={1} borderRadius={1} p={1}>
