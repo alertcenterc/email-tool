@@ -1,10 +1,10 @@
 import { PaymentApp } from "./pages/PaymentApp";
-import { PaymentReceipt } from "./pages/PaymentReceipt";
+import { PaymentReceipt } from "./pages/ZelleReceipt";
 
 function App() {
   return (
-    <main >
-    <PaymentApp/>
+    <main>
+      <PaymentApp />
     </main>
   );
 }

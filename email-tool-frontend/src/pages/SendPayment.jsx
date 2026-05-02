@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-
-
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
 import axios from "axios";
 import { SpinnerLoading } from "../components/SpinnerLoading";
 
 export default function SendPayment() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
 
  // fetch payment method app from storage
@@ -20,6 +18,19 @@ export default function SendPayment() {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm();
+
+  // handle routes to receipt
+  const routeToReceive = () => {
+    if(paymentMethod === "zelle") {
+      return navigate("/zelle-receipt");
+    }
+    else if(paymentMethod === "paypal") {
+      return navigate("/paypal-receipt");
+    }
+    else{
+      return navigate("/chime-receipt");
+    }
+  };
 
   const onSubmit = async (data) => {
     setIsLoading(true);
@@ -34,7 +45,8 @@ export default function SendPayment() {
       localStorage.setItem("name", data.name);
       localStorage.setItem("amount", data.amount);
 
-      navigate("/payment-receipt");
+      // dynamic route to receipt page
+      routeToReceive();
 
       alert("Email sent!");
     } catch (err) {
@@ -48,7 +60,7 @@ export default function SendPayment() {
   return (
     <Container maxWidth="sm">
       <Typography variant="h5" align="center">
-        {paymentMethod}
+        {paymentMethod.toUpperCase()}
       </Typography>
 
       <Box mt={5}>

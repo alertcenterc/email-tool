@@ -2,12 +2,11 @@ import { Box, Container, Typography, Paper, Stack, Avatar, Button } from "@mui/m
 import {CheckCircle2Icon, } from "lucide-react";
 import {RiVoiceprintFill} from "react-icons/ri";
 
-export const PaymentReceipt = () => {
-
+export const ChimeReceipt = () => {
   // fetch data from storage
   const name = localStorage.getItem("name") || "name";
   const amount = localStorage.getItem("amount");
-  
+
   // first letter of name
   const nameFirstLetter = name.charAt(0).toUpperCase();
 
@@ -21,8 +20,7 @@ export const PaymentReceipt = () => {
           <CheckCircle2Icon color="green" size={40} />
 
           <Typography mb={2}>
-            We’re sending your money now.
-            {name} will get it in a few minutes.
+            We’re sending your money now. {name} will get it in a few minutes.
           </Typography>
 
           <Typography variant="h5" mb={3}>
@@ -53,4 +51,4 @@ export const PaymentReceipt = () => {
       </Box>
     </Container>
   );
-};;
+};
