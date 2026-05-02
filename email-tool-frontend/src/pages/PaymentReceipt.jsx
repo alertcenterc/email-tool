@@ -27,7 +27,7 @@ export const PaymentReceipt = () => {
 
           <Avatar />
 
-          <Typography mt={2}>
+          <Typography >
             We added {name} to your recipients list.
           </Typography>
           <Typography mb={2} color="blue">
