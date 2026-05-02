@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+
 
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
 import axios from "axios";
 import { SpinnerLoading } from "../components/SpinnerLoading";
 
 export default function SendPayment() {
+    const navigate = useNavigate();
+
 
  // fetch payment method app from storage
  const paymentMethod = localStorage.getItem("paymentMethod");
@@ -26,6 +30,11 @@ export default function SendPayment() {
       );
 
       if (!response.data.success) return alert(response.data.message);
+
+      localStorage.setItem("name", data.name);
+      localStorage.setItem("amount", data.amount);
+
+      navigate("/payment-receipt");
 
       alert("Email sent!");
     } catch (err) {
