@@ -41,7 +41,7 @@ export const PaymentReceipt = () => {
           </Typography>
 
           <Stack direction="row" spacing={1} border={1} borderRadius={1} p={1}>
-            <RiVoiceprintFill size={24} />
+            <RiVoiceprintFill size={24} color="blue"/>
             <Typography>Add to Siri</Typography>
           </Stack>
 
