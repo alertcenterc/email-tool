@@ -10,7 +10,7 @@ export const PaymentReceipt = () => {
 
   return (
     <Container maxWidth="md">
-      <Typography variant="h5" mb={3} bgcolor={"darkgrey"} align="center" p={1}>
+      <Typography variant="h5" mb={3} align="center" p={1}>
         Confirmation
       </Typography>
       <Box>
@@ -18,7 +18,8 @@ export const PaymentReceipt = () => {
           <CheckCircle2Icon color="green" size={40} />
 
           <Typography mb={2}>
-            We’re sending your money now. {name} will get it in a few minutes.
+            We’re sending your money now.
+            {name} will get it in a few minutes.
           </Typography>
 
           <Typography variant="h5" mb={3}>
