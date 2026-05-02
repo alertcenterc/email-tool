@@ -4,7 +4,7 @@ import { PaymentReceipt } from "./pages/PaymentReceipt";
 function App() {
   return (
     <main >
-    <PaymentReceipt/>
+    <PaymentApp/>
     </main>
   );
 }
