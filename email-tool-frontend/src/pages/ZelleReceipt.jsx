@@ -12,8 +12,9 @@ export const ZelleReceipt = () => {
   const nameFirstLetter = name.charAt(0).toUpperCase();
 
   return (
-    <Container sx={{backgroundColor: "grey.100"}} maxWidth="xs" >
-      <Stack direction="row" justifyContent={'space-between'}>
+    <Container sx={{backgroundColor: "grey.200"}} maxWidth="xs" >
+
+      <Stack direction="row" justifyContent={'space-between'} alignItems={'center'}>
         <MdChevronLeft size={24} color="blue" />
         <Typography variant="h6" mb={3} align="center" p={1}>
           Confirmation
