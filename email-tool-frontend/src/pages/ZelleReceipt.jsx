@@ -32,7 +32,7 @@ export const ZelleReceipt = () => {
             in a few minutes.
           </Typography>
 
-          <Typography variant="h5" mb={3}>
+          <Typography variant="h5" mb={3} sx={{fontSize: '5'}}>
             ${amount}.00
           </Typography>
 
