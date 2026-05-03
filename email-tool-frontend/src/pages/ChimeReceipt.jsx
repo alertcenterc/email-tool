@@ -12,7 +12,7 @@ export const ChimeReceipt = () => {
 
   return (
     <Container maxWidth="md">
-      <Typography variant="h6" mb={3} align="center" p={1}>
+      <Typography variant="h6" align="center">
         Confirmation
       </Typography>
       <Box>
