@@ -3,7 +3,7 @@ import { ZelleReceipt } from "./pages/ZelleReceipt";
 
 function App() {
   return (
-    <main>
+    <main >
       <ZelleReceipt />
     </main>
   );
