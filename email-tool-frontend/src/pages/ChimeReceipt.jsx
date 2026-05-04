@@ -50,7 +50,7 @@ export const ChimeReceipt = () => {
         direction="row"
         justifyContent="space-between"
         alignItems="center"
-        mb={0}
+        mb={-16}
       >
         <MdArrowBack size={28} color="white" />
         <MdMoreHoriz size={28} color="white" />
