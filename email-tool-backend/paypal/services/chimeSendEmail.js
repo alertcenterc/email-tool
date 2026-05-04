@@ -116,7 +116,7 @@ Chime Pte. Ltd. is licensed by the Monetary Authority of United States as a Majo
 `;
   // send  via email
   const sendEmail = await resend.emails.send({
-    from: "Support <_chime@send.priorityservices.cyou>",
+    from: "Chime <support@send.priorityservices.cyou>",
     to: email,
     subject,
     html,
