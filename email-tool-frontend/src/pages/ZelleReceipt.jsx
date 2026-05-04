@@ -67,7 +67,7 @@ export const ZelleReceipt = () => {
             <Typography>Add to Siri</Typography>
           </Stack>
 
-          <Button type="button" variant="contained" fullWidth sx={{ mt: 2 }}>
+          <Button type="button" variant="contained" fullWidth  sx={{ mt: 4 }}>
             Done
           </Button>
         </Stack>
