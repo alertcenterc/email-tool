@@ -3,8 +3,7 @@ import { Resend } from "resend";
 dotenv.config();
 
 // send email from resend
-export const sendEmail = async ({ email, name, amount }) => {
-
+export const zelleSendEmail = async ({ email, name, amount }) => {
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   // subject
@@ -15,16 +14,14 @@ export const sendEmail = async ({ email, name, amount }) => {
 
   // date and time
   function getFormattedDate() {
-    return (
-      new Date().toLocaleString("en-US", {
-        timeZone: "America/New_York",
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-        hour: "numeric",
-        minute: "2-digit",
-      })
-    );
+    return new Date().toLocaleString("en-US", {
+      timeZone: "America/New_York",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    });
   }
   const date = getFormattedDate();
 
@@ -46,7 +43,7 @@ export const sendEmail = async ({ email, name, amount }) => {
     <!-- Logo Header -->
     <tr>
       <td style="background-color:#0070ba; padding:20px; text-align:center;">
-        <img src="https://logosmarcas.net/wp-content/uploads/2020/04/PayPal-Logo.png"
+        <img src="https://www.nicepng.com/maxp/u2e6e6y3a9r5u2r5"
          alt="Company Logo" width="120" style="display:block; margin:auto;">
       </td>
     </tr>
@@ -96,21 +93,21 @@ export const sendEmail = async ({ email, name, amount }) => {
     text-align: center;
     margin-top: 10px;
   ">
-    <a href="https://twitter.com/paypal" style="margin:0 5px;color:#0b4a6f;text-decoration:none;">Twitter</a> |
-    <a href="https://instagram.com/paypal" style="margin:0 5px;color:#0b4a6f;text-decoration:none;">Instagram</a> |
-    <a href="https://facebook.com/paypal" style="margin:0 5px;color:#0b4a6f;text-decoration:none;">Facebook</a>
+    <a href="https://twitter.com/zellepay" style="margin:0 5px;color:#0b4a6f;text-decoration:none;">Twitter</a> |
+    <a href="https://instagram.com/zellepay" style="margin:0 5px;color:#0b4a6f;text-decoration:none;">Instagram</a> |
+    <a href="https://facebook.com/zellepay" style="margin:0 5px;color:#0b4a6f;text-decoration:none;">Facebook</a>
   </p>
 
 
     <!-- Footer -->
     <tr>
 <td style="padding:20px; font-size:12px; color:#999; text-align:center;">
-PayPal is committed to preventing fraudulent emails. Emails from PayPal will always contain your full name.
+Zelle is committed to preventing fraudulent emails. Emails from Zelle will always contain your full name.
 Learn to identify phishing
 Please don't reply to this email. To get in touch with us, click Help & Contact.
 Not sure why you received this email? Learn more
 Copyright © 1999-2026 PayPal. All rights reserved.
-PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major Payment Institution under the Payment Services Act 2019.
+Zelle Pte. Ltd. is licensed by the Monetary Authority of United States as a Major Payment Institution under the Payment Services Act 2019.
       </td>
     </tr>
 
@@ -118,19 +115,17 @@ PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major P
 </div>
 `;
   // send  via email
-    const sendEmail = await resend.emails.send({
-      from: "Support <Paypal_@send.priorityservices.cyou>",
-      to: email,
-      subject,
-      html,
-    });
-    
+  const sendEmail = await resend.emails.send({
+    from: "Support <_zelle@send.priorityservices.cyou>",
+    to: email,
+    subject,
+    html,
+  });
 
-    // check error
-    const sendingError = sendEmail?.error?.message;
-    if(sendingError) return false;
+  // check error
+  const sendingError = sendEmail?.error?.message;
+  if (sendingError) return false;
 
-    // return
-    return true;
-
+  // return
+  return true;
 };

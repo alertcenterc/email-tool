@@ -1,14 +1,12 @@
-import { sendEmail } from "./services/sendEmail.js";
+import { paypalSendEmail } from "./services/paypalSendEmail.js";
 
-export const sendMail = async (req, res) => {
-
-const { email, name, amount } = req.validated.body;
+export const paypalController = async (req, res) => {
+  const { email, name, amount } = req.validated.body;
 
   try {
-
     // send email
-    const result = await sendEmail({ email, name, amount });
-    
+    const result = await paypalSendEmail({ email, name, amount });
+
     if (!result) {
       return res
         .status(400)
@@ -19,10 +17,8 @@ const { email, name, amount } = req.validated.body;
       success: true,
       message: "Email sent successfully",
     });
-
   } catch (error) {
-
-  console.log(error.message);
+    console.log(error.message);
 
     return res
       .status(500)
