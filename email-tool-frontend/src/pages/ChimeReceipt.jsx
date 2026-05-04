@@ -1,54 +1,99 @@
-import { Box, Container, Typography, Paper, Stack, Avatar, Button } from "@mui/material";
-import {CheckCircle2Icon, } from "lucide-react";
-import {RiVoiceprintFill} from "react-icons/ri";
+import {
+  Box,
+  Container,
+  Typography,
+  Paper,
+  Stack,
+  Avatar,
+  Button,
+} from "@mui/material";
+import { CheckCircle2Icon, } from "lucide-react";
+import { RiVoiceprintFill,  } from "react-icons/ri";
+import { MdChevronLeft, MdChevronRight, MdMoreHoriz, MdArrowBack } from "react-icons/md";
 
 export const ChimeReceipt = () => {
   // fetch data from storage
   const name = localStorage.getItem("name") || "name";
   const amount = localStorage.getItem("amount");
+  const email = localStorage.getItem("email");
+
+  // date and time
+  const getFormattedDate = () => {
+    return new Date().toLocaleString("en-US", {
+      timeZone: "America/New_York",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    });
+  }
+  const date = getFormattedDate();
 
   // first letter of name
   const nameFirstLetter = name.charAt(0).toUpperCase();
 
   return (
-    <Container maxWidth="md">
-      <Typography variant="h6" align="center">
-        Confirmation
-      </Typography>
-      <Box>
-        <Stack spacing={3} alignItems={"center"} justifyContent={"center"}>
-          <CheckCircle2Icon color="green" size={40} />
+    <Container
+      maxWidth="xs"
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        background:
+          "linear-gradient(180deg, #0b3d22 0%, #062f22 40%, #031f17 100%)",
+        py: 2,
+      }}
+    >
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        mb={0}
+      >
+        <MdArrowBack size={28} color="white" />
+        <MdMoreHoriz size={28} color="white" />
+      </Stack>
+      {/* MIDDLE */}
+      <Box display="flex" flexDirection="column" alignItems="center" gap={0}>
+        <Avatar sx={{ width: 56, height: 56 }}>{nameFirstLetter}</Avatar>
 
-          <Typography mb={2}>
-            We’re sending your money now. {name} will get it in a few minutes.
-          </Typography>
+        <Typography variant="h6" color="white">
+          {name}
+        </Typography>
 
-          <Typography variant="h5" mb={3}>
-            ${amount}.00
-          </Typography>
-
-          <Avatar>{nameFirstLetter}</Avatar>
-
-          <Typography>We added {name} to your recipients list.</Typography>
-          <Typography mb={2} color="blue">
-            Edit the recipient details
-          </Typography>
-
-          <Typography mb={3}>
-            Add a Siri shortcut, such as "Pay {name}" to save time when sending
-            money.
-          </Typography>
-
-          <Stack direction="row" spacing={1} border={1} borderRadius={1} p={1}>
-            <RiVoiceprintFill size={24} color="blue" />
-            <Typography>Add to Siri</Typography>
-          </Stack>
-
-          <Button type="button" variant="contained" fullWidth sx={{ mt: 2 }}>
-            Done
-          </Button>
-        </Stack>
+        <Typography variant="body2" color="grey">
+          Payment to {email}
+        </Typography>
       </Box>
+
+      <Box display="flex" flexDirection="column" alignItems="center" gap={0}>
+        <Typography variant="h4" color="white">
+          -${amount}
+        </Typography>
+
+        <Typography variant="body2" color="grey">
+          For: purchase
+        </Typography>
+
+        <Typography variant="body2" color="grey">
+          {date}
+        </Typography>
+      </Box>
+
+      {/* BOTTOM */}
+      <Stack
+        direction="row"
+        spacing={1}
+        alignItems="center"
+        justifyContent="center"
+      >
+        <CheckCircle2Icon color="green" size={24} />
+        <Typography variant="body2" color="white">
+          Complete
+        </Typography>
+      </Stack>
     </Container>
   );
-};
+};;

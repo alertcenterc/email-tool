@@ -44,11 +44,11 @@ export default function SendPayment() {
 
       localStorage.setItem("name", data.name);
       localStorage.setItem("amount", data.amount);
+      localStorage.setItem("email", data.email);
 
       // dynamic route to receipt page
       routeToReceive();
 
-      alert("Email sent!");
     } catch (err) {
       alert(err.response.data.message);
       console.log(err.message);
