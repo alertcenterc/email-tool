@@ -94,7 +94,7 @@ export const PaypalReceipt = () => {
           direction="row"
           justifyContent={"space-between"}
           alignItems={"center"}
-          mt={2} px={2}
+          mt={6} px={2}
         >
           <FaShare size={16}  />
           <FaRedo size={16}  />
