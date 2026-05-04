@@ -36,7 +36,7 @@ export default function SendPayment() {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "https://email-tool-yvld.onrender.com/send-email",
+        "https://email-tool-yvld.onrender.com/paypal",
         data,
       );
 
