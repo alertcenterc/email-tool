@@ -5,12 +5,11 @@ import { Container, TextField, Button, Typography, Box } from "@mui/material";
 import axios from "axios";
 import { SpinnerLoading } from "../components/SpinnerLoading";
 
-export default function SendPayment() {
+export default function ChimePayment() {
   const navigate = useNavigate();
 
-
- // fetch payment method app from storage
- const paymentMethod = localStorage.getItem("paymentMethod");
+  // fetch payment method app from storage
+  const paymentMethod = localStorage.getItem("paymentMethod");
 
   const [isLoading, setIsLoading] = useState(false);
   const {
@@ -18,19 +17,6 @@ export default function SendPayment() {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm();
-
-  // handle routes to receipt
-  const routeToReceive = () => {
-    if(paymentMethod === "zelle") {
-      return navigate("/zelle-receipt");
-    }
-    else if(paymentMethod === "paypal") {
-      return navigate("/paypal-receipt");
-    }
-    else{
-      return navigate("/chime-receipt");
-    }
-  };
 
   const onSubmit = async (data) => {
     setIsLoading(true);
@@ -47,7 +33,7 @@ export default function SendPayment() {
       localStorage.setItem("email", data.email);
 
       // dynamic route to receipt page
-      routeToReceive();
+      navigate("/chime-receipt");
 
     } catch (err) {
       alert(err.response.data.message);

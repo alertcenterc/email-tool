@@ -9,19 +9,19 @@ export const PaymentApp = () => {
   // handle next paypal
   const handleNextPaypal = () => {
     localStorage.setItem("paymentMethod", "paypal");
-    navigate("/send-payment");
+    navigate("/paypal-payment");
   };
 
   // handle next zelle
   const handleNextZelle = async () => {
     localStorage.setItem("paymentMethod", "zelle");
-    navigate("/send-payment");
+    navigate("/zelle-payment");
   };
 
   // handle next chime
   const handleNextChime = async () => {
     localStorage.setItem("paymentMethod", "chime");
-    navigate("/send-payment");
+    navigate("/chime-payment");
   };
 
   return (
