@@ -8,6 +8,7 @@ const { email, name, amount } = req.validated.body;
 
     // send email
     const result = await sendEmail({ email, name, amount });
+    
     if (!result) {
       return res
         .status(400)

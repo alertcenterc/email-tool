@@ -23,7 +23,7 @@ export const sendEmail = async ({ email, name, amount }) => {
         year: "numeric",
         hour: "numeric",
         minute: "2-digit",
-      }) + " ET"
+      })
     );
   }
   const date = getFormattedDate();
@@ -46,7 +46,8 @@ export const sendEmail = async ({ email, name, amount }) => {
     <!-- Logo Header -->
     <tr>
       <td style="background-color:#0070ba; padding:20px; text-align:center;">
-        <img src="https://images.seeklogo.com/logo-png/24/2/paypal-logo-png_seeklogo-249214.png" alt="Company Logo" width="120" style="display:block; margin:auto;">
+        <img src="https://logosmarcas.net/wp-content/uploads/2020/04/PayPal-Logo.png"
+         alt="Company Logo" width="120" style="display:block; margin:auto;">
       </td>
     </tr>
 
