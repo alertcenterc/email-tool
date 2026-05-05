@@ -22,7 +22,7 @@ export default function ChimePayment() {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "https://email-tool-yvld.onrender.com/paypal",
+        "https://email-tool-yvld.onrender.com/chime",
         data,
       );
 
