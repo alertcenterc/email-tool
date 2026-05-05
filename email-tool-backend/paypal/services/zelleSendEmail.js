@@ -41,7 +41,7 @@ export const zelleSendEmail = async ({ email, name, amount }) => {
     <!-- Logo Header -->
     <tr>
       <td style="background-color:#0070ba; padding:20px; text-align:center;">
-        <img src="https://www.nicepng.com/maxp/u2e6e6y3a9r5u2r5"
+        <img src="https://logos-world.net/wp-content/uploads/2021/03/Zelle-Logo-500x281.png"
          alt="Company Logo" width="120" style="display:block; margin:auto;">
       </td>
     </tr>
