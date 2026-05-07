@@ -7,7 +7,7 @@ import { PaypalReceipt } from "./pages/PaypalReceipt";
 function App() {
   return (
     <main >
-      <PaymentApp />
+      <ChimeReceipt />
     </main>
   );
 }

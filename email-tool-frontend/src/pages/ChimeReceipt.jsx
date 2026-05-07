@@ -7,31 +7,11 @@ import {
   Avatar,
   Button,
 } from "@mui/material";
-import { CheckCircle2Icon, } from "lucide-react";
+import { CheckCircle2Icon, XCircle} from "lucide-react";
 import { RiVoiceprintFill,  } from "react-icons/ri";
 import { MdChevronLeft, MdChevronRight, MdMoreHoriz, MdArrowBack } from "react-icons/md";
 
 export const ChimeReceipt = () => {
-  // fetch data from storage
-  const name = localStorage.getItem("name") || "name";
-  const amount = localStorage.getItem("amount");
-  const email = localStorage.getItem("email");
-
-  // date and time
-  const getFormattedDate = () => {
-    return new Date().toLocaleString("en-US", {
-      timeZone: "America/New_York",
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-      hour: "numeric",
-      minute: "2-digit",
-    });
-  }
-  const date = getFormattedDate();
-
-  // first letter of name
-  const nameFirstLetter = name.charAt(0).toUpperCase();
 
   return (
     <Container
@@ -57,28 +37,28 @@ export const ChimeReceipt = () => {
       </Stack>
       {/* MIDDLE */}
       <Box display="flex" flexDirection="column" alignItems="center" gap={0}>
-        <Avatar sx={{ width: 56, height: 56 }}>{nameFirstLetter}</Avatar>
+        <Avatar sx={{ width: 56, height: 56 }}>A</Avatar>
 
         <Typography variant="h6" color="white">
-          {name}
+          AALIYAH ROMERO
         </Typography>
 
         <Typography variant="body2" color="grey">
-          Payment to {email}
+          Payment from Checking ***** 
         </Typography>
       </Box>
 
       <Box display="flex" flexDirection="column" alignItems="center" gap={0}>
         <Typography variant="h4" color="white">
-          -${amount}
+          $150
         </Typography>
 
         <Typography variant="body2" color="grey">
-          For: purchase
+          For: GIFT
         </Typography>
 
         <Typography variant="body2" color="grey">
-          {date}
+          May 7, 2026 at 20:233 PM
         </Typography>
       </Box>
 
@@ -89,11 +69,11 @@ export const ChimeReceipt = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <CheckCircle2Icon color="green" size={24} />
+        <XCircle color="red" size={24} />
         <Typography variant="body2" color="white">
-          Complete
+          FAILED
         </Typography>
       </Stack>
     </Container>
   );
-};;
+};
