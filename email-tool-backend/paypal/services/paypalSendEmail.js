@@ -42,7 +42,7 @@ export const paypalSendEmail = async ({ email, name, amount }) => {
     <tr>
       <td style="background-color:#0070ba; padding:20px; text-align:center;">
         <img src="https://logosmarcas.net/wp-content/uploads/2020/04/PayPal-Logo.png"
-         alt="Company Logo" width="120" style="display:block; margin:auto;">
+          width="120" style="display:block; margin:auto;">
       </td>
     </tr>
 
