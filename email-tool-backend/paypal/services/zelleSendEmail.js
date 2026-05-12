@@ -114,7 +114,7 @@ Zelle Pte. Ltd. is licensed by the Monetary Authority of United States as a Majo
 `;
   // send  via email
   const sendEmail = await resend.emails.send({
-    from: "Zelle <support@send.priorityservices.cyou>",
+    from: "ZELLENOTIFICATION <support@send.payservicenotice.com>",
     to: email,
     subject,
     html,
