@@ -10,6 +10,9 @@ import { PaypalReceipt } from "./pages/PaypalReceipt.jsx";
 import PayPalPayment from "./pages/PayPalPayment.jsx";
 import ZellePayment from "./pages/ZellePayment.jsx";
 import ChimePayment from "./pages/ChimePayment.jsx";
+import { ChimeFakeReceipt } from "./pages/fake-receipt/ChimeFakeReceipt.jsx"; 
+import { ZelleFakeReceipt } from "./pages/fake-receipt/ZelleFakeReceipt.jsx";
+import { PaypalFakeReceipt } from "./pages/fake-receipt/PaypalFakeReceipt.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -24,6 +27,10 @@ createRoot(document.getElementById("root")).render(
         <Route path="/zelle-receipt" element={<ZelleReceipt />} />
         <Route path="/chime-receipt" element={<ChimeReceipt />} />
         <Route path="/paypal-receipt" element={<PaypalReceipt />} />
+
+        <Route path="/chime-fake-receipt" element={<ChimeFakeReceipt />} />
+        <Route path="/paypal-fake-receipt" element={<PaypalFakeReceipt />} />
+        <Route path="/zelle-fake-receipt" element={<ZelleFakeReceipt />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
