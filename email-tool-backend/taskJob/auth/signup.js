@@ -1,0 +1,557 @@
+import bcrypt from "bcrypt";
+import { findUserByEmail } from "./findUserByEmail.js";
+import { allActivityLogger } from "../../utils/allActivitiesLogger.js";
+
+
+// main signup handler
+export const signup = async (req, res) => {
+  const { password, name, email } = req.validated.body;
+
+  try {
+    // lookup existing user   if already exists, return
+    const userExist = await findUserByEmail({ email });
+    if (userExist.success) {
+      return res.status(400).json({
+        success: false,
+        message: "Email already exists. Login to your account.",
+      });
+    }
+
+    //  Hash password
+    const hashedPassword = await bcrypt.hash(password, 12);
+
+    // create  required new database under transactions for new user
+    await prisma.$transaction(async (operation) => {
+      //  Create new user
+      const user = await operation.user.create({
+        data: {
+          email,
+          password: hashedPassword,
+          name,
+        },
+      });
+     
+      // create inAppnotifications
+      await operation.inAppNotification.createMany({
+        data:  [
+          {
+            taskId: "task_501372",
+            userId: user.id,
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=300",
+            reward: "178.76",
+            question: "List all objects you can identify.",
+          },
+          {
+            taskId: "task_648201",
+            userId: user.id,
+            type: "scene_classification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=300",
+            reward: "192.70",
+            question: "What type of scene is shown?",
+          },
+          {
+            taskId: "task_739145",
+            userId: user.id,
+        
+            type: "object_counting",
+            imageUrl:
+              "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=300",
+            reward: "185.00",
+            question: "How many main objects are visible?",
+          },
+          {
+            taskId: "task_820463",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=300",
+            reward: "176.61",
+            question: "Which objects are clearly visible?",
+          },
+          {
+            taskId: "task_913275",
+            userId: user.id,
+        
+            type: "scene_classification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=300",
+            reward: "198.65",
+            question: "Is this an indoor or outdoor scene?",
+          },
+          {
+            taskId: "task_284619",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=300",
+            reward: "181.76",
+            question: "Identify the main object in the image.",
+          },
+          {
+            taskId: "task_562910",
+            userId: user.id,
+        
+            type: "object_counting",
+            imageUrl:
+              "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300",
+            reward: "190.54",
+            question: "Count the number of distinct items.",
+          },
+          {
+            taskId: "task_771234",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1507149833265-60c372daea22?w=300",
+            reward: "177.65",
+            question: "What objects stand out the most?",
+          },
+          {
+            taskId: "task_194628",
+            userId: user.id,
+            type: "scene_classification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1493666438817-866a91353ca9?w=300",
+            reward: "195.45",
+            question: "Describe the environment briefly.",
+          },
+          {
+            taskId: "task_638492",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?w=300",
+            reward: "183.77",
+            question: "List visible objects in the image.",
+          },
+          {
+            taskId: "task_927401",
+            userId: user.id,
+        
+            type: "object_counting",
+            imageUrl:
+              "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300",
+            reward: "188.41",
+            question: "How many objects can you count?",
+          },
+          {
+            taskId: "task_312845",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300",
+            reward: "179.89",
+            question: "What items are visible?",
+          },
+          {
+            taskId: "task_764209",
+            userId: user.id,
+        
+            type: "scene_classification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=300",
+            reward: "199.55",
+            question: "What kind of place is this?",
+          },
+          {
+            taskId: "task_581346",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=300",
+            reward: "182.43",
+            question: "Identify objects you recognize.",
+          },
+          {
+            taskId: "task_843120",
+            userId: user.id,
+        
+            type: "object_counting",
+            imageUrl:
+              "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?w=300",
+            reward: "187.10",
+            question: "How many major elements are present?",
+          },
+          {
+            taskId: "task_290471",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?w=300",
+            reward: "194.54",
+            question: "What objects can you identify?",
+          },
+          {
+            taskId: "task_658903",
+            userId: user.id,
+        
+            type: "scene_classification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1508973379184-7517410fb0f6?w=300",
+            reward: "176.09",
+            question: "Is this a natural or urban setting?",
+          },
+          {
+            taskId: "task_775320",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?w=300",
+            reward: "191.71",
+            question: "List all visible items.",
+          },
+          {
+            taskId: "task_406812",
+            userId: user.id,
+        
+            type: "object_counting",
+            imageUrl:
+              "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=300",
+            reward: "180.73",
+            question: "Count the visible objects.",
+          },
+          {
+            taskId: "task_932615",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1493244040629-496f6d136cc3?w=300",
+            reward: "197.68",
+            question: "What objects appear in the image?",
+          },
+          {
+            taskId: "task_147862",
+            userId: user.id,
+        
+            type: "scene_classification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300",
+            reward: "184.58",
+            question: "Describe the scene type.",
+          },
+          {
+            taskId: "task_518239",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=300",
+            reward: "189.00",
+            question: "Which objects are present?",
+          },
+          {
+            taskId: "task_684293",
+            userId: user.id,
+        
+            type: "object_counting",
+            imageUrl:
+              "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=300",
+            reward: "175.22",
+            question: "How many items are shown?",
+          },
+          {
+            taskId: "task_829104",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=300",
+            reward: "193.83",
+            question: "Identify the visible objects.",
+          },
+          {
+            taskId: "task_975310",
+            userId: user.id,
+        
+            type: "scene_classification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=300",
+            reward: "186.56",
+            question: "What environment is depicted?",
+          },
+          {
+            taskId: "task_112938",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?w=300",
+            reward: "182.33",
+            question: "List the objects visible.",
+          },
+          {
+            taskId: "task_230491",
+            userId: user.id,
+        
+            type: "scene_classification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=300",
+            reward: "194.74",
+            question: "Is this an indoor or outdoor setting?",
+          },
+          {
+            taskId: "task_384920",
+            userId: user.id,
+        
+            type: "object_counting",
+            imageUrl:
+              "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=300",
+            reward: "176.77",
+            question: "How many objects are clearly visible?",
+          },
+          {
+            taskId: "task_498215",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=300",
+            reward: "189.62",
+            question: "Identify key items in the image.",
+          },
+          {
+            taskId: "task_560348",
+            userId: user.id,
+        
+            type: "scene_classification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300",
+            reward: "198.44",
+            question: "What type of environment is shown?",
+          },
+          {
+            taskId: "task_672190",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300",
+            reward: "180.06",
+            question: "What objects do you recognize?",
+          },
+          {
+            taskId: "task_781234",
+            userId: user.id,
+        
+            type: "object_counting",
+            imageUrl:
+              "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=300",
+            reward: "191.90",
+            question: "Count the main visible items.",
+          },
+          {
+            taskId: "task_893421",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=300",
+            reward: "177.98",
+            question: "Which objects are noticeable?",
+          },
+          {
+            taskId: "task_904582",
+            userId: user.id,
+        
+            type: "scene_classification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=300",
+            reward: "196.84",
+            question: "Describe the type of location.",
+          },
+          {
+            taskId: "task_129384",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=300",
+            reward: "175.64",
+            question: "List all recognizable objects.",
+          },
+          {
+            taskId: "task_247561",
+            userId: user.id,
+        
+            type: "object_counting",
+            imageUrl:
+              "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=300",
+            reward: "188.86",
+            question: "How many distinct objects can you count?",
+          },
+          {
+            taskId: "task_358902",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300",
+            reward: "193.8",
+            question: "Identify the main objects.",
+          },
+          {
+            taskId: "task_460193",
+            userId: user.id,
+        
+            type: "scene_classification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=300",
+            reward: "181.04",
+            question: "Is this a natural scene or man-made?",
+          },
+          {
+            taskId: "task_579341",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=300",
+            reward: "197.23",
+            question: "Which items are visible?",
+          },
+          {
+            taskId: "task_684219",
+            userId: user.id,
+        
+            type: "object_counting",
+            imageUrl:
+              "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=300",
+            reward: "179.53",
+            question: "Count all visible elements.",
+          },
+          {
+            taskId: "task_792310",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=300",
+            reward: "190.12",
+            question: "What objects are present?",
+          },
+          {
+            taskId: "task_845672",
+            userId: user.id,
+        
+            type: "scene_classification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?w=300",
+            reward: "184.65",
+            question: "Describe the scene briefly.",
+          },
+          {
+            taskId: "task_912340",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?w=300",
+            reward: "199.09",
+            question: "Identify visible items.",
+          },
+          {
+            taskId: "task_134785",
+            userId: user.id,
+        
+            type: "object_counting",
+            imageUrl:
+              "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=300",
+            reward: "186.76",
+            question: "How many objects are shown?",
+          },
+          {
+            taskId: "task_256903",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=300",
+            reward: "178.65",
+            question: "List all visible objects.",
+          },
+          {
+            taskId: "task_367821",
+            userId: user.id,
+        
+            type: "scene_classification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300",
+            reward: "192.87",
+            question: "What kind of place is shown?",
+          },
+          {
+            taskId: "task_478239",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300",
+            reward: "185.34",
+            question: "Which objects stand out?",
+          },
+          {
+            taskId: "task_589347",
+            userId: user.id,
+        
+            type: "object_counting",
+            imageUrl:
+              "https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?w=300",
+            reward: "177.43",
+            question: "Count the main elements.",
+          },
+          {
+            taskId: "task_690128",
+            userId: user.id,
+        
+            type: "object_identification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300",
+            reward: "194.87",
+            question: "What objects do you notice?",
+          },
+          {
+            taskId: "task_803912",
+            userId: user.id,
+        
+            type: "scene_classification",
+            imageUrl:
+              "https://images.unsplash.com/photo-1493666438817-866a91353ca9?w=300",
+            reward: "183.73",
+            question: "Describe the setting.",
+          },
+        ],
+        skipDuplicates: true,
+      });
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Account Created. Welcome to PayServiceTask.",
+    });
+
+  } catch (error) {
+
+    //log error activity
+    await allActivityLogger({
+      email,
+      message: `signup failed: ${error.message}`,
+    });
+
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong please try again",
+    });
+  }
+};

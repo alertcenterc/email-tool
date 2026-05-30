@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import route from "./paypal/route.js";
+import authRoute from "./taskJob/auth/authRoute.js";
+import prisma from "./utils/prisma.js";
 
 dotenv.config();
 const app = express();
@@ -38,11 +40,27 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/", authRoute);
+
 app.use("/", route);
 
 const PORT = process.env.PORT || 5000;
 
-// Start server 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+async function startServer() {
+  try {
+    // Test Prisma connection
+    await prisma.$queryRaw`SELECT 1`;
+    console.log("✅ Prisma connected to Neon");
+
+
+    // Start server ONLY after DB is ready
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("❌ Server failed to start:", error);
+    process.exit(1);
+  }
+}
+
+startServer();

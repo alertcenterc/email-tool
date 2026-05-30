@@ -41,3 +41,4 @@ logs
 # Misc
 # =========================
 coverage/
+/generated/prisma
