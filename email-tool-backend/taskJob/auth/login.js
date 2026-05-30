@@ -60,7 +60,7 @@ export const login = async (req, res) => {
     });
   } catch (error) {
 
-    //log error activity
+    //log error activityy
     await allActivityLogger({
       email,
       message: `login failed: ${error.message}`,
