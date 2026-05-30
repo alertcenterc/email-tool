@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
 import axios from "axios";
-import { SpinnerLoading } from "../components/SpinnerLoading";
+import { SpinnerLoading } from "../../components/SpinnerLoading";
 
-export default function PayPalPayment() {
+export default function ChimePayment() {
   const navigate = useNavigate();
 
   // fetch payment method app from storage
@@ -22,7 +22,7 @@ export default function PayPalPayment() {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "https://email-tool-yvld.onrender.com/paypal",
+        "https://email-tool-yvld.onrender.com/chime",
         data,
       );
 
@@ -33,7 +33,7 @@ export default function PayPalPayment() {
       localStorage.setItem("email", data.email);
 
       // dynamic route to receipt page
-      navigate("/paypal-receipt");
+      navigate("/chime-receipt");
     } catch (err) {
       alert(err.response.data.message);
       console.log(err.message);

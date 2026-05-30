@@ -1,7 +1,6 @@
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
-import { SpinnerLoading } from "../components/SpinnerLoading";
+import { SpinnerLoading } from "../../components/SpinnerLoading";
 import { useNavigate } from "react-router-dom";
-
 
 export const PaymentApp = () => {
   const navigate = useNavigate();
@@ -66,4 +65,4 @@ export const PaymentApp = () => {
       </Box>
     </Container>
   );
-};;
+};

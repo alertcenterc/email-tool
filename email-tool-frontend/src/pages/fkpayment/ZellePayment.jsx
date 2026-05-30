@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
 import axios from "axios";
-import { SpinnerLoading } from "../components/SpinnerLoading";
+import { SpinnerLoading } from "../../components/SpinnerLoading";
 
 export default function ZellePayment() {
   const navigate = useNavigate();
@@ -17,7 +17,6 @@ export default function ZellePayment() {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm();
-
 
   const onSubmit = async (data) => {
     setIsLoading(true);
@@ -35,7 +34,6 @@ export default function ZellePayment() {
 
       // dynamic route to receipt page
       navigate("/zelle-receipt");
-
     } catch (err) {
       alert(err.response.data.message);
       console.log(err.message);
