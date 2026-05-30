@@ -20,20 +20,18 @@ import Withdraw from "@mui/icons-material/AccountBalanceWalletOutlined";
 import Support from "@mui/icons-material/SupportAgentOutlined";
 import Logout from "@mui/icons-material/LogoutOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
-import PeopleIcon from "@mui/icons-material/People";
-
 
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { authStore } from "../pages/auth/authStore";
 
-const drawerWidth = 240;  
+const drawerWidth = 260;
 
 const menuItems = [
   { label: "Home", icon: <Home />, path: "/admin/dashboard" },
   { label: "Tasks", icon: <Task />, path: "/admin/task-list" },
   { label: "Withdraw", icon: <Withdraw />, path: "/admin/withdraw-method" },
   { label: "Support", icon: <Support />, path: "/admin/support" },
-  { label: "Logout", icon: <Logout />, path: "/admin/logout" },
+  { label: "Logout", icon: <Logout />, path: "/logout" },
 ];
 
 export default function AdminLayout() {
@@ -42,17 +40,21 @@ export default function AdminLayout() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const name = authStore((state) => state.name);
+
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+    setMobileOpen((prev) => !prev);
   };
 
-    const name = authStore((state) => state.name);
-  
-
   const drawer = (
-    <Box>
+    <>
       <Toolbar>
-        <Typography variant="h6" sx={{ color: "grey", fontWeight: 5 }}>
+        <Typography
+          sx={{
+            color: "#94a3b8",
+            fontWeight: 600,
+          }}
+        >
           Welcome, {name}
         </Typography>
       </Toolbar>
@@ -68,15 +70,19 @@ export default function AdminLayout() {
             selected={location.pathname.startsWith(item.path)}
             sx={{
               color: "white",
+
               "& .MuiListItemIcon-root": {
                 color: "white",
               },
+
               "&.Mui-selected": {
-                backgroundColor: "#1f2937",
+                backgroundColor: "#1e293b",
               },
+
               "&.Mui-selected:hover": {
-                backgroundColor: "#1f2937",
+                backgroundColor: "#1e293b",
               },
+
               "&:hover": {
                 backgroundColor: "#111827",
               },
@@ -87,75 +93,80 @@ export default function AdminLayout() {
           </ListItemButton>
         ))}
       </List>
-    </Box>
+    </>
   );
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        minHeight: "100vh",
-        backgroundColor: "#020617",
-        color: "white",
-      }}
-    >
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
 
-      {/* TOP NAV */}
+      {/* APP BAR */}
       <AppBar
         position="fixed"
         elevation={0}
         sx={{
-          zIndex: (theme) => theme.zIndex.drawer + 1,
           backgroundColor: "#020617",
+          borderBottom: "1px solid #1e293b",
+
+          width: {
+            md: `calc(100% - ${drawerWidth}px)`,
+          },
+
+          ml: {
+            md: `${drawerWidth}px`,
+          },
         }}
       >
-        <Toolbar className="flex justify-between">
-          <Typography variant="h5" fontWeight={'bold'} sx={{ color: "white", fontWeight: 5, }}>
-            PayServiceNotice Task
-          </Typography>
-
-          <Typography variant="h6" sx={{ color: "white", fontWeight: 5 }}>
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
+            noWrap
+            sx={{
+              fontWeight: 600,
+              color: "white",
+              fontSize: {
+                xs: "1rem",
+                sm: "1.1rem",
+                md: "1.25rem",
+              },
+            }}
+          >
             Welcome, {name}
           </Typography>
 
           <IconButton
             color="inherit"
-            edge="start"
             onClick={handleDrawerToggle}
-            className="md:hidden"
+            sx={{
+              display: {
+                xs: "block",
+                md: "none",
+              },
+            }}
           >
             <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
 
-      {/* SIDEBAR DESKTOP */}
-      <Drawer
-        variant="permanent"
-        className="hidden md:block"
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
-            width: drawerWidth,
-            backgroundColor: "#020617",
-            color: "white",
-            boxSizing: "border-box",
-          },
-        }}
-        open
-      >
-        {drawer}
-      </Drawer>
-
-      {/* SIDEBAR MOBILE */}
+      {/* MOBILE DRAWER */}
       <Drawer
         variant="temporary"
         open={mobileOpen}
         onClose={handleDrawerToggle}
-        className="md:hidden"
+        ModalProps={{
+          keepMounted: true,
+        }}
         sx={{
+          display: {
+            xs: "block",
+            md: "none",
+          },
+
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             backgroundColor: "#020617",
@@ -166,18 +177,56 @@ export default function AdminLayout() {
         {drawer}
       </Drawer>
 
-      {/* MAIN CONTENT */}
+      {/* DESKTOP DRAWER */}
+      <Drawer
+        variant="permanent"
+        sx={{
+          display: {
+            xs: "none",
+            md: "block",
+          },
+
+          width: drawerWidth,
+          flexShrink: 0,
+
+          "& .MuiDrawer-paper": {
+            width: drawerWidth,
+            boxSizing: "border-box",
+            backgroundColor: "#020617",
+            color: "white",
+            borderRight: "1px solid #1e293b",
+          },
+        }}
+      >
+        {drawer}
+      </Drawer>
+
+      {/* CONTENT */}
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
-          mt: 8,
-          mr: 1,
-          borderLeft: 2
+          minHeight: "100vh",
+          backgroundColor: "#020617",
+
+          width: {
+            md: `calc(100% - ${drawerWidth}px)`,
+          },
         }}
       >
-        <Container maxWidth="xl">
+        <Toolbar />
+
+        <Container
+          maxWidth="xl"
+          sx={{
+            py: 3,
+            px: {
+              xs: 1,
+              sm: 2,
+              md: 3,
+            },
+          }}
+        >
           <Outlet />
         </Container>
       </Box>

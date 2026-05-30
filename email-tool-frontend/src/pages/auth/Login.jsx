@@ -54,82 +54,143 @@ export default function Login() {
       alignItems="center"
       bgcolor="background.default"
       px={2}
+      py={4}
     >
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={3}>
-          <Stack direction={"row"} alignItems={"center"} gap={2}>
-            <Box component="img" src={taskLogo} width={100} height={100} />
-            <Stack direction={"column"} alignItems={"center"} gap={1}>
-              <Typography variant="h6">
-               Welcome Back
+      <Paper
+        elevation={4}
+        sx={{
+          width: "100%",
+          maxWidth: 500,
+          p: {
+            xs: 3,
+            sm: 4,
+          },
+          borderRadius: 3,
+        }}
+      >
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Stack spacing={3}>
+            {/* Header */}
+            <Stack
+              direction={{
+                xs: "column",
+                sm: "row",
+              }}
+              spacing={2}
+              alignItems="center"
+              textAlign={{
+                xs: "center",
+                sm: "left",
+              }}
+            >
+              <Box
+                component="img"
+                src={taskLogo}
+                alt="Logo"
+                sx={{
+                  width: {
+                    xs: 80,
+                    sm: 100,
+                  },
+                  height: {
+                    xs: 80,
+                    sm: 100,
+                  },
+                  objectFit: "contain",
+                }}
+              />
+
+              <Box>
+                <Typography variant="h5" fontWeight="bold">
+                  Welcome Back
+                </Typography>
+
+                <Typography variant="body2" color="text.secondary">
+                  Log in to continue earning
+                </Typography>
+              </Box>
+            </Stack>
+
+            {/* Email */}
+            <TextField
+              label="Email Address"
+              type="email"
+              fullWidth
+              {...register("email", {
+                required: "Email is required!",
+              })}
+              error={!!errors.email}
+              helperText={errors.email?.message}
+            />
+
+            {/* Password */}
+            <TextField
+              label="Password"
+              type="password"
+              fullWidth
+              {...register("password", {
+                required: "Password is required!",
+              })}
+              error={!!errors.password}
+              helperText={errors.password?.message}
+            />
+
+            {/* Login Button */}
+            <Button
+              type="submit"
+              variant="contained"
+              color="success"
+              size="large"
+              fullWidth
+            >
+              Login
+            </Button>
+
+            {/* Benefits */}
+            <Stack
+              direction={{
+                xs: "column",
+                sm: "row",
+              }}
+              spacing={2}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Typography variant="body2" color="text.secondary">
+                ✓ Free to Join
               </Typography>
-              <Typography variant="body2">
-               Log in to continue earning
+
+              <Typography variant="body2" color="text.secondary">
+                ✓ Work Anytime
+              </Typography>
+
+              <Typography variant="body2" color="text.secondary">
+                ✓ No Experience Needed
               </Typography>
             </Stack>
+
+            {/* Sign Up */}
+            <Stack
+              direction="row"
+              spacing={1}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Typography variant="body2">Don't have an account?</Typography>
+
+              <Button
+                onClick={() => navigate("/auth/signup")}
+                color="success"
+                size="small"
+              >
+                Sign Up
+              </Button>
+            </Stack>
           </Stack>
+        </form>
 
-        
-          {/* Email */}
-          <TextField
-            label="Email"
-            type="email"
-            size="medium"
-            {...register("email", {
-              required: "Email is required!",
-            })}
-            error={!!errors.email}
-            helperText={errors.email?.message}
-          />
-          {/* Password */}
-          <TextField
-            label="Password"
-            type="password"
-            size="medium"
-            {...register("password", {
-              required: "Password is required!",
-            })}
-            error={!!errors.password}
-            helperText={errors.password?.message}
-          />
-          
-          <Button
-            type="submit"
-            color={"success"}
-            variant="contained"
-            size="medium"
-            fullWidth
-          >
-           Login
-          </Button>
-          <Stack
-            direction="row"
-            justifyContent={"space-between"}
-            alignItems={"center"}
-          >
-            <Typography variant="body1" textAlign="center" p={1}>
-              Free to join.
-            </Typography>
-            <Typography variant="body1" textAlign="center" p={1}>
-              Work anytime, anywhere.
-            </Typography>
-            <Typography variant="body1" textAlign="center" p={1}>
-              No experience needed.
-            </Typography>
-          </Stack>
-        </Stack>
-
-        <Stack direction="row" gap={2} alignItems={"center"} mt={2}>
-          <Typography variant="body1" textAlign="center">
-            Don't have an account?
-          </Typography>
-          <Button onClick={() =>  navigate("/auth/signup")} color={"success"} variant="contained" size="small">
-           Sign up
-          </Button>
-        </Stack>
-      </form>
-
-      {isLoading && <SpinnerLoading />}
+        {isLoading && <SpinnerLoading />}
+      </Paper>
     </Box>
   );
 }

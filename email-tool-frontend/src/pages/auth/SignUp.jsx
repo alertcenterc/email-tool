@@ -54,107 +54,177 @@ export default function SignUp() {
       alignItems="center"
       bgcolor="background.default"
       px={2}
+      py={4}
     >
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={3}>
-          <Stack direction={"row"} alignItems={"center"} gap={2}>
-            <Box component="img" src={taskLogo} width={100} height={100} />
-            <Stack direction={"column"} alignItems={"center"} gap={1}>
-              <Typography variant="h6">
-                Earn money by completing simple online tasks.
+      <Paper
+        elevation={4}
+        sx={{
+          width: "100%",
+          maxWidth: 550,
+          p: {
+            xs: 3,
+            sm: 4,
+          },
+          borderRadius: 3,
+        }}
+      >
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Stack spacing={3}>
+            {/* Header */}
+            <Stack
+              direction={{
+                xs: "column",
+                sm: "row",
+              }}
+              spacing={2}
+              alignItems="center"
+              textAlign={{
+                xs: "center",
+                sm: "left",
+              }}
+            >
+              <Box
+                component="img"
+                src={taskLogo}
+                alt="Logo"
+                sx={{
+                  width: {
+                    xs: 80,
+                    sm: 100,
+                  },
+                  height: {
+                    xs: 80,
+                    sm: 100,
+                  },
+                  objectFit: "contain",
+                }}
+              />
+
+              <Box>
+                <Typography variant="h6" fontWeight="bold">
+                  Earn money by completing simple online tasks
+                </Typography>
+
+                <Typography variant="body2" color="text.secondary">
+                  No experience needed. Start earning in minutes.
+                </Typography>
+              </Box>
+            </Stack>
+
+            {/* First Name */}
+            <TextField
+              label="First Name"
+              fullWidth
+              {...register("firstName", {
+                required: "First Name is required!",
+              })}
+              error={!!errors.firstName}
+              helperText={errors.firstName?.message}
+            />
+
+            {/* Last Name */}
+            <TextField
+              label="Last Name"
+              fullWidth
+              {...register("lastName", {
+                required: "Last Name is required!",
+              })}
+              error={!!errors.lastName}
+              helperText={errors.lastName?.message}
+            />
+
+            {/* Email */}
+            <TextField
+              label="Email Address"
+              type="email"
+              fullWidth
+              {...register("email", {
+                required: "Email is required!",
+              })}
+              error={!!errors.email}
+              helperText={errors.email?.message}
+            />
+
+            {/* Password */}
+            <TextField
+              label="Password"
+              type="password"
+              fullWidth
+              {...register("password", {
+                required: "Password is required!",
+              })}
+              error={!!errors.password}
+              helperText={errors.password?.message}
+            />
+
+            {/* Confirm Password */}
+            <TextField
+              label="Confirm Password"
+              type="password"
+              fullWidth
+              {...register("confirmPassword", {
+                required: "Password confirmation is required!",
+              })}
+              error={!!errors.confirmPassword}
+              helperText={errors.confirmPassword?.message}
+            />
+
+            {/* Submit */}
+            <Button
+              type="submit"
+              variant="contained"
+              color="success"
+              size="large"
+              fullWidth
+            >
+              Create Account
+            </Button>
+
+            {/* Benefits */}
+            <Stack
+              direction={{
+                xs: "column",
+                sm: "row",
+              }}
+              spacing={2}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Typography variant="body2" color="text.secondary">
+                ✓ Free to Join
               </Typography>
-              <Typography variant="body2">
-                No experience needed. Start earning in minutes.
+
+              <Typography variant="body2" color="text.secondary">
+                ✓ Work Anytime
+              </Typography>
+
+              <Typography variant="body2" color="text.secondary">
+                ✓ No Experience Needed
               </Typography>
             </Stack>
+
+            {/* Login */}
+            <Stack
+              direction="row"
+              spacing={1}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Typography variant="body2">Already have an account?</Typography>
+
+              <Button
+                onClick={() => navigate("/auth/login")}
+                color="success"
+                size="small"
+              >
+                Log In
+              </Button>
+            </Stack>
           </Stack>
+        </form>
 
-          {/* Name */}
-          <TextField
-            label="Name"
-            type="text"
-            size="medium"
-            {...register("name", {
-              required: "Name is required!",
-            })}
-            error={!!errors.name}
-            helperText={errors.name?.message}
-          />
-          {/* Email */}
-          <TextField
-            label="Email"
-            type="email"
-            size="medium"
-            {...register("email", {
-              required: "Email is required!",
-            })}
-            error={!!errors.email}
-            helperText={errors.email?.message}
-          />
-          {/* Password */}
-          <TextField
-            label="Password"
-            type="password"
-            size="medium"
-            {...register("password", {
-              required: "Password is required!",
-            })}
-            error={!!errors.password}
-            helperText={errors.password?.message}
-          />
-          {/* Confirm Password */}
-          <TextField
-            label="Confirm Password"
-            type="password"
-            size="medium"
-            {...register("confirmPassword", {
-              required: "Password must match!",
-            })}
-            error={!!errors.confirmPassword}
-            helperText={errors.confirmPassword?.message}
-          />
-          <Button
-            type="submit"
-            color={"success"}
-            variant="contained"
-            size="medium"
-            fullWidth
-          >
-            Create Account
-          </Button>
-          <Stack
-            direction="row"
-            justifyContent={"space-between"}
-            alignItems={"center"}
-          >
-            <Typography variant="body1" textAlign="center">
-              Free to join.{" "}
-            </Typography>
-            <Typography variant="body1" textAlign="center">
-              Work anytime, anywhere.{" "}
-            </Typography>
-            <Typography variant="body1" textAlign="center">
-              No experience needed.
-            </Typography>
-          </Stack>
-        </Stack>
-
-        <Stack direction="row" gap={2} alignItems={"center"} mt={2}>
-          <Typography variant="body1" textAlign="center">
-            Already have an account?
-          </Typography>
-          <Button
-            onClick={() => navigate("/auth/login")}
-            color={"success"}
-            variant="contained"
-            size="small"
-          >
-            Log In
-          </Button>
-        </Stack>
-      </form>
-
-      {isLoading && <SpinnerLoading />}
+        {isLoading && <SpinnerLoading />}
+      </Paper>
     </Box>
   );
 }

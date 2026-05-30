@@ -15,6 +15,7 @@ import WithdrawPage from "./pages/others/WithdrawPage";
 import WithdrawalLocked from "./pages/others/WithdrawalLocked";
 import FastSupportPage from "./pages/others/FastSupportPage";
 import TaskList from "./pages/task/TaskList";
+import LandingPage from "./pages/others/LandingPage";
 
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/auth/signup" element={<SignUp />} />
         <Route path="/auth/verifyOtp" element={<VerifyOTP />} />
         <Route path="/auth/login" element={<Login />} />
+        <Route path="logout" element={<Login />} />
 
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLayout />}>
@@ -44,9 +46,6 @@ export default function App() {
 
           {/* /admin/task suport */}
           <Route path="support" element={<FastSupportPage />} />
-
-          {/* /admin/task logout */}
-          <Route path="logout" element={<Login />} />
 
           {/* /admin → redirect to /admin/dashboard */}
           <Route index element={<Navigate to="dashboard" replace />} />
