@@ -5,7 +5,8 @@ export const findUserByEmail = async ({email}) => {
     where: { email },
     select: {
       id: true,
-      name,
+      firstName,
+      lastName,
       email: true,
       password: true,
       balance: true,
@@ -20,7 +21,7 @@ export const findUserByEmail = async ({email}) => {
   };
   
   // destructre data
-  const { id, email, password, name, balance } = user;
+  const { id, password, firstName, lastName, balance } = user;
 
-  return { success: true, id, email, name,  password, balance };
+  return { success: true, id, email: user.email, firstName, lastName, password, balance };
 };

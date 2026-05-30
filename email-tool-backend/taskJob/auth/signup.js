@@ -5,7 +5,7 @@ import { allActivityLogger } from "../../utils/allActivitiesLogger.js";
 
 // main signup handler
 export const signup = async (req, res) => {
-  const { password, name, email } = req.validated.body;
+  const { password, firstName, lastName, email } = req.validated.body;
 
   try {
     // lookup existing user   if already exists, return
