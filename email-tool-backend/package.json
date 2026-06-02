@@ -8,6 +8,7 @@
     "migrate": "prisma migrate dev --name init",
     "studio": "prisma studio",
     "dev": "nodemon index.js",
+    "start": "node index.js",
     "postinstall": "prisma generate"
   },
   "keywords": [],
