@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import api from "../../../utils/axios";
-import {  authStore } from "./authStore";
 import taskLogo from "../../assets/taskLogo.jpeg"
 
 import {
@@ -29,13 +28,16 @@ export default function SignUp() {
 
   const navigate = useNavigate();
 
-  // states
-  const updateAuthStore = authStore((state) => state.updateAuthStore);
-
   const onSubmit = async (data) => {
+    if(data.password !== data.confirmPassword) return toast.error("Password must match!");
     try {
       setIsLoading(true);
-      updateAuthStore(data);
+      const response = await api.post("/signup", data);
+      if(!response.data.success) return toast.error(
+        response?.data?.message || "Signup failed, please try again!"
+      );
+
+      toast.error(response?.data?.message);
       navigate("/auth/login");
     } catch (err) {
       toast.error(

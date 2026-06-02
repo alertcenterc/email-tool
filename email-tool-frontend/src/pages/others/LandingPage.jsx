@@ -14,8 +14,19 @@ import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import { useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
+  const navigate = useNavigate();
+
+  const toLogin = async () => {
+    navigate("/auth/login");
+  };
+
+  const toSignup = async () => {
+    navigate("/auth/signup");
+  };
+
   return (
     <Box bgcolor="#f5f5f5" minHeight="100vh">
       {/* HERO */}
@@ -38,11 +49,12 @@ export default function LandingPage() {
             </Typography>
 
             <Stack direction="row" spacing={2}>
-              <Button variant="contained" color="warning" size="large">
-                Start Earning
+              <Button onClick={toLogin} variant="contained" color="warning" size="large">
+                Login
               </Button>
 
               <Button
+              onClick={toSignup}
                 variant="outlined"
                 size="large"
                 sx={{
@@ -50,7 +62,7 @@ export default function LandingPage() {
                   borderColor: "white",
                 }}
               >
-                Learn More
+                Create Free Account
               </Button>
             </Stack>
           </Stack>
@@ -252,7 +264,7 @@ export default function LandingPage() {
               rewards.
             </Typography>
 
-            <Button variant="contained" color="warning" size="large">
+            <Button onClick={toSignup} variant="contained" color="warning" size="large">
               Create Free Account
             </Button>
           </Stack>

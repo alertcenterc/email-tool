@@ -23,7 +23,7 @@ export default function App() {
     <>
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/auth/signup" element={<SignUp />} />
         <Route path="/auth/verifyOtp" element={<VerifyOTP />} />
         <Route path="/auth/login" element={<Login />} />

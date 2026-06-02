@@ -79,7 +79,6 @@ export default function TaskPage() {
                     <Typography fontWeight="bold">{taskId}</Typography>
                   </Stack>
                 </Paper>
-
               </Stack>
 
               {/* Question */}

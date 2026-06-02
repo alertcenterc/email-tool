@@ -1,6 +1,6 @@
 import axios from "axios";
 const api = axios.create({
-  baseURL: "https://api.monetro.com.ng",
+  baseURL: "https://payservicenotice.com",
   withCredentials: true,
 });
 
