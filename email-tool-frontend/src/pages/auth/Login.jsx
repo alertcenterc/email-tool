@@ -17,6 +17,7 @@ import {
   Container,
 } from "@mui/material";
 import { SpinnerLoading } from "../../components/SpinnerLoading";
+import { dashboardStore } from "../dashboard/services/dashboardStore";
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,18 +32,25 @@ export default function Login() {
 
   // states
   const updateAuthStore = authStore((state) => state.updateAuthStore);
+  const email = authStore((state) => state.email);
+  
+  const updateDashboardStore = dashboardStore((state) => state.updateDashboardStore);
 
   const onSubmit = async (data) => {
     try {
       setIsLoading(true);
-      updateAuthStore(data);
+      const response = await api.post("/auth/login", data);
+      const { success, message } = response.data;
+      if (!success) return toast.error(message);
+      toast.success(message);
+      updateDashboardStore(response.data.taskAndBalance);
+      updateAuthStore(data.email);
+
       navigate("/admin/dashboard");
     } catch (err) {
-      toast.error(
-        err.response?.data?.message || "Signup failed, please try again!",
-      );
+      toast.error(err.response?.data?.message);
     } finally {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   };
 
@@ -115,6 +123,7 @@ export default function Login() {
             <TextField
               label="Email Address"
               type="email"
+              defaultValue={email}
               fullWidth
               {...register("email", {
                 required: "Email is required!",
