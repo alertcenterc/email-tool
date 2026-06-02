@@ -32,7 +32,7 @@ export const signup = async (req, res) => {
       });
      
       // create inAppnotifications
-      await operation.inAppNotification.createMany({
+      await operation.task.createMany({
         data:  [
           {
             taskId: "task_501372",
