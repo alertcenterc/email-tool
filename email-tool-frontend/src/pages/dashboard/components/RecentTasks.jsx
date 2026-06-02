@@ -2,12 +2,24 @@ import { Typography, Button } from "@mui/material";
 
 import { DataGrid } from "@mui/x-data-grid";
 
-import { toast } from "react-toastify";
 import { dashboardStore } from "../services/dashboardStore";
+import { taskStore } from "../../task/taskStore";
+import { useNavigate } from "react-router-dom";
 
 export default function RecentTasks() {
+  const navigate = useNavigate();
+
   // states
   const task = dashboardStore((state) => state.task);
+  const updateTaskStore = taskStore((state) => state.updateTaskStore);
+
+  const selectTask = (taskid) => {
+    const selectedTask = task.find((t) => t.taskId === taskid);
+    updateTaskStore(selectedTask);
+    navigate("/admin/task-page");
+
+  };
+
 
   const columns = [
     { field: "taskId", headerName: "Task-Id", flex: 1 },
@@ -22,7 +34,7 @@ export default function RecentTasks() {
       getActions: (params) => [
         <Button
           variant="contained"
-          onClick={() => toast.success(params.row.status)}
+          onClick={() => selectTask(params.row.taskId)}
         >
           VIEW
         </Button>,

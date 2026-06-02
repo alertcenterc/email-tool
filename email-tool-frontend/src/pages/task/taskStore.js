@@ -17,7 +17,7 @@ export const taskStore = create(
 
       updateTaskStore: (data) => {
         set({
-          task: data.task,
+          task: data,
         });
       },
     }),
