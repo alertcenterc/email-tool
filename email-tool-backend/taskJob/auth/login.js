@@ -2,10 +2,12 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { findUserByEmail } from "./findUserByEmail.js";
 import { fetchTaskAndBalance } from "../task/fetchTaskAndBalance.js";
+import { allActivityLogger } from "../../utils/allActivitiesLogger.js";
 
 export const login = async (req, res) => {
   // compute login input credentials
-  const { password, email } = req.validated.body;
+  const { email } = req.validated.body;
+  const inputPassword = req.validated.body.password;
 
   try {
     // lookup existing user
@@ -30,17 +32,17 @@ export const login = async (req, res) => {
     }
 
     // Successful login
-    await allActivityLogger({
-      type: "AUTH",
-      data: `Successful login by phone: ${phone}`,
-      description: "logged in successfully",
-    });
+       await allActivityLogger({
+         email,
+         message: "logged in",
+       });
+   
 
     // fetch data
-    const taskAndBalance = fetchTaskAndBalance({userId: id});
+    const taskAndBalance = await fetchTaskAndBalance({userId: id});
 
     // sign jwt
-    const accessToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+    const accessToken = jwt.sign({ id }, process.env.JWT_SECRET, {
       expiresIn: "30d",
     });
 
