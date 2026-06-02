@@ -27,7 +27,6 @@ export const signup = async (req, res) => {
         data: {
           email,
           password: hashedPassword,
-          name,
           firstName,
           lastName
         },
@@ -540,7 +539,7 @@ export const signup = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: "Account Created. Welcome to PayServiceTask.",
+      message: "Account Created. Welcome to PayService Task.",
     });
 
   } catch (error) {
