@@ -5,8 +5,8 @@ export const findUserByEmail = async ({email}) => {
     where: { email },
     select: {
       id: true,
-      firstName,
-      lastName,
+      firstName: true,
+      lastName: true,
       email: true,
       password: true,
       balance: true,
