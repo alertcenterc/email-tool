@@ -7,7 +7,7 @@ import { dashboardStore } from "../services/dashboardStore";
 
 export default function RecentTasks() {
   // states
-  const taskLists = dashboardStore((state) => state.taskLists);
+  const task = dashboardStore((state) => state.task);
 
   const columns = [
     { field: "taskId", headerName: "Task-Id", flex: 1 },
@@ -36,7 +36,7 @@ export default function RecentTasks() {
         Available Task For You
       </Typography>
       <DataGrid
-        rows={taskLists}
+        rows={task}
         columns={columns}
         getRowId={(row) => row.taskId}
         autoHeight

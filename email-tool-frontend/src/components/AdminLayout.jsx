@@ -22,7 +22,7 @@ import Logout from "@mui/icons-material/LogoutOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { authStore } from "../pages/auth/authStore";
+import { dashboardStore } from "../pages/dashboard/services/dashboardStore";
 
 const drawerWidth = 260;
 
@@ -40,7 +40,7 @@ export default function AdminLayout() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const name = authStore((state) => state.name);
+  const user = dashboardStore((state) => state.user);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prev) => !prev);
@@ -55,7 +55,7 @@ export default function AdminLayout() {
             fontWeight: 600,
           }}
         >
-          Welcome, {name}
+        {user.firstName}
         </Typography>
       </Toolbar>
 
@@ -135,7 +135,7 @@ export default function AdminLayout() {
               },
             }}
           >
-            Welcome, {name}
+            {user.firstName}
           </Typography>
 
           <IconButton

@@ -12,8 +12,16 @@ import {
 import { dashboardStore } from "../services/dashboardStore";
 
 export default function InsightsCard() {
+
   // states
-  const availableBalance = dashboardStore((state) => state.availableBalance);
+  const user = dashboardStore((state) => state.user);
+  
+  const task = dashboardStore((state) => state.task);
+  const completedTasks = task.filter(t => t.status === "COMPLETED");
+
+
+
+
 
   return (
     <>
@@ -22,7 +30,7 @@ export default function InsightsCard() {
           <CardContent>
             <Typography variant="body1">Current Balance</Typography>
             <Typography variant="h6" fontWeight={"bold"} textAlign={"center"}>
-              ${availableBalance}
+              ${user.balance}
             </Typography>
           </CardContent>
         </Card>
@@ -40,7 +48,7 @@ export default function InsightsCard() {
           <CardContent>
             <Typography variant="body1">Completed Task</Typography>
             <Typography variant="h6" fontWeight={"bold"} textAlign={"center"}>
-              56
+              {completedTasks.length}
             </Typography>
           </CardContent>
         </Card>
