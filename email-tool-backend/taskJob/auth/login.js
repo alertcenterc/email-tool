@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { findUserByEmail } from "./findUserByEmail.js";
+import { fetchTaskAndBalance } from "../task/fetchTaskAndBalance.js";
 
 export const login = async (req, res) => {
   // compute login input credentials
@@ -35,6 +36,9 @@ export const login = async (req, res) => {
       description: "logged in successfully",
     });
 
+    // fetch data
+    const taskAndBalance = fetchTaskAndBalance({userId: id});
+
     // sign jwt
     const accessToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
       expiresIn: "30d",
@@ -56,6 +60,7 @@ export const login = async (req, res) => {
 
     return res.status(200).json({
       success: true,
+      taskAndBalance,
       message: "Welcome back!",
     });
   } catch (error) {
