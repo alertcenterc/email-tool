@@ -29,18 +29,18 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    if(data.password !== data.confirmPassword) return toast.error("Password must match!");
+    if(data.password !== data.confirmPassword) return toast.warning("Password must match!");
     try {
       setIsLoading(true);
       const response = await api.post("/auth/signup", data);
-      if(!response.data.success) return toast.error(response?.data?.message);
+      const {success, message} = response.data;
+      
+      if(!success) return toast.error(message);
 
-      toast.error(response?.data?.message);
+      toast.success(message);
       navigate("/auth/login");
     } catch (err) {
-      toast.error(
-        err.message
-      );
+      toast.error(err.response?.data?.message);
     } finally {
       setIsLoading(false);
     }
