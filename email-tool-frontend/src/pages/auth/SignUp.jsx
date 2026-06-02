@@ -32,7 +32,7 @@ export default function SignUp() {
     if(data.password !== data.confirmPassword) return toast.error("Password must match!");
     try {
       setIsLoading(true);
-      const response = await api.post("/signup", data);
+      const response = await api.post("/auth/signup", data);
       if(!response.data.success) return toast.error(response?.data?.message);
 
       toast.error(response?.data?.message);
