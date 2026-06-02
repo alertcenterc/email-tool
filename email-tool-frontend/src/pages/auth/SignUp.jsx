@@ -39,7 +39,7 @@ export default function SignUp() {
       navigate("/auth/login");
     } catch (err) {
       toast.error(
-        err.response?.data?.message
+        err.message
       );
     } finally {
       setIsLoading(false);
