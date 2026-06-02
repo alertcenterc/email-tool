@@ -16,6 +16,7 @@ import {
   Container,
 } from "@mui/material";
 import { SpinnerLoading } from "../../components/SpinnerLoading";
+import { authStore } from "./authStore";
 
 export default function SignUp() {
   const [isLoading, setIsLoading] = useState(false);
@@ -27,6 +28,7 @@ export default function SignUp() {
   } = useForm();
 
   const navigate = useNavigate();
+  const updateAuthStore = authStore((state) => state.updateAuthStore);
 
   const onSubmit = async (data) => {
     if(data.password !== data.confirmPassword) return toast.warning("Password must match!");
@@ -34,9 +36,9 @@ export default function SignUp() {
       setIsLoading(true);
       const response = await api.post("/auth/signup", data);
       const {success, message} = response.data;
-      
-      if(!success) return toast.error(message);
 
+      if(!success) return toast.error(message);
+      updateAuthStore(data.email);
       toast.success(message);
       navigate("/auth/login");
     } catch (err) {

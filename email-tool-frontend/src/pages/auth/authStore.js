@@ -6,13 +6,11 @@ export const authStore = create(
   persist(
     (set) => ({
       name: "ANDREW TIANA",
-      email: "sample@gmail.com",
-      password: "sample",
+      email: " ",
 
       updateAuthStore: (data) => {
         set({
-          email: data.email,
-          password: data.password,
+          email: data,
         });
       },
     }),
