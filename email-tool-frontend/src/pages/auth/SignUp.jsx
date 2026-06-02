@@ -44,7 +44,7 @@ export default function SignUp() {
         err.response?.data?.message || "Signup failed, please try again!",
       );
     } finally {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   };
 

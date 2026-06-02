@@ -40,7 +40,7 @@ export default function LandingPage() {
         <Container maxWidth="lg">
           <Stack spacing={3} alignItems="center">
             <Typography variant="h2" fontWeight="bold" textAlign="center">
-              PayServiceNotice
+              PayService Task
             </Typography>
 
             <Typography variant="h6" textAlign="center" maxWidth={700}>
