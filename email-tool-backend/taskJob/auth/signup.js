@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import { findUserByEmail } from "./findUserByEmail.js";
 import { allActivityLogger } from "../../utils/allActivitiesLogger.js";
+import prisma from "../../utils/prisma.js";
 
 
 // main signup handler
