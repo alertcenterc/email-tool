@@ -544,6 +544,7 @@ export const signup = async (req, res) => {
     });
 
   } catch (error) {
+    console.log(error.message)
 
     //log error activity
     await allActivityLogger({
