@@ -20,9 +20,6 @@ export default function InsightsCard() {
   const completedTasks = task.filter(t => t.status === "COMPLETED");
 
 
-
-
-
   return (
     <>
       <Stack direction="row" spacing={2} mb={2}>
