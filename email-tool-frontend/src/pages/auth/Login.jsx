@@ -33,7 +33,6 @@ export default function Login() {
   // states
   const updateAuthStore = authStore((state) => state.updateAuthStore);
   const email = authStore((state) => state.email);
-  
   const updateDashboardStore = dashboardStore((state) => state.updateDashboardStore);
 
   const onSubmit = async (data) => {
@@ -123,7 +122,6 @@ export default function Login() {
             <TextField
               label="Email Address"
               type="email"
-              defaultValue={email}
               fullWidth
               {...register("email", {
                 required: "Email is required!",

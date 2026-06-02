@@ -5,8 +5,7 @@ import { persist } from "zustand/middleware";
 export const authStore = create(
   persist(
     (set) => ({
-      name: "ANDREW TIANA",
-      email: " ",
+      email: "email",
 
       updateAuthStore: (data) => {
         set({
