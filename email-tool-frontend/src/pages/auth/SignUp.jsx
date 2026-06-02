@@ -33,15 +33,13 @@ export default function SignUp() {
     try {
       setIsLoading(true);
       const response = await api.post("/signup", data);
-      if(!response.data.success) return toast.error(
-        response?.data?.message || "Signup failed, please try again!"
-      );
+      if(!response.data.success) return toast.error(response?.data?.message);
 
       toast.error(response?.data?.message);
       navigate("/auth/login");
     } catch (err) {
       toast.error(
-        err.response?.data?.message || "Signup failed, please try again!",
+        err.response?.data?.message
       );
     } finally {
       setIsLoading(false);
