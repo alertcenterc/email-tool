@@ -34,7 +34,7 @@ router.post(
 );
 
 // health
-router.post(
+router.get(
   "/health",
   health
 );
