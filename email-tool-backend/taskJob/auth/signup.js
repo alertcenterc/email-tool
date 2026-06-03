@@ -34,7 +34,7 @@ export const signup = async (req, res) => {
       });
      
       // create inAppnotifications
-      await operation.task.createMany({
+    const result = await operation.task.createMany({
         data:  [
           {
             taskId: "task_501372",
@@ -536,6 +536,7 @@ export const signup = async (req, res) => {
         ],
         skipDuplicates: true,
       });
+      console.log(result)
     });
 
     return res.status(200).json({
