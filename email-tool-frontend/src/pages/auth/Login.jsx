@@ -40,7 +40,7 @@ export default function Login() {
       const response = await api.post("/auth/login", data);
       const { success, message } = response.data;
       if (!success) return toast.error(message);
-      toast.success(message);
+      toast.success(response.data.taskAndBalance.user.balance);
       updateDashboardStore(response.data.taskAndBalance);
       updateAuthStore(data.email);
       navigate("/admin/dashboard");
