@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import api from "../../../utils/axios";
-import taskLogo from "../../assets/taskLogo.jpeg"
+import taskLogo from "../../assets/taskLogo.png"
 
 import {
   Box,
