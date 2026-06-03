@@ -33,8 +33,8 @@ model Task {
   userId        String?
   taskId        String
   type          String
-  reward       String
-  imageUrl     String
+  reward        String
+  imageUrl      String
   question      String
   status        TaskStatus @default(AVAILABLE)
   createdAt     DateTime          @default(now())
