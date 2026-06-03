@@ -109,36 +109,25 @@ return (
         >
           Copy {walletName} Wallet Address
         </Button>
+
+        <Stack
+          direction="row"
+          spacing={1}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Typography variant="body2">Need Help? Contact Support</Typography>
+
+          <Button
+            onClick={() => navigate("/admin/support")}
+            color="success"
+            size="small"
+          >
+            Contact Support
+          </Button>
+        </Stack>
       </Stack>
-
-      <Button
-        onClick={handleCopy}
-        variant="contained"
-        color="success"
-        size="large"
-        fullWidth
-      >
-        Copy {walletName} Wallet Address
-      </Button>
     </Paper>
-    <Stack
-      direction="row"
-      spacing={1}
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Typography variant="body2">Need Help? Contact Support</Typography>
-
-      <Button
-        onClick={() => navigate("/admin/support")}
-        color="success"
-        size="small"
-      >
-        Contact Support
-      </Button>
-    </Stack>
-    </Paper>
- 
   </Box>
 );
 }
