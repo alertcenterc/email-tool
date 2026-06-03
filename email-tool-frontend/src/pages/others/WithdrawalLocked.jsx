@@ -120,23 +120,25 @@ return (
       >
         Copy {walletName} Wallet Address
       </Button>
-    </Paper>
-    <Stack
+
+         <Stack
       direction="row"
       spacing={1}
       justifyContent="center"
       alignItems="center"
     >
-      <Typography variant="body2">Need Help? Contact Support</Typography>
+      <Typography variant="body2">Need Help?</Typography>
 
       <Button
         onClick={() => navigate("/admin/support")}
         color="success"
         size="small"
       >
-        Sign Up
+        Contact Support
       </Button>
     </Stack>
+    </Paper>
+ 
   </Box>
 );
 }
