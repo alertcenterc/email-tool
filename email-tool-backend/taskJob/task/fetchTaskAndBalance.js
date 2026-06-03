@@ -14,7 +14,8 @@ export const fetchTaskAndBalance = async ({userId}) => {
   const task = await prisma.task.findMany({
     where: { userId },
   });
-
+const total = task.length
+    console.log(total) 
   return {
     user,
     task,
