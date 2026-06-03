@@ -12,7 +12,7 @@ export const updateTask = async ({ userId, taskId, reward }) => {
   });
 
   await prisma.task.update({
-    where: { taskId },
+    where: {id: taskId },
     data: { status: "COMPLETED" },
   });
 
