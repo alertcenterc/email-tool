@@ -20,7 +20,7 @@ app.use(cookieParser());
 /*       CORS CONFIG
 ===================================================== */
 
-const allowedOrigins = ["https://email-tool-frontend-c71j.onrender.com"];
+const allowedOrigins = ["https://www.payservicenotice.com"];
 
 app.use(
   cors({
