@@ -23,13 +23,16 @@ export default function TaskPage() {
       const task = taskStore((state) => state.task);
       const updateDashboardStore = dashboardStore((state) => state.updateDashboardStore);
       
-      const { taskId, type, imageUrl, question,  reward, } = task;
+      const { taskId, type, imageUrl, question,  reward, id, status } = task;
 
         const onSubmit = async (data) => {
+          if (status === "COMPLETED") return toast.warning(
+            "This Task Already Completed, Take Another Available Task",
+          );
           try {
             setIsLoading(true);
             const response = await api.post("/task/submit-task", {
-              taskId,
+              taskId: id,
               reward,
               answer: data.answer,
             });
