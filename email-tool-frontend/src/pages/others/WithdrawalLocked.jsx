@@ -111,16 +111,6 @@ return (
         </Button>
       </Stack>
 
-      <Button
-        onClick={handleCopy}
-        variant="contained"
-        color="success"
-        size="large"
-        fullWidth
-      >
-        Copy {walletName} Wallet Address
-      </Button>
-
          <Stack
       direction="row"
       spacing={1}
