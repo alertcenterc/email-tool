@@ -9,7 +9,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-
+import heroBanner from "../../assets/heroBanner.png";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
@@ -34,47 +34,89 @@ export default function LandingPage() {
         sx={{
           background: "linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%)",
           color: "white",
-          py: 10,
+          py: { xs: 8, md: 12 },
         }}
       >
         <Container maxWidth="lg">
-          <Stack spacing={3} alignItems="center">
-            <Typography variant="h2" fontWeight="bold" textAlign="center">
-              PayService Task
-            </Typography>
-
-            <Typography variant="h6" textAlign="center" maxWidth={700}>
-              Complete simple online tasks, earn rewards, and withdraw directly
-              through your preferred crypto payment method.
-            </Typography>
-
-            <Stack direction="row" spacing={2}>
-              <Button onClick={toLogin} variant="contained" color="warning" size="large">
-                Login
-              </Button>
-
-              <Button
-              onClick={toSignup}
-                variant="outlined"
-                size="large"
+          <Grid container spacing={5} alignItems="center">
+            <Grid item xs={12} md={6}>
+              <Stack spacing={3}>
+                <Typography
+                  fontWeight="bold"
+                  sx={{
+                    fontSize: {
+                      xs: "2.3rem",
+                      md: "4rem",
+                    },
+                  }}
+                >
+                  Earn Money by Completing Simple Online Tasks
+                </Typography>
+  
+                <Typography
+                  sx={{
+                    fontSize: {
+                      xs: "1rem",
+                      md: "1.2rem",
+                    },
+                    opacity: 0.95,
+                  }}
+                >
+                  Join PayService Tasks and get rewarded for completing
+                  simple online activities. Work from anywhere and earn
+                  at your own pace.
+                </Typography>
+  
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={2}
+                >
+                  <Button
+                    onClick={toSignup}
+                    variant="contained"
+                    color="warning"
+                    size="large"
+                  >
+                    Create Free Account
+                  </Button>
+  
+                  <Button
+                    onClick={toLogin}
+                    variant="outlined"
+                    size="large"
+                    sx={{
+                      color: "white",
+                      borderColor: "white",
+                    }}
+                  >
+                    Login
+                  </Button>
+                </Stack>
+              </Stack>
+            </Grid>
+  
+            <Grid item xs={12} md={6}>
+              <Box
+                component="img"
+                src={heroBanner}
+                alt="Online task platform"
                 sx={{
-                  color: "white",
-                  borderColor: "white",
+                  width: "100%",
+                  maxHeight: 450,
+                  objectFit: "contain",
                 }}
-              >
-                Create Free Account
-              </Button>
-            </Stack>
-          </Stack>
+              />
+            </Grid>
+          </Grid>
         </Container>
       </Box>
-
+  
       {/* STATS */}
-      <Container maxWidth="lg" sx={{ mt: -5 }}>
+      <Container maxWidth="lg" sx={{ mt: -4 }}>
         <Paper
           elevation={4}
           sx={{
-            p: 4,
+            p: { xs: 3, md: 4 },
             borderRadius: 4,
           }}
         >
@@ -86,12 +128,14 @@ export default function LandingPage() {
                 fontWeight="bold"
                 color="success.main"
               >
-                25K+
+                50,000+
               </Typography>
-
-              <Typography textAlign="center">Registered Members</Typography>
+  
+              <Typography textAlign="center">
+                Active Members
+              </Typography>
             </Grid>
-
+  
             <Grid item xs={12} md={4}>
               <Typography
                 variant="h4"
@@ -99,12 +143,14 @@ export default function LandingPage() {
                 fontWeight="bold"
                 color="success.main"
               >
-                $1.2M+
+                $2M+
               </Typography>
-
-              <Typography textAlign="center">Rewards Distributed</Typography>
+  
+              <Typography textAlign="center">
+                Paid to Members
+              </Typography>
             </Grid>
-
+  
             <Grid item xs={12} md={4}>
               <Typography
                 variant="h4"
@@ -114,70 +160,106 @@ export default function LandingPage() {
               >
                 24/7
               </Typography>
-
-              <Typography textAlign="center">Customer Support</Typography>
+  
+              <Typography textAlign="center">
+                Customer Support
+              </Typography>
             </Grid>
           </Grid>
         </Paper>
       </Container>
-
+  
       {/* FEATURES */}
       <Container maxWidth="lg" sx={{ py: 8 }}>
-        <Typography variant="h4" textAlign="center" fontWeight="bold" mb={5}>
-          Why Choose Us
+        <Typography
+          variant="h4"
+          textAlign="center"
+          fontWeight="bold"
+          mb={5}
+        >
+          Why Choose PayService Tasks
         </Typography>
-
+  
         <Grid container spacing={3}>
-          <Grid item xs={12} md={3}>
-            <Card>
+          <Grid item xs={12} sm={6} md={3}>
+            <Card sx={{ height: "100%" }}>
               <CardContent>
                 <Stack spacing={2} alignItems="center">
                   <TaskAltIcon color="success" sx={{ fontSize: 60 }} />
-                  <Typography fontWeight="bold">Simple Tasks</Typography>
-                  <Typography textAlign="center" color="text.secondary">
-                    Complete easy online tasks and earn rewards.
+  
+                  <Typography fontWeight="bold">
+                    Simple Tasks
+                  </Typography>
+  
+                  <Typography
+                    textAlign="center"
+                    color="text.secondary"
+                  >
+                    Complete easy online tasks in just a few minutes.
                   </Typography>
                 </Stack>
               </CardContent>
             </Card>
           </Grid>
-
-          <Grid item xs={12} md={3}>
-            <Card>
+  
+          <Grid item xs={12} sm={6} md={3}>
+            <Card sx={{ height: "100%" }}>
               <CardContent>
                 <Stack spacing={2} alignItems="center">
                   <PaymentsIcon color="success" sx={{ fontSize: 60 }} />
-                  <Typography fontWeight="bold">Fast Withdrawals</Typography>
-                  <Typography textAlign="center" color="text.secondary">
-                    Receive payments through popular crypto networks.
+  
+                  <Typography fontWeight="bold">
+                    Fast Payments
+                  </Typography>
+  
+                  <Typography
+                    textAlign="center"
+                    color="text.secondary"
+                  >
+                    Request withdrawals through your preferred payment
+                    method.
                   </Typography>
                 </Stack>
               </CardContent>
             </Card>
           </Grid>
-
-          <Grid item xs={12} md={3}>
-            <Card>
+  
+          <Grid item xs={12} sm={6} md={3}>
+            <Card sx={{ height: "100%" }}>
               <CardContent>
                 <Stack spacing={2} alignItems="center">
                   <TrendingUpIcon color="success" sx={{ fontSize: 60 }} />
-                  <Typography fontWeight="bold">Daily Opportunities</Typography>
-                  <Typography textAlign="center" color="text.secondary">
-                    New earning opportunities are added regularly.
+  
+                  <Typography fontWeight="bold">
+                    New Tasks Added Regularly
+                  </Typography>
+  
+                  <Typography
+                    textAlign="center"
+                    color="text.secondary"
+                  >
+                    Discover fresh earning opportunities every day.
                   </Typography>
                 </Stack>
               </CardContent>
             </Card>
           </Grid>
-
-          <Grid item xs={12} md={3}>
-            <Card>
+  
+          <Grid item xs={12} sm={6} md={3}>
+            <Card sx={{ height: "100%" }}>
               <CardContent>
                 <Stack spacing={2} alignItems="center">
                   <SupportAgentIcon color="success" sx={{ fontSize: 60 }} />
-                  <Typography fontWeight="bold">Reliable Support</Typography>
-                  <Typography textAlign="center" color="text.secondary">
-                    Dedicated support team available to assist you.
+  
+                  <Typography fontWeight="bold">
+                    Reliable Support
+                  </Typography>
+  
+                  <Typography
+                    textAlign="center"
+                    color="text.secondary"
+                  >
+                    Our support team is available whenever you need help.
                   </Typography>
                 </Stack>
               </CardContent>
@@ -185,96 +267,124 @@ export default function LandingPage() {
           </Grid>
         </Grid>
       </Container>
-
+  
       {/* HOW IT WORKS */}
       <Box bgcolor="white" py={8}>
         <Container maxWidth="lg">
-          <Typography variant="h4" textAlign="center" fontWeight="bold" mb={5}>
+          <Typography
+            variant="h4"
+            textAlign="center"
+            fontWeight="bold"
+            mb={5}
+          >
             How It Works
           </Typography>
-
+  
           <Grid container spacing={4}>
             <Grid item xs={12} md={4}>
-              <Paper sx={{ p: 3 }}>
-                <Typography variant="h5" color="success.main" fontWeight="bold">
+              <Paper sx={{ p: 3, height: "100%" }}>
+                <Typography
+                  variant="h5"
+                  color="success.main"
+                  fontWeight="bold"
+                >
                   1
                 </Typography>
-
+  
                 <Typography fontWeight="bold" mt={1}>
-                  Create Account
+                  Create an Account
                 </Typography>
-
+  
                 <Typography color="text.secondary">
-                  Register and access available tasks.
+                  Sign up for free and access available tasks.
                 </Typography>
               </Paper>
             </Grid>
-
+  
             <Grid item xs={12} md={4}>
-              <Paper sx={{ p: 3 }}>
-                <Typography variant="h5" color="success.main" fontWeight="bold">
+              <Paper sx={{ p: 3, height: "100%" }}>
+                <Typography
+                  variant="h5"
+                  color="success.main"
+                  fontWeight="bold"
+                >
                   2
                 </Typography>
-
+  
                 <Typography fontWeight="bold" mt={1}>
                   Complete Tasks
                 </Typography>
-
+  
                 <Typography color="text.secondary">
-                  Submit completed tasks and earn rewards.
+                  Follow the instructions and submit your answers.
                 </Typography>
               </Paper>
             </Grid>
-
+  
             <Grid item xs={12} md={4}>
-              <Paper sx={{ p: 3 }}>
-                <Typography variant="h5" color="success.main" fontWeight="bold">
+              <Paper sx={{ p: 3, height: "100%" }}>
+                <Typography
+                  variant="h5"
+                  color="success.main"
+                  fontWeight="bold"
+                >
                   3
                 </Typography>
-
+  
                 <Typography fontWeight="bold" mt={1}>
-                  Withdraw Earnings
+                  Earn and Withdraw
                 </Typography>
-
+  
                 <Typography color="text.secondary">
-                  Transfer earnings through your chosen payout method.
+                  Receive rewards and withdraw your earnings when
+                  available.
                 </Typography>
               </Paper>
             </Grid>
           </Grid>
         </Container>
       </Box>
-
+  
       {/* CTA */}
       <Box
         sx={{
-          background: "linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%)",
+          background:
+            "linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%)",
           py: 8,
           color: "white",
         }}
       >
         <Container maxWidth="md">
           <Stack spacing={3} alignItems="center">
-            <Typography variant="h4" textAlign="center" fontWeight="bold">
-              Ready To Start Earning?
+            <Typography
+              variant="h4"
+              textAlign="center"
+              fontWeight="bold"
+            >
+              Ready to Start Earning?
             </Typography>
-
+  
             <Typography textAlign="center">
-              Join thousands of members already completing tasks and receiving
-              rewards.
+              Create your free account today and start completing
+              tasks from anywhere.
             </Typography>
-
-            <Button onClick={toSignup} variant="contained" color="warning" size="large">
+  
+            <Button
+              onClick={toSignup}
+              variant="contained"
+              color="warning"
+              size="large"
+            >
               Create Free Account
             </Button>
           </Stack>
         </Container>
       </Box>
-
+  
       {/* FOOTER */}
       <Box bgcolor="#111" color="white" py={3}>
         <Typography textAlign="center">
-          © 2026 PayServiceNotice. All Rights Reserved.
+          © 2026 PayService Tasks. All Rights Reserved.
         </Typography>
       </Box>
     </Box>
