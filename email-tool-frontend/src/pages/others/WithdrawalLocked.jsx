@@ -2,8 +2,11 @@ import { Alert, Box, Button, Paper, Stack, Typography } from "@mui/material";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import { withdrawStore } from "./withdrawStore";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function WithdrawalLocked() {
+  const navigate = useNavigate();
+
 
 const walletName = withdrawStore((state) => state.walletName);
 const amount = withdrawStore((state) => state.amount);
@@ -107,7 +110,33 @@ return (
           Copy {walletName} Wallet Address
         </Button>
       </Stack>
+
+      <Button
+        onClick={handleCopy}
+        variant="contained"
+        color="success"
+        size="large"
+        fullWidth
+      >
+        Copy {walletName} Wallet Address
+      </Button>
     </Paper>
+    <Stack
+      direction="row"
+      spacing={1}
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Typography variant="body2">Need Help? Contact Support</Typography>
+
+      <Button
+        onClick={() => navigate("/admin/support")}
+        color="success"
+        size="small"
+      >
+        Sign Up
+      </Button>
+    </Stack>
   </Box>
 );
 }

@@ -41,7 +41,7 @@ export default function FastSupportPage() {
                   variant="contained"
                   color="success"
                   fullWidth
-                  href="https://wa.me/2348000000000"
+                  href="https://wa.me/14057689501"
                   target="_blank"
                 >
                   Chat on WhatsApp
@@ -68,7 +68,7 @@ export default function FastSupportPage() {
                   variant="contained"
                   color="primary"
                   fullWidth
-                  href="mailto:support@prioritytask.com"
+                  href="mailto:vixenscherry@gmail.com"
                 >
                   Send Email
                 </Button>
