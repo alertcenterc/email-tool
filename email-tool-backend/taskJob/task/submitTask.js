@@ -1,4 +1,3 @@
-import { findUserByEmail } from "./findUserByEmail.js";
 import { fetchTaskAndBalance } from "../task/fetchTaskAndBalance.js";
 import { allActivityLogger } from "../../utils/allActivitiesLogger.js";
 import { updateTask } from "./updateTask.js";
