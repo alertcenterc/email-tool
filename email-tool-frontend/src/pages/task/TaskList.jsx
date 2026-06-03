@@ -5,6 +5,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { dashboardStore } from "../dashboard/services/dashboardStore";
 import { taskStore } from "./taskStore";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function TaskList() {
     const navigate = useNavigate();
@@ -16,6 +17,9 @@ export default function TaskList() {
   
     const selectTask = (taskid) => {
       const selectedTask = task.find((t) => t.taskId === taskid);
+      if (selectedTask.status === "COMPLETED") return toast.warning(
+        "This Task Already Completed, Take Another Available Task",
+      );
       updateTaskStore(selectedTask);
       navigate("/admin/task-page");
     };
