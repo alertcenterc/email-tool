@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import api from "../../../utils/axios";
 import {  authStore } from "./authStore";
-import taskLogo from "../../assets/taskLogo.jpeg"
+import taskLogo from "../../assets/taskLogo.png"
 
 import {
   Box,
