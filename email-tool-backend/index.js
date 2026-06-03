@@ -44,10 +44,6 @@ app.use("/", authRoute);
 
 app.use("/", route);
 
-app.get('/health', (req, res) => {
-  res.status(200).send('OK');
-});
-
 const PORT = process.env.PORT || 5000;
 
 async function startServer() {
@@ -55,7 +51,6 @@ async function startServer() {
     // Test Prisma connection
     await prisma.$queryRaw`SELECT 1`;
     console.log("✅ Prisma connected to Neon");
-
 
     // Start server ONLY after DB is ready
     app.listen(PORT, () => {

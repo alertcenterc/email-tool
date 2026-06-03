@@ -6,6 +6,7 @@ import { login } from './login.js';
 import { rateLimiter } from '../../utils/rateLimit.js';
 import { submitTask } from '../task/submitTask.js';
 import { adminAuth } from './adminAuth.js';
+import { health } from './health.js';
 const router = express.Router();
 
 // signup route
@@ -30,6 +31,12 @@ router.post(
   rateLimiter,
   adminAuth,
   submitTask,
+);
+
+// health
+router.post(
+  "/health",
+  health
 );
 
 export default router;
