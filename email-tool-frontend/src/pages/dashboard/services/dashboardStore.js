@@ -4,7 +4,7 @@ import { persist } from "zustand/middleware";
 export const dashboardStore = create(
   persist(
     (set) => ({
-      user: { balance: "10.00", firstName: "two"},
+      user: { balance: "10.00", firstName: " "},
       task: [
         {
           taskId: "task_501372",

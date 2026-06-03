@@ -6,6 +6,8 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 import { SpinnerLoading } from "../../components/SpinnerLoading";
+import api from "../../../utils/axios";
+import { dashboardStore } from "../dashboard/services/dashboardStore";
 
 export default function TaskPage() {
      const [isLoading, setIsLoading] = useState(false);
@@ -19,20 +21,30 @@ export default function TaskPage() {
 
     // states
       const task = taskStore((state) => state.task);
+      const updateDashboardStore = dashboardStore((state) => state.updateDashboardStore);
+      
       const { taskId, type, imageUrl, question,  reward, } = task;
 
         const onSubmit = async (data) => {
           try {
             setIsLoading(true);
-            navigate("/auth/login");
+            const response = await api.post("/task/submit-task", {
+              taskId,
+              reward,
+              answer: data.answer,
+            });
+            const { success, message } = response.data;
+            if (!success) return toast.error(message);
+            toast.success(message);
+            updateDashboardStore(response.data.taskAndBalance);  
+            navigate("/admin/dashboard");
           } catch (err) {
-            toast.error(
-              err.response?.data?.message || "Signup failed, please try again!",
-            );
+            toast.error(err.response?.data?.message);
           } finally {
-            setIsLoading(true);
+            setIsLoading(false);
           }
         };
+
         return (
           <>
             <Box
@@ -133,6 +145,7 @@ export default function TaskPage() {
                       color="warning"
                       variant="outlined"
                       size="large"
+                      onClick={() => navigate("/admin/dashboard")}
                       fullWidth
                     >
                       Leave Task
