@@ -35,3 +35,11 @@ export const signupSchema = z.object({
     .min(5, { message: "password must be at least 5 characters long" })
     .max(20),
 });
+
+export const taskSubmitSchema = z.object({
+  answer: z.string(),
+
+  taskId: z.string(),
+
+  reward: z.string(),
+});

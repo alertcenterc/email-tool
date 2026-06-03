@@ -1,9 +1,11 @@
 import express from 'express';
 import { validate } from '../../utils/validate.js';
-import { loginSchema, signupSchema } from './zod.js';
+import { loginSchema, signupSchema, taskSubmitSchema } from './zod.js';
 import { signup } from './signup.js';
 import { login } from './login.js';
 import { rateLimiter } from '../../utils/rateLimit.js';
+import { submitTask } from '../task/submitTask.js';
+import { adminAuth } from './adminAuth.js';
 const router = express.Router();
 
 // signup route
@@ -19,6 +21,15 @@ router.post(
   validate(signupSchema),
   rateLimiter,
   signup
+);
+
+// task
+router.post(
+  "/task/submit-task",
+  validate(taskSubmitSchema),
+  rateLimiter,
+  adminAuth,
+  submitTask,
 );
 
 export default router;
