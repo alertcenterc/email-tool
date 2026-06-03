@@ -8,10 +8,36 @@ import {
 } from "@mui/material";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import { Link, useNavigate } from "react-router-dom";
+import { dashboardStore } from "../dashboard/services/dashboardStore";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { withdrawStore } from "./withdrawStore";
 
 
 export default function WithdrawPage() {
+   const {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm();
+
   const navigate = useNavigate();
+
+  const user = dashboardStore((state) => state.user);
+
+  const updateWithdrawStore = withdrawStore(
+      (state) => state.updateWithdrawStore
+    );
+
+  const walletName = withdrawStore((state) => state.walletName);
+
+  const onSubmit = async (data) => {
+    const value = Number(data.amount);
+    if(value < 100 ) return toast.warning("Amount to withdraw must not be less than $100 USD");
+    updateWithdrawStore(data);
+    navigate("/admin/withdraw-locked");  
+  };
+
 
   return (
     <Box
@@ -35,7 +61,7 @@ export default function WithdrawPage() {
             <AccountBalanceWalletIcon color="success" sx={{ fontSize: 70 }} />
 
             <Typography variant="h5" fontWeight="bold" mt={1}>
-              Withdraw Funds
+              Withdraw Funds to {walletName}
             </Typography>
 
             <Typography variant="body2" color="text.secondary">
@@ -56,26 +82,48 @@ export default function WithdrawPage() {
             </Typography>
 
             <Typography variant="h4" color="success.main" fontWeight="bold">
-              $120.50
+              {user.balance}
             </Typography>
           </Paper>
 
-          <TextField
-            label="Withdrawal Amount"
-            type="number"
-            fullWidth
-            placeholder="Enter amount"
-          />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {/* amount */}
+            <TextField
+              label="Withdrawal Amount"
+              type="number"
+              fullWidth
+              placeholder="Enter amount"
+              fullWidth
+              {...register("amount", {
+                required: "Amount to withdraw is required!",
+              })}
+              error={!!errors.amount}
+              helperText={errors.amount?.message}
+            />
 
-          <Button
-            onClick={() => navigate("/admin/withdraw-locked")}
-            variant="contained"
-            color="success"
-            size="large"
-            fullWidth
-          >
-            Request Withdrawal
-          </Button>
+            {/* wallet */}
+            <TextField
+              label="Wallet Address"
+              type="text"
+              fullWidth
+              placeholder="Enter wallet address"
+              fullWidth
+              {...register("walletAddress", {
+                required: "wallet address to withdraw is required!",
+              })}
+              error={!!errors.walletAddress}
+              helperText={errors.walletAddress?.message}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              color="success"
+              size="large"
+              fullWidth
+            >
+              Request Withdrawal
+            </Button>
+          </form>
         </Stack>
       </Paper>
     </Box>

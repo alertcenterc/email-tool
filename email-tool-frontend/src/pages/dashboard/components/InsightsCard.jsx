@@ -10,8 +10,10 @@ import {
   Grid,
 } from "@mui/material";
 import { dashboardStore } from "../services/dashboardStore";
+import { useNavigate } from "react-router-dom";
 
 export default function InsightsCard() {
+  const navigate = useNavigate();
 
   // states
   const user = dashboardStore((state) => state.user);
@@ -49,8 +51,19 @@ export default function InsightsCard() {
             </Typography>
           </CardContent>
         </Card>
-      </Stack>
 
+        <Card>
+          <CardContent>
+           
+            <Button
+              onClick={() => navigate("/admin/withdraw-method")}
+              variant="contained"
+              color="success"
+              size="medium"
+            >Withdraw Funds</Button>
+          </CardContent>
+        </Card>
+      </Stack>
     </>
   );
 }
