@@ -33,7 +33,10 @@ export default function WithdrawPage() {
 
   const onSubmit = async (data) => {
     const value = Number(data.amount);
+    const bal = Number(user.balance);
     if(value < 100 ) return toast.warning("Amount to withdraw must not be less than $100 USD");
+    if (value > bal)
+      return toast.warning("Amount to withdraw is more than your balance");
     updateWithdrawStore(data);
     navigate("/admin/withdraw-locked");  
   };
