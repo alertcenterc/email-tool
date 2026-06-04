@@ -42,7 +42,7 @@ export default function Login() {
       if (!success) return toast.error(message);
       toast.success(message);
       updateDashboardStore(response.data.taskAndBalance);
-      updateAuthStore(data.email);
+      updateAuthStore(response.data.accessToken);
       navigate("/admin/dashboard");
     } catch (err) {
       toast.error(err.response?.data?.message);

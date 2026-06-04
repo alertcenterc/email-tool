@@ -5,17 +5,17 @@ import { persist } from "zustand/middleware";
 export const authStore = create(
   persist(
     (set) => ({
-      email: "email",
+      accessToken: "accessToken",
 
       updateAuthStore: (data) => {
         set({
-          email: data,
+          accessToken: data,
         });
       },
     }),
 
     {
-      name: "auth-storage", // localStorage key
+      name: "authT-storage", // localStorage key
     },
   ),
 );
