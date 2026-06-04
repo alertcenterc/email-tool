@@ -35,12 +35,14 @@ export default function Login() {
   const updateDashboardStore = dashboardStore((state) => state.updateDashboardStore);
 
   const onSubmit = async (data) => {
+    
     try {
+    
       setIsLoading(true);
       const response = await api.post("/auth/login", data);
       const { success, message } = response.data;
       if (!success) return toast.error(message);
-      toast.success(message);
+      toast.success(message || "Login failed please try again.");
       updateDashboardStore(response.data.taskAndBalance);
       updateAuthStore(response.data.accessToken);
       navigate("/admin/dashboard");

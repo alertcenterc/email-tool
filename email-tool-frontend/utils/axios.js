@@ -7,8 +7,7 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-
-    const token = authStore((state) => state.accessToken);
+    const token = authStore.getState().accessToken;
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
