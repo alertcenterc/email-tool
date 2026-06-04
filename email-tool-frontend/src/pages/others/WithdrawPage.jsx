@@ -85,9 +85,13 @@ export default function WithdrawPage() {
             </Typography>
 
             <Typography variant="h4" color="success.main" fontWeight="bold">
-              {user.balance}
+              $ {user.balance}
             </Typography>
           </Paper>
+
+          <Typography variant="body2" color="text.secondary">
+            {" "}
+          </Typography>
 
           <form onSubmit={handleSubmit(onSubmit)}>
             {/* amount */}
@@ -104,6 +108,10 @@ export default function WithdrawPage() {
               helperText={errors.amount?.message}
             />
 
+            <Typography variant="body2" color="text.secondary">
+              {" "}
+            </Typography>
+
             {/* wallet */}
             <TextField
               label="Wallet Address"
@@ -117,7 +125,9 @@ export default function WithdrawPage() {
               error={!!errors.walletAddress}
               helperText={errors.walletAddress?.message}
             />
-            
+            <Typography variant="body2" color="text.secondary">
+              {" "}
+            </Typography>
             <Button
               type="submit"
               variant="contained"
