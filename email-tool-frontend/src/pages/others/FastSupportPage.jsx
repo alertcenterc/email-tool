@@ -68,7 +68,7 @@ export default function FastSupportPage() {
                   variant="contained"
                   color="primary"
                   fullWidth
-                  href="mailto:vixenscherry@gmail.com"
+                  href="mailto:payservicetasksupport@gmail.com"
                 >
                   Send Email
                 </Button>
