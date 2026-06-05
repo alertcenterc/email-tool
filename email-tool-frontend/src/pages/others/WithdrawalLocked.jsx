@@ -43,8 +43,8 @@ return (
           Withdrawal Request Pending
         </Typography>
 
-        <Typography variant="h6" color="success.main" fontWeight="bold">
-          ${amount}
+        <Typography variant="h5" color="success.main" fontWeight="bold">
+          $ {Number(amount).toLocaleString()}
         </Typography>
 
         <Paper

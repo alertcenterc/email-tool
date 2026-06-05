@@ -29,7 +29,7 @@ export default function InsightsCard() {
           <CardContent>
             <Typography variant="body1">Current Balance</Typography>
             <Typography variant="h6" fontWeight={"bold"} textAlign={"center"}>
-              ${user.balance}
+              ${Number(user.balance).toLocaleString()}
             </Typography>
           </CardContent>
         </Card>

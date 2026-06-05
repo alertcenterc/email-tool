@@ -85,7 +85,7 @@ export default function WithdrawPage() {
             </Typography>
 
             <Typography variant="h4" color="success.main" fontWeight="bold">
-              $ {user.balance}
+              ${Number(user.balance).toLocaleString()}{" "}
             </Typography>
           </Paper>
 
