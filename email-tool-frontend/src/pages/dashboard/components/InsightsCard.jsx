@@ -27,9 +27,12 @@ export default function InsightsCard() {
       <Stack direction="row" spacing={2} mb={2}>
         <Card>
           <CardContent>
-            <Typography variant="body1">Current Balance</Typography>
+            <Typography variant="body1">Balance</Typography>
             <Typography variant="h6" fontWeight={"bold"} textAlign={"center"}>
-              ${Number(user.balance).toLocaleString()}
+              {Number(user.balance).toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })}
             </Typography>
           </CardContent>
         </Card>
@@ -38,14 +41,14 @@ export default function InsightsCard() {
           <CardContent>
             <Typography variant="body1">Role</Typography>
             <Typography variant="h6" fontWeight={"bold"} textAlign={"center"}>
-              AI Training
+              AI/Images
             </Typography>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent>
-            <Typography variant="body1">Completed Task</Typography>
+            <Typography variant="body1">Completed</Typography>
             <Typography variant="h6" fontWeight={"bold"} textAlign={"center"}>
               {completedTasks.length}
             </Typography>
@@ -54,13 +57,14 @@ export default function InsightsCard() {
 
         <Card>
           <CardContent>
-           
             <Button
               onClick={() => navigate("/admin/withdraw-method")}
               variant="contained"
               color="success"
               size="medium"
-            >Withdraw Funds</Button>
+            >
+              Withdraw Funds
+            </Button>
           </CardContent>
         </Card>
       </Stack>
