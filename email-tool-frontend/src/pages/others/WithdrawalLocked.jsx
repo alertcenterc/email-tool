@@ -44,7 +44,7 @@ return (
         </Typography>
 
         <Typography variant="h3" color="success.main" fontWeight="bold">
-          $ {Number(amount).toLocaleString("en-US", {style: "currency", currency: "USD"})}
+        {Number(amount).toLocaleString("en-US", {style: "currency", currency: "USD"})}
         </Typography>
 
         <Paper
