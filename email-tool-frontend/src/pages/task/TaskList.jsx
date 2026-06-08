@@ -47,7 +47,7 @@ export default function TaskList() {
 
   return (
     <>
-      <Typography variant="h5" mt={4}>
+      <Typography variant="h5" color="success" mt={4}>
         Available Task For You
       </Typography>
       <DataGrid
