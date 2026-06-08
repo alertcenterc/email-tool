@@ -33,6 +33,10 @@ export default function Login() {
   // states
   const updateAuthStore = authStore((state) => state.updateAuthStore);
   const updateDashboardStore = dashboardStore((state) => state.updateDashboardStore);
+  const updateWithdrawalHistoryStore = dashboardStore(
+    (state) => state.updateWithdrawalHistoryStore
+  );
+
 
   const onSubmit = async (data) => {
     
@@ -41,9 +45,10 @@ export default function Login() {
       setIsLoading(true);
       const response = await api.post("/auth/login", data);
       const { success, message } = response.data;
-      if (!success) return toast.error(message);
-      toast.success(message || "Login failed please try again.");
+      if (!success) return toast.error(message || "Login failed please try again.");
+      toast.success(message );
       updateDashboardStore(response.data.taskAndBalance);
+      updateWithdrawalHistoryStore(response.data.withdrawHistory);
       updateAuthStore(response.data.accessToken);
       navigate("/admin/dashboard");
     } catch (err) {

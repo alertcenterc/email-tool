@@ -123,7 +123,7 @@ return (
             color="success"
             size="small"
           >
-            Contact Support
+            Support
           </Button>
         </Stack>
       </Stack>

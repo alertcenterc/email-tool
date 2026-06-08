@@ -12,9 +12,14 @@ import { dashboardStore } from "../dashboard/services/dashboardStore";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { withdrawStore } from "./withdrawStore";
+import { useState } from "react";
+import { SpinnerLoading } from "../../components/SpinnerLoading";
+import api from "../../../utils/axios";
 
 
 export default function WithdrawPage() {
+    const [isLoading, setIsLoading] = useState(false);
+  
    const {
       register,
       handleSubmit,
@@ -29,21 +34,42 @@ export default function WithdrawPage() {
       (state) => state.updateWithdrawStore
     );
 
+
   const walletName = withdrawStore((state) => state.walletName);
+
+  const updateWithdrawalHistoryStore = dashboardStore(
+    (state) => state.updateWithdrawalHistoryStore,
+  );
 
   const onSubmit = async (data) => {
     const value = Number(data.amount);
     const bal = Number(user.balance);
-    if(value < 100 ) return toast.warning("Amount to withdraw must not be less than $100 USD");
+    if (value < 100)
+      return toast.warning("Amount to withdraw must not be less than $100 USD");
     if (value > bal)
       return toast.warning("Amount to withdraw is more than your balance");
-    updateWithdrawStore(data);
-    navigate("/admin/withdraw-locked");  
+    try {
+      setIsLoading(true);
+
+      const method = `${walletName} - ${data.walletAddress}`;
+
+      const response = await api.post("/withdraw-request", {amount: data.amount, method });
+
+      const { success, message } = response.data;
+      if (!success) return toast.error(message || "Withdraw failed please try again.");
+      toast.success(message);
+      updateWithdrawalHistoryStore(response.data.withdrawHistory);
+      updateWithdrawStore(data);
+      navigate("/admin/withdraw-locked");
+    } catch (err) {
+      toast.error(err.response?.data?.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-
   return (
-    <Box
+    <Box 
       display="flex"
       justifyContent="center"
       alignItems="center"
@@ -143,6 +169,8 @@ export default function WithdrawPage() {
             </Button>
           </form>
         </Stack>
+        {isLoading && <SpinnerLoading />}
+        
       </Paper>
     </Box>
   );

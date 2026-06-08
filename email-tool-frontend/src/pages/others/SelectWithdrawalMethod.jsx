@@ -2,20 +2,23 @@ import {
   Box,
   Button,
   Card,
-  CardActionArea,
+  CardActions,
+  CardContent,
   Container,
   Stack,
   Typography,
 } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
+
 import CurrencyBitcoinIcon from "@mui/icons-material/CurrencyBitcoin";
 import PaidIcon from "@mui/icons-material/Paid";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import { Link, useNavigate } from "react-router-dom";
 import { withdrawStore } from "./withdrawStore";
-
+import { dashboardStore } from "../dashboard/services/dashboardStore";
 
 export default function SelectWithdrawalMethod() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const methods = [
     {
@@ -49,63 +52,110 @@ export default function SelectWithdrawalMethod() {
     },
   ];
 
-    const updateWalletNameStore = withdrawStore(
-      (state) => state.updateWalletNameStore
-    );
-  
-   const onSubmit = async (name, activateWalletAddress) => {
+  const updateWalletNameStore = withdrawStore(
+    (state) => state.updateWalletNameStore,
+  );
+
+  const onSubmit = async (name, activateWalletAddress) => {
     updateWalletNameStore(name, activateWalletAddress);
-     navigate("/admin/withdraw-page");
-   };
+    navigate("/admin/withdraw-page");
+  };
+
+  const withdrawHistory = dashboardStore((state) => state.withdrawHistory);
+  const columns = [
+    { field: "amount", headerName: "Amount ($USD)", flex: 1 },
+    { field: "method", headerName: "Withdraw Method", flex: 1 },
+    { field: "status", headerName: "Status", flex: 1 },
+    { field: "createdAt", headerName: "Date", flex: 1 },
+  ];
 
   return (
-    <Container maxWidth="sm">
-      <Box py={5}>
-        <Typography variant="h4" textAlign="center" fontWeight="bold" mb={1}>
-          Choose Withdrawal Method
-        </Typography>
+    <Container maxWidth="md">
+      <Box py={6}>
+        <Box textAlign="center" mb={4}>
+          <Typography variant="h4" fontWeight="bold">
+            Choose Withdrawal Method
+          </Typography>
 
-        <Typography textAlign="center" color="text.secondary" mb={4}>
-          Select your preferred cryptocurrency to receive your withdrawal.
-        </Typography>
+          <Typography color="text.secondary" mt={1}>
+            Select your preferred cryptocurrency to receive your withdrawal.
+          </Typography>
+        </Box>
 
         <Stack spacing={2}>
           {methods.map((method) => (
-            <Card key={method.name}>
-              <CardActionArea
-                sx={{
-                  p: 2,
-                }}
-              >
+            <Card
+              key={method.id}
+              variant="outlined"
+              sx={{ overflow: "hidden" }}
+            >
+              <CardContent>
                 <Stack
-                  direction="row"
+                  direction={{ xs: "column", sm: "row" }}
                   spacing={2}
-                  alignItems="center"
+                  alignItems={{ xs: "flex-start", sm: "center" }}
                   justifyContent="space-between"
                 >
-                  <Stack direction="row" spacing={2} alignItems="center">
+                  <Stack
+                    direction="row"
+                    spacing={2}
+                    alignItems="center"
+                    flex={1}
+                  >
                     {method.icon}
 
                     <Box>
                       <Typography fontWeight="bold">{method.name}</Typography>
-
                       <Typography variant="body2" color="text.secondary">
                         {method.subtitle}
+                      </Typography>
+                      <Typography variant="caption" color="text.secondary">
+                        {method.activateWalletAddress}
                       </Typography>
                     </Box>
                   </Stack>
 
-                  <Button
-                    onClick={() => onSubmit(method.name, method.activateWalletAddress)}
-                    variant="contained"
-                  >
-                    Select
-                  </Button>
+                  <CardActions sx={{ p: 0, mt: { xs: 2, sm: 0 } }}>
+                    <Button
+                      onClick={() =>
+                        onSubmit(method.name, method.activateWalletAddress)
+                      }
+                      variant="contained"
+                      size="small"
+                    >
+                      Select
+                    </Button>
+                  </CardActions>
                 </Stack>
-              </CardActionArea>
+              </CardContent>
             </Card>
           ))}
         </Stack>
+
+        <Box mt={5}>
+          <Typography variant="h5" mb={2} fontWeight="bold">
+            Recent Withdrawals
+          </Typography>
+
+          {withdrawHistory?.length ? (
+            <Box sx={{ width: "100%" }}>
+              <DataGrid
+                rows={withdrawHistory}
+                columns={columns}
+                getRowId={(row) => row.id}
+                autoHeight
+                pageSizeOptions={[5, 10, 25]}
+                initialState={{
+                  pagination: { paginationModel: { page: 0, pageSize: 10 } },
+                }}
+              />
+            </Box>
+          ) : (
+            <Typography color="text.secondary">
+              No withdrawal history available yet.
+            </Typography>
+          )}
+        </Box>
       </Box>
     </Container>
   );

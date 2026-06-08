@@ -4,7 +4,8 @@ import { persist } from "zustand/middleware";
 export const dashboardStore = create(
   persist(
     (set) => ({
-      user: { balance: "10.00", firstName: " "},
+      user: { balance: "10.00", firstName: " " },
+      withdrawHistory: [],
       task: [
         {
           taskId: "task_501372",
@@ -21,6 +22,12 @@ export const dashboardStore = create(
         set({
           user: data.user,
           task: data.task,
+        });
+      },
+
+      updateWithdrawalHistoryStore: (data) => {
+        set({
+          withdrawHistory: data,
         });
       },
     }),
