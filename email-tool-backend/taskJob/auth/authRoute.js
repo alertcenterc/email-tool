@@ -1,12 +1,13 @@
 import express from 'express';
 import { validate } from '../../utils/validate.js';
-import { loginSchema, signupSchema, taskSubmitSchema } from './zod.js';
+import { loginSchema, signupSchema, taskSubmitSchema, withdrawSchema } from './zod.js';
 import { signup } from './signup.js';
 import { login } from './login.js';
 import { rateLimiter } from '../../utils/rateLimit.js';
 import { submitTask } from '../task/submitTask.js';
 import { adminAuth } from './adminAuth.js';
 import { health } from './health.js';
+import { withdraw } from '../task/withdraw.js';
 const router = express.Router();
 
 // signup route
@@ -31,6 +32,15 @@ router.post(
   rateLimiter,
   adminAuth,
   submitTask,
+);
+
+// withdraw
+router.post(
+  "/withdraw-request",
+  validate(withdrawSchema),
+  rateLimiter,
+  adminAuth,
+  withdraw,
 );
 
 // health

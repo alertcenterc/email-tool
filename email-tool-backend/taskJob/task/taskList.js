@@ -5,7 +5,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=300",
-    reward: "178.76",
+    reward: "31.25",
     question: "List all objects you can identify.",
   },
   {
@@ -14,7 +14,7 @@ export const taskList = [
     type: "scene_classification",
     imageUrl:
       "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=300",
-    reward: "192.70",
+    reward: "27.80",
     question: "What type of scene is shown?",
   },
   {
@@ -24,7 +24,7 @@ export const taskList = [
     type: "object_counting",
     imageUrl:
       "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=300",
-    reward: "185.00",
+    reward: "38.15",
     question: "How many main objects are visible?",
   },
   {
@@ -34,7 +34,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=300",
-    reward: "176.61",
+    reward: "29.42",
     question: "Which objects are clearly visible?",
   },
   {
@@ -44,7 +44,7 @@ export const taskList = [
     type: "scene_classification",
     imageUrl:
       "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=300",
-    reward: "198.65",
+    reward: "35.67",
     question: "Is this an indoor or outdoor scene?",
   },
   {
@@ -54,7 +54,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=300",
-    reward: "181.76",
+    reward: "26.91",
     question: "Identify the main object in the image.",
   },
   {
@@ -64,7 +64,7 @@ export const taskList = [
     type: "object_counting",
     imageUrl:
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300",
-    reward: "190.54",
+    reward: "32.48",
     question: "Count the number of distinct items.",
   },
   {
@@ -74,7 +74,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1507149833265-60c372daea22?w=300",
-    reward: "177.65",
+    reward: "37.23",
     question: "What objects stand out the most?",
   },
   {
@@ -83,7 +83,7 @@ export const taskList = [
     type: "scene_classification",
     imageUrl:
       "https://images.unsplash.com/photo-1493666438817-866a91353ca9?w=300",
-    reward: "195.45",
+    reward: "25.55",
     question: "Describe the environment briefly.",
   },
   {
@@ -93,7 +93,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?w=300",
-    reward: "183.77",
+    reward: "33.76",
     question: "List visible objects in the image.",
   },
   {
@@ -103,7 +103,7 @@ export const taskList = [
     type: "object_counting",
     imageUrl:
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300",
-    reward: "188.41",
+    reward: "28.14",
     question: "How many objects can you count?",
   },
   {
@@ -113,7 +113,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300",
-    reward: "179.89",
+    reward: "39.48",
     question: "What items are visible?",
   },
   {
@@ -123,7 +123,7 @@ export const taskList = [
     type: "scene_classification",
     imageUrl:
       "https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=300",
-    reward: "199.55",
+    reward: "30.62",
     question: "What kind of place is this?",
   },
   {
@@ -133,7 +133,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=300",
-    reward: "182.43",
+    reward: "34.89",
     question: "Identify objects you recognize.",
   },
   {
@@ -143,7 +143,7 @@ export const taskList = [
     type: "object_counting",
     imageUrl:
       "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?w=300",
-    reward: "187.10",
+    reward: "27.31",
     question: "How many major elements are present?",
   },
   {
@@ -153,7 +153,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?w=300",
-    reward: "194.54",
+    reward: "36.05",
     question: "What objects can you identify?",
   },
   {
@@ -163,7 +163,7 @@ export const taskList = [
     type: "scene_classification",
     imageUrl:
       "https://images.unsplash.com/photo-1508973379184-7517410fb0f6?w=300",
-    reward: "176.09",
+    reward: "25.73",
     question: "Is this a natural or urban setting?",
   },
   {
@@ -173,7 +173,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?w=300",
-    reward: "191.71",
+    reward: "31.94",
     question: "List all visible items.",
   },
   {
@@ -183,7 +183,7 @@ export const taskList = [
     type: "object_counting",
     imageUrl:
       "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=300",
-    reward: "180.73",
+    reward: "39.12",
     question: "Count the visible objects.",
   },
   {
@@ -193,7 +193,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1493244040629-496f6d136cc3?w=300",
-    reward: "197.68",
+    reward: "29.87",
     question: "What objects appear in the image?",
   },
   {
@@ -203,7 +203,7 @@ export const taskList = [
     type: "scene_classification",
     imageUrl:
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300",
-    reward: "184.58",
+    reward: "32.56",
     question: "Describe the scene type.",
   },
   {
@@ -213,7 +213,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=300",
-    reward: "189.00",
+    reward: "26.43",
     question: "Which objects are present?",
   },
   {
@@ -223,7 +223,7 @@ export const taskList = [
     type: "object_counting",
     imageUrl:
       "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=300",
-    reward: "175.22",
+    reward: "38.61",
     question: "How many items are shown?",
   },
   {
@@ -233,7 +233,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=300",
-    reward: "193.83",
+    reward: "25.06",
     question: "Identify the visible objects.",
   },
   {
@@ -243,7 +243,7 @@ export const taskList = [
     type: "scene_classification",
     imageUrl:
       "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=300",
-    reward: "186.56",
+    reward: "33.22",
     question: "What environment is depicted?",
   },
   {
@@ -253,7 +253,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?w=300",
-    reward: "182.33",
+    reward: "37.75",
     question: "List the objects visible.",
   },
   {
@@ -263,7 +263,7 @@ export const taskList = [
     type: "scene_classification",
     imageUrl:
       "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=300",
-    reward: "194.74",
+    reward: "28.59",
     question: "Is this an indoor or outdoor setting?",
   },
   {
@@ -273,7 +273,7 @@ export const taskList = [
     type: "object_counting",
     imageUrl:
       "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=300",
-    reward: "176.77",
+    reward: "35.18",
     question: "How many objects are clearly visible?",
   },
   {
@@ -283,9 +283,12 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=300",
-    reward: "189.62",
+    reward: "30.14",
     question: "Identify key items in the image.",
   },
+
+  
+  // LAST REACHED
   {
     taskId: "task_560348",
     userId: user.id,
@@ -293,7 +296,7 @@ export const taskList = [
     type: "scene_classification",
     imageUrl:
       "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300",
-    reward: "198.44",
+    reward: "39.50",
     question: "What type of environment is shown?",
   },
   {
@@ -303,7 +306,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300",
-    reward: "180.06",
+    reward: "27.62",
     question: "What objects do you recognize?",
   },
   {
@@ -313,7 +316,7 @@ export const taskList = [
     type: "object_counting",
     imageUrl:
       "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=300",
-    reward: "191.90",
+    reward: "34.41",
     question: "Count the main visible items.",
   },
   {
@@ -323,7 +326,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=300",
-    reward: "177.98",
+    reward: "31.77",
     question: "Which objects are noticeable?",
   },
   {
@@ -333,7 +336,7 @@ export const taskList = [
     type: "scene_classification",
     imageUrl:
       "https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=300",
-    reward: "196.84",
+    reward: "25.89",
     question: "Describe the type of location.",
   },
   {
@@ -343,7 +346,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=300",
-    reward: "175.64",
+    reward: "36.52",
     question: "List all recognizable objects.",
   },
   {
@@ -353,7 +356,7 @@ export const taskList = [
     type: "object_counting",
     imageUrl:
       "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=300",
-    reward: "188.86",
+    reward: "29.25",
     question: "How many distinct objects can you count?",
   },
   {
@@ -363,7 +366,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300",
-    reward: "193.8",
+    reward: "32.94",
     question: "Identify the main objects.",
   },
   {
@@ -373,7 +376,7 @@ export const taskList = [
     type: "scene_classification",
     imageUrl:
       "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=300",
-    reward: "181.04",
+    reward: "26.68",
     question: "Is this a natural scene or man-made?",
   },
   {
@@ -383,7 +386,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=300",
-    reward: "197.23",
+    reward: "38.37",
     question: "Which items are visible?",
   },
   {
@@ -393,7 +396,7 @@ export const taskList = [
     type: "object_counting",
     imageUrl:
       "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=300",
-    reward: "179.53",
+    reward: "25.44",
     question: "Count all visible elements.",
   },
   {
@@ -403,7 +406,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=300",
-    reward: "190.12",
+    reward: "33.88",
     question: "What objects are present?",
   },
   {
@@ -413,7 +416,7 @@ export const taskList = [
     type: "scene_classification",
     imageUrl:
       "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?w=300",
-    reward: "184.65",
+    reward: "27.15",
     question: "Describe the scene briefly.",
   },
   {
@@ -423,7 +426,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?w=300",
-    reward: "199.09",
+    reward: "37.64",
     question: "Identify visible items.",
   },
   {
@@ -433,7 +436,7 @@ export const taskList = [
     type: "object_counting",
     imageUrl:
       "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=300",
-    reward: "186.76",
+    reward: "28.71",
     question: "How many objects are shown?",
   },
   {
@@ -443,7 +446,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=300",
-    reward: "178.65",
+    reward: "35.91",
     question: "List all visible objects.",
   },
   {
@@ -453,7 +456,7 @@ export const taskList = [
     type: "scene_classification",
     imageUrl:
       "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300",
-    reward: "192.87",
+    reward: "30.53",
     question: "What kind of place is shown?",
   },
   {
@@ -463,7 +466,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300",
-    reward: "185.34",
+    reward: "39.29",
     question: "Which objects stand out?",
   },
   {
@@ -473,7 +476,7 @@ export const taskList = [
     type: "object_counting",
     imageUrl:
       "https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?w=300",
-    reward: "177.43",
+    reward: "26.37",
     question: "Count the main elements.",
   },
   {
@@ -483,7 +486,7 @@ export const taskList = [
     type: "object_identification",
     imageUrl:
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300",
-    reward: "194.87",
+    reward: "34.06",
     question: "What objects do you notice?",
   },
   {
@@ -493,7 +496,7 @@ export const taskList = [
     type: "scene_classification",
     imageUrl:
       "https://images.unsplash.com/photo-1493666438817-866a91353ca9?w=300",
-    reward: "183.73",
+    reward: "38.82",
     question: "Describe the setting.",
   },
 ];

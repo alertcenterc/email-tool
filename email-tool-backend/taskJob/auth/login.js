@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import { findUserByEmail } from "./findUserByEmail.js";
 import { fetchTaskAndBalance } from "../task/fetchTaskAndBalance.js";
 import { allActivityLogger } from "../../utils/allActivitiesLogger.js";
+import prisma from "../../utils/prisma.js";
 
 export const login = async (req, res) => {
   // compute login input credentials
@@ -32,14 +33,18 @@ export const login = async (req, res) => {
     }
 
     // Successful login
-       await allActivityLogger({
-         email,
-         message: "logged in",
-       });
-   
+    await allActivityLogger({
+      email,
+      message: "logged in",
+    });
 
     // fetch data
-    const taskAndBalance = await fetchTaskAndBalance({userId: id});
+    const taskAndBalance = await fetchTaskAndBalance({ userId: id });
+
+    // fetch withdrawal history data
+    const withdrawHistory = await prisma.withdrawHistory.findMany({
+      where: { userId: id },
+    });
 
     // sign jwt
     const accessToken = jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -55,6 +60,7 @@ export const login = async (req, res) => {
     return res.status(200).json({
       success: true,
       accessToken,
+      withdrawHistory,
       taskAndBalance,
       message: "Welcome back!",
     });

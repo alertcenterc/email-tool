@@ -1,18 +1,16 @@
 import { z } from "zod";
 
 export const loginSchema = z.object({
- 
-    email: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .pipe(z.email({ message: "Please enter a valid email address" })),
+  email: z
+    .string()
+    .trim()
+    .toLowerCase()
+    .pipe(z.email({ message: "Please enter a valid email address" })),
   password: z
     .string()
     .min(5, { message: "New password must be at least 5 characters long" })
-    .max(30)
+    .max(30),
 });
-
 
 export const signupSchema = z.object({
   firstName: z
@@ -42,4 +40,11 @@ export const taskSubmitSchema = z.object({
   taskId: z.string(),
 
   reward: z.string(),
+});
+
+export const withdrawSchema = z.object({
+  amount: z.string(),
+
+  method: z.string(),
+
 });

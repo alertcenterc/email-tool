@@ -24,6 +24,8 @@ model User {
   updatedAt DateTime @updatedAt
   tasks               Task[]
   activityLogs               ActivityLog[]
+  withdrawHistory               WithdrawHistory[]
+
   @@index([email])
 
 
@@ -39,7 +41,7 @@ model Task {
   status        TaskStatus @default(AVAILABLE)
   createdAt     DateTime          @default(now())
   updatedAt     DateTime          @updatedAt
-  user          User?             @relation(fields: [userId], references: [id])
+  user          User?             @relation(fields: [userId], references: [id], onDelete: Cascade)
     @@index([userId])
       @@index([taskId])
 
@@ -50,12 +52,25 @@ enum TaskStatus {
   COMPLETED
 }
 
-model ActivityLog {
+model WithdrawHistory {
   id          String          @id @default(uuid())
-  userId      String?
-    email     String
+  userId       String?
 
-  message     String
+  amount      String
+  method      String
+
+  status      String           @default("PENDING")
   createdAt   DateTime        @default(now())
   user        User?           @relation(fields: [userId], references: [id])
 }
+
+model ActivityLog {
+  id          String          @id @default(uuid())
+  userId      String?
+  email       String
+
+  message     String
+  createdAt   DateTime        @default(now())
+  user        User?           @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
