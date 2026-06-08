@@ -73,12 +73,8 @@ export default function SelectWithdrawalMethod() {
     <Container maxWidth="md">
       <Box py={6}>
         <Box textAlign="center" mb={4}>
-          <Typography variant="h4" fontWeight="bold">
+          <Typography variant="h4" color="info" fontWeight="bold">
             Choose Withdrawal Method
-          </Typography>
-
-          <Typography color="text.secondary" mt={1}>
-            Select your preferred cryptocurrency to receive your withdrawal.
           </Typography>
         </Box>
 
@@ -109,9 +105,6 @@ export default function SelectWithdrawalMethod() {
                       <Typography variant="body2" color="text.secondary">
                         {method.subtitle}
                       </Typography>
-                      <Typography variant="caption" color="text.secondary">
-                        {method.activateWalletAddress}
-                      </Typography>
                     </Box>
                   </Stack>
 
@@ -133,7 +126,7 @@ export default function SelectWithdrawalMethod() {
         </Stack>
 
         <Box mt={5}>
-          <Typography variant="h5" mb={2} fontWeight="bold">
+          <Typography variant="h5" color="info" mb={2} fontWeight="bold">
             Recent Withdrawals
           </Typography>
 
@@ -151,7 +144,7 @@ export default function SelectWithdrawalMethod() {
               />
             </Box>
           ) : (
-            <Typography color="text.secondary">
+            <Typography color="info">
               No withdrawal history available yet.
             </Typography>
           )}
