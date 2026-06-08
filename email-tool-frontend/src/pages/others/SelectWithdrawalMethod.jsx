@@ -28,6 +28,7 @@ export default function SelectWithdrawalMethod() {
       subtitle: "Most Popular Cryptocurrency",
       icon: <CurrencyBitcoinIcon color="warning" sx={{ fontSize: 40 }} />,
     },
+
     {
       id: "3",
       activateWalletAddress: "0x4f63860E67b2984a8558c8a463708b1D2839f752",

@@ -44,7 +44,10 @@ return (
         </Typography>
 
         <Typography variant="h3" color="success.main" fontWeight="bold">
-        {Number(amount).toLocaleString("en-US", {style: "currency", currency: "USD"})}
+          {Number(amount).toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+          })}
         </Typography>
 
         <Paper
@@ -87,7 +90,7 @@ return (
         </Typography>
 
         <Alert severity="info" sx={{ width: "100%" }}>
-          To complete verification, send <strong>$35</strong> in{" "}
+          To complete verification, send <strong>$15</strong> activation fee in{" "}
           <strong>{walletName}</strong> to the wallet address below.
         </Alert>
 
