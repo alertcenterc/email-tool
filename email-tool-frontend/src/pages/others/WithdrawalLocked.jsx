@@ -5,9 +5,8 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 export default function WithdrawalLocked() {
-  const navigate = useNavigate();
-
-
+  
+const navigate = useNavigate();
 const walletName = withdrawStore((state) => state.walletName);
 const amount = withdrawStore((state) => state.amount);
 const activateWalletAddress = withdrawStore(

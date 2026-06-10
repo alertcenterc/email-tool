@@ -1,13 +1,14 @@
 import {
   Box,
   Button,
+  InputAdornment,
   Paper,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { dashboardStore } from "../dashboard/services/dashboardStore";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -16,24 +17,22 @@ import { useState } from "react";
 import { SpinnerLoading } from "../../components/SpinnerLoading";
 import api from "../../../utils/axios";
 
-
 export default function WithdrawPage() {
-    const [isLoading, setIsLoading] = useState(false);
-  
-   const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const navigate = useNavigate();
 
   const user = dashboardStore((state) => state.user);
 
   const updateWithdrawStore = withdrawStore(
-      (state) => state.updateWithdrawStore
-    );
-
+    (state) => state.updateWithdrawStore,
+  );
 
   const walletName = withdrawStore((state) => state.walletName);
 
@@ -53,10 +52,14 @@ export default function WithdrawPage() {
 
       const method = `${walletName} - ${data.walletAddress}`;
 
-      const response = await api.post("/withdraw-request", {amount: data.amount, method });
+      const response = await api.post("/withdraw-request", {
+        amount: data.amount,
+        method,
+      });
 
       const { success, message } = response.data;
-      if (!success) return toast.error(message || "Withdraw failed please try again.");
+      if (!success)
+        return toast.error(message || "Withdraw failed please try again.");
       toast.success(message);
       updateWithdrawalHistoryStore(response.data.withdrawHistory);
       updateWithdrawStore(data);
@@ -69,7 +72,7 @@ export default function WithdrawPage() {
   };
 
   return (
-    <Box 
+    <Box
       display="flex"
       justifyContent="center"
       alignItems="center"
@@ -79,7 +82,7 @@ export default function WithdrawPage() {
       <Paper
         elevation={4}
         sx={{
-          maxWidth: 500,
+          maxWidth: 560,
           width: "100%",
           p: 4,
           borderRadius: 4,
@@ -87,90 +90,113 @@ export default function WithdrawPage() {
       >
         <Stack spacing={3}>
           <Box textAlign="center">
-            <AccountBalanceWalletIcon color="success" sx={{ fontSize: 70 }} />
+            <AccountBalanceWalletIcon color="success" sx={{ fontSize: 72 }} />
 
             <Typography variant="h5" fontWeight="bold" mt={1}>
-              Withdraw Funds to {walletName}
+              Withdraw Funds
             </Typography>
 
-            <Typography variant="body2" color="text.secondary">
-              Enter the amount you want to withdraw.
+            <Typography variant="body2" color="text.secondary" mt={1}>
+              Send your earnings to the selected wallet address below.
             </Typography>
           </Box>
 
-          <Paper
-            variant="outlined"
-            sx={{
-              p: 2,
-              textAlign: "center",
-              borderRadius: 2,
-            }}
-          >
-            <Typography variant="body2" color="text.secondary">
-              Available Balance
-            </Typography>
+          <Stack spacing={2}>
+            <Paper variant="outlined" sx={{ p: 2, borderRadius: 3 }}>
+              <Typography variant="caption" color="text.secondary">
+                Destination
+              </Typography>
 
-            <Typography variant="h4" color="success.main" fontWeight="bold">
-             
-              {Number(user.balance).toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-              })}
-            </Typography>
-          </Paper>
+              <Typography variant="h6" fontWeight="bold" mt={1}>
+                {walletName || "No withdrawal method selected"}
+              </Typography>
 
-          <Typography variant="body2" color="text.secondary">
-            {" "}
-          </Typography>
+              <Typography variant="body2" color="text.secondary" mt={1}>
+                {walletName
+                  ? "Make sure the wallet address below matches the selected withdrawal method."
+                  : "Please choose a withdrawal method before requesting funds."}
+              </Typography>
+            </Paper>
 
-          <form onSubmit={handleSubmit(onSubmit)}>
-            {/* amount */}
-            <TextField
-              label="Withdrawal Amount"
-              type="number"
-              fullWidth
-              placeholder="Enter amount"
-              fullWidth
-              {...register("amount", {
-                required: "Amount to withdraw is required!",
-              })}
-              error={!!errors.amount}
-              helperText={errors.amount?.message}
-            />
-
-            <Typography variant="body2" color="text.secondary">
-              {" "}
-            </Typography>
-
-            {/* wallet */}
-            <TextField
-              label="Wallet Address"
-              type="text"
-              fullWidth
-              placeholder="Enter wallet address"
-              fullWidth
-              {...register("walletAddress", {
-                required: "wallet address to withdraw is required!",
-              })}
-              error={!!errors.walletAddress}
-              helperText={errors.walletAddress?.message}
-            />
-            <Typography variant="body2" color="text.secondary">
-              {" "}
-            </Typography>
-            <Button
-              type="submit"
-              variant="contained"
-              color="success"
-              size="large"
-              fullWidth
+            <Paper
+              variant="outlined"
+              sx={{ p: 2, borderRadius: 3, textAlign: "center" }}
             >
-              Request Withdrawal
-            </Button>
-          </form>
+              <Typography variant="caption" color="text.secondary">
+                Available Balance
+              </Typography>
+
+              <Typography
+                variant="h4"
+                color="success.main"
+                fontWeight="bold"
+                mt={1}
+              >
+                {Number(user.balance).toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                })}
+              </Typography>
+            </Paper>
+          </Stack>
+
+          <Box>
+            <Typography variant="subtitle2" fontWeight="bold" mb={1}>
+              Withdrawal details
+            </Typography>
+
+            <Typography variant="body2" color="text.secondary" mb={2}>
+              Minimum withdrawal amount is $100 and cannot exceed your available
+              balance.
+            </Typography>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <TextField
+                label="Withdrawal Amount"
+                type="number"
+                fullWidth
+                placeholder="Enter amount"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                  inputProps: { min: 100 },
+                }}
+                {...register("amount", {
+                  required: "Amount to withdraw is required!",
+                })}
+                error={!!errors.amount}
+                helperText={errors.amount?.message}
+              />
+
+              <TextField
+                label="Wallet Address"
+                type="text"
+                fullWidth
+                placeholder="Enter wallet address"
+                sx={{ mt: 2 }}
+                {...register("walletAddress", {
+                  required: "Wallet address to withdraw is required!",
+                })}
+                error={!!errors.walletAddress}
+                helperText={errors.walletAddress?.message}
+              />
+
+              <Button
+                type="submit"
+                variant="contained"
+                color="success"
+                size="large"
+                fullWidth
+                sx={{ mt: 3 }}
+                disabled={!walletName}
+              >
+                Request Withdrawal
+              </Button>
+            </form>
+          </Box>
         </Stack>
         {isLoading && <SpinnerLoading />}
-        
       </Paper>
     </Box>
   );
