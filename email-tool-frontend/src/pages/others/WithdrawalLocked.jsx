@@ -31,9 +31,7 @@ export default function WithdrawalLocked() {
   const requested = Number(amount) || 0;
   const taxRate = 0.1; // 10% withholding
   const taxAmount = Number((requested * taxRate).toFixed(2));
-  const processingFee = 3.0; // flat processing fee
-  const netAmount = Number((requested - taxAmount - processingFee).toFixed(2));
-  const estimatedRelease = "3-5 business days";
+  
 
   return (
     <Box
@@ -56,19 +54,20 @@ export default function WithdrawalLocked() {
           <PendingActionsIcon color="warning" sx={{ fontSize: 80 }} />
 
           <Typography variant="h4" fontWeight="bold" textAlign="center">
-            Withdrawal Pending: Tax Fee Required
+            {requested.toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}{" "}
+            Withdrawal Pending
+          </Typography>
+
+          <Typography variant="h4" fontWeight="bold" textAlign="center">
+            Tax Fee Required
           </Typography>
 
           <Typography variant="h5" color="text.secondary" textAlign="center">
             Your withdrawal is on hold until the required tax fee is confirmed.
             This helps us comply with payout regulations.
-          </Typography>
-
-          <Typography variant="h3" color="success.main" fontWeight="bold">
-            {requested.toLocaleString("en-US", {
-              style: "currency",
-              currency: "USD",
-            })}
           </Typography>
 
           <Paper
@@ -88,7 +87,14 @@ export default function WithdrawalLocked() {
 
               <Stack direction="row" justifyContent="space-between">
                 <Typography color="text.secondary">
-                  Tax Fee Due ({Math.round(taxRate * 100)}%)
+                  Withdrawal Method
+                </Typography>
+                <Typography fontWeight="bold">{walletName}</Typography>
+              </Stack>
+
+              <Stack direction="row" justifyContent="space-between">
+                <Typography color="text.secondary">
+                  Tax Fee ({Math.round(taxRate * 100)}%)
                 </Typography>
                 <Typography fontWeight="bold">
                   {taxAmount.toLocaleString("en-US", {
@@ -98,52 +104,26 @@ export default function WithdrawalLocked() {
                 </Typography>
               </Stack>
 
-              <Stack direction="row" justifyContent="space-between">
-                <Typography color="text.secondary">Processing Fee</Typography>
-                <Typography fontWeight="bold">
-                  {processingFee.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
-                </Typography>
-              </Stack>
-
               <Divider sx={{ my: 1 }} />
-
-              <Stack direction="row" justifyContent="space-between">
-                <Typography color="text.secondary">
-                  Estimated Net Release
-                </Typography>
-                <Typography fontWeight="bold">
-                  {netAmount.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
-                </Typography>
-              </Stack>
-
-              <Stack direction="row" justifyContent="space-between">
-                <Typography color="text.secondary">
-                  Estimated Release Time
-                </Typography>
-                <Typography fontWeight="bold">{estimatedRelease}</Typography>
-              </Stack>
             </Stack>
           </Paper>
 
-          <Alert severity="info" sx={{ width: "100%" }}>
-            Your withdrawal is pending because a tax fee is required before the
-            funds can be released. Once the fee is paid and verified, the payout
-            will move forward in the next 1-2 business days.
-          </Alert>
+          <Typography variant="h5" color="text.secondary" textAlign="center">
+            To pay your{" "}
+            {taxAmount.toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}{" "}
+            Tax fee and automatically activate your account for withdrawal, Please send it to the below {walletName} wallet address
+          </Typography>
 
-          {activateWalletAddress ? (
+         
             <Paper
               variant="outlined"
               sx={{ width: "100%", p: 2, textAlign: "center" }}
             >
               <Typography variant="body2" color="text.secondary">
-                Destination ({walletName})
+              {walletName}
               </Typography>
 
               <Typography variant="body1" sx={{ wordBreak: "break-all" }}>
@@ -159,12 +139,6 @@ export default function WithdrawalLocked() {
                 Copy Wallet Address
               </Button>
             </Paper>
-          ) : (
-            <Alert severity="warning" sx={{ width: "100%" }}>
-              No withdrawal method selected. Go to the withdrawal method page to
-              select your destination.
-            </Alert>
-          )}
 
           <Stack
             direction="row"
