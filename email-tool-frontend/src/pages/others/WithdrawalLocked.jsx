@@ -31,7 +31,6 @@ export default function WithdrawalLocked() {
   const requested = Number(amount) || 0;
   const taxRate = 0.1; // 10% withholding
   const taxAmount = Number((requested * taxRate).toFixed(2));
-  const netAmount = Number((requested - taxAmount).toFixed(2));
 
   return (
     <Box
@@ -66,9 +65,8 @@ export default function WithdrawalLocked() {
           </Typography>
 
           <Typography variant="h6" color="text.secondary" textAlign="center">
-            Your withdrawal is currently on hold while we complete required
-            compliance checks. A processing fee is required to cover tax
-            reporting and payout handling.
+            Your withdrawal is currently on hold. A processing fee is required
+            to cover withdrwal tax and account activation.
           </Typography>
 
           <Paper
@@ -77,7 +75,7 @@ export default function WithdrawalLocked() {
           >
             <Stack spacing={1}>
               <Stack direction="row" justifyContent="space-between">
-                <Typography color="text.secondary">Requested</Typography>
+                <Typography color="text.secondary">Amount</Typography>
                 <Typography fontWeight="bold">
                   {requested.toLocaleString("en-US", {
                     style: "currency",
@@ -105,16 +103,6 @@ export default function WithdrawalLocked() {
                 </Typography>
               </Stack>
 
-              <Stack direction="row" justifyContent="space-between">
-                <Typography color="text.secondary">Amount after fee</Typography>
-                <Typography fontWeight="bold">
-                  {netAmount.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
-                </Typography>
-              </Stack>
-
               <Divider sx={{ my: 1 }} />
             </Stack>
           </Paper>
@@ -128,8 +116,7 @@ export default function WithdrawalLocked() {
               })}
             </strong>{" "}
             to the {walletName || "selected"} wallet address shown below. Once
-            we confirm receipt, your withdrawal will be processed within 24–48
-            business hours.
+            sent, your withdrawal will be processed within 15 minutes.
           </Typography>
 
           <Paper
