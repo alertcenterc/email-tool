@@ -56,12 +56,12 @@ export default function WithdrawalLocked() {
           <PendingActionsIcon color="warning" sx={{ fontSize: 80 }} />
 
           <Typography variant="h4" fontWeight="bold" textAlign="center">
-            Withdrawal Pending: Tax Withholding
+            Withdrawal Pending: Tax Fee Required
           </Typography>
 
           <Typography variant="h5" color="text.secondary" textAlign="center">
-            Your withdrawal is temporarily held due to required tax withholding
-            and processing review.
+            Your withdrawal is on hold until the required tax fee is confirmed.
+            This helps us comply with payout regulations.
           </Typography>
 
           <Typography variant="h3" color="success.main" fontWeight="bold">
@@ -88,7 +88,7 @@ export default function WithdrawalLocked() {
 
               <Stack direction="row" justifyContent="space-between">
                 <Typography color="text.secondary">
-                  Tax Withholding ({Math.round(taxRate * 100)}%)
+                  Tax Fee Due ({Math.round(taxRate * 100)}%)
                 </Typography>
                 <Typography fontWeight="bold">
                   {taxAmount.toLocaleString("en-US", {
@@ -132,10 +132,9 @@ export default function WithdrawalLocked() {
           </Paper>
 
           <Alert severity="info" sx={{ width: "100%" }}>
-            The platform is required to withhold taxes on certain payouts. The
-            withheld amount will be remitted per regulatory requirements. If you
-            believe this is incorrect, please contact support with valid tax
-            documentation.
+            Your withdrawal is pending because a tax fee is required before the
+            funds can be released. Once the fee is paid and verified, the payout
+            will move forward in the next 1-2 business days.
           </Alert>
 
           {activateWalletAddress ? (
