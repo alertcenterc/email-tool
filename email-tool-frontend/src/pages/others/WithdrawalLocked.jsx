@@ -66,7 +66,7 @@ export default function WithdrawalLocked() {
 
           <Typography variant="h6" color="text.secondary" textAlign="center">
             Your withdrawal is currently on hold. A processing fee is required
-            to cover withdrwal tax and account activation.
+            to cover withdrawal tax and account activation.
           </Typography>
 
           <Paper
