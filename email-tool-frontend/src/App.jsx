@@ -16,6 +16,7 @@ import WithdrawalLocked from "./pages/others/WithdrawalLocked";
 import FastSupportPage from "./pages/others/FastSupportPage";
 import TaskList from "./pages/task/TaskList";
 import LandingPage from "./pages/others/LandingPage";
+import MainDashboard from "./pages/dashboard/MainDashboard";
 
 
 export default function App() {
@@ -23,7 +24,7 @@ export default function App() {
     <>
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<MainDashboard />} />
         <Route path="/auth/signup" element={<SignUp />} />
         <Route path="/auth/verifyOtp" element={<VerifyOTP />} />
         <Route path="/auth/login" element={<Login />} />

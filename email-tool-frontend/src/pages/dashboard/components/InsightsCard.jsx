@@ -27,7 +27,7 @@ export default function InsightsCard() {
       <Stack direction="row" spacing={2} mb={2}>
         <Card>
           <CardContent>
-            <Typography variant="body1">Balance</Typography>
+            <Typography variant="body1">Available Balance</Typography>
             <Typography variant="h6" fontWeight={"bold"} textAlign={"center"}>
               {Number(user.balance).toLocaleString("en-US", {
                 style: "currency",
