@@ -1,4 +1,4 @@
-import { Typography, Button } from "@mui/material";
+import { Typography, Button, Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { dashboardStore } from "../services/dashboardStore";
 import {Virtuoso} from "react-virtuoso"

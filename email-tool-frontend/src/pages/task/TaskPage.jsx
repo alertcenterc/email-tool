@@ -40,7 +40,7 @@ export default function TaskPage() {
             if (!success) return toast.error(message);
             toast.success(message);
             updateDashboardStore(response.data.taskAndBalance);  
-            navigate("/admin/dashboard");
+            navigate("/task-completed");
           } catch (err) {
             toast.error(err.response?.data?.message);
           } finally {
@@ -144,17 +144,6 @@ export default function TaskPage() {
                     mt={3}
                   >
                     <Button
-                      type="button"
-                      color="warning"
-                      variant="outlined"
-                      size="large"
-                      onClick={() => navigate("/admin/dashboard")}
-                      fullWidth
-                    >
-                      Leave Task
-                    </Button>
-
-                    <Button
                       type="submit"
                       color="success"
                       variant="contained"
@@ -162,6 +151,17 @@ export default function TaskPage() {
                       fullWidth
                     >
                       Complete Task
+                    </Button>
+
+                    <Button
+                      type="button"
+                      color="warning"
+                      variant="outlined"
+                      size="large"
+                      onClick={() => navigate("/dashboard")}
+                      fullWidth
+                    >
+                      Leave Task
                     </Button>
                   </Stack>
                 </form>

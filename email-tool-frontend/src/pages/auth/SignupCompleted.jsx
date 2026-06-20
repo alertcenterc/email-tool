@@ -1,13 +1,10 @@
 import { Box, Button, Paper, Stack, Typography } from "@mui/material";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import { useNavigate } from "react-router-dom";
-import { taskStore } from "./taskStore";
 
-export default function TaskCompleted() {
+
+export default function SignupCompleted() {
   const navigate = useNavigate();
-const task = taskStore((state) => state.task);
-      
-      const { taskId, reward, } = task;
 
   return (
     <Box
@@ -44,46 +41,25 @@ const task = taskStore((state) => state.task);
           color="success.main"
           gutterBottom
         >
-          Task Completed!
+          Signup Completed!
         </Typography>
 
         <Typography variant="body1" color="text.secondary" mb={4}>
-          Your submission has been received successfully and your account
-          balance has been updated.
+          Your have successfully signup and your account has been created.
         </Typography>
 
-        <Paper
-          variant="outlined"
-          sx={{
-            p: 3,
-            borderRadius: 3,
-            bgcolor: "success.50",
-            mb: 4,
-          }}
-        >
-          <Stack spacing={1}>
-            <Typography variant="body2" color="text.secondary">
-              Reward Earned
-            </Typography>
-
-            <Typography variant="h4" fontWeight="bold" color="success.main">
-              +${reward}
-            </Typography>
-          </Stack>
-        </Paper>
-
         <Typography variant="body2" color="text.secondary" mb={3}>
-          Thank you for completing this task. {taskId}
+          Login To Your Account to Start Earning Today!
         </Typography>
 
         <Button
-          onClick={() => navigate("/dashboard")}
+          onClick={() => navigate("/auth/login")}
           variant="contained"
           color="success"
           size="large"
           fullWidth
         >
-          Continue
+          Continue to Login
         </Button>
       </Paper>
     </Box>

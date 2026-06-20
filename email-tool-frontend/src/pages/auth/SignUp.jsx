@@ -40,7 +40,7 @@ export default function SignUp() {
       if(!success) return toast.error(message);
       updateAuthStore(data.email);
       toast.success(message);
-      navigate("/auth/login");
+      navigate("/auth/signup-completed");
     } catch (err) {
       toast.error(err.response?.data?.message);
     } finally {

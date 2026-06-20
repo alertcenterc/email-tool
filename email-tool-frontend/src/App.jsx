@@ -17,6 +17,7 @@ import FastSupportPage from "./pages/others/FastSupportPage";
 import TaskList from "./pages/task/TaskList";
 import LandingPage from "./pages/others/LandingPage";
 import MainDashboard from "./pages/dashboard/MainDashboard";
+import SignupCompleted from "./pages/auth/SignupCompleted";
 
 
 export default function App() {
@@ -26,6 +27,8 @@ export default function App() {
         {/* Public Routes */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/auth/signup" element={<SignUp />} />
+        <Route path="/auth/signup-completed" element={<SignupCompleted />} />
+
         <Route path="/auth/verifyOtp" element={<VerifyOTP />} />
         <Route path="/auth/login" element={<Login />} />
         <Route path="logout" element={<Login />} />
