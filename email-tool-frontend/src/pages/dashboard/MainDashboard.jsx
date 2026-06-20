@@ -41,7 +41,7 @@ export default function MainDashboard() {
                 }}
               />
               <Typography variant="h6" fontWeight="bold">
-                AI Image Reviewer
+                AI/Image Reviewer
               </Typography>
 
               <Typography variant="body1" color="success" textAlign={"center"}>
@@ -50,7 +50,7 @@ export default function MainDashboard() {
             </Stack>
           </Paper>
 
-          <Paper elevation={4} sx={{ width: "100%", p: 3, borderRadius: 3 }}>
+          <Paper elevation={4} sx={{ width: "100%", borderRadius: 3 }}>
             <BalanceCard />
           </Paper>
           <Paper elevation={4} sx={{ width: "100%", p: 1, borderRadius: 3 }}>
@@ -58,9 +58,7 @@ export default function MainDashboard() {
           </Paper>
 
           <Typography variant="body1">Recent Tasks</Typography>
-          <Box sx={{ flex: 1, minHeight: 0 }}>
-            <RecentTasks />
-          </Box>
+          <RecentTasks />
         </Stack>
       </Container>
     </Box>

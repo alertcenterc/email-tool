@@ -1,11 +1,11 @@
-import { Typography, Button } from "@mui/material";
-
-import { DataGrid } from "@mui/x-data-grid";
-
+import { Typography, Button, Box } from "@mui/material";
 import { dashboardStore } from "../dashboard/services/dashboardStore";
 import { taskStore } from "./taskStore";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import {Virtuoso} from "react-virtuoso"
+import { TaskCard } from "../dashboard/components/Cards";
+
 
 export default function TaskList() {
     const navigate = useNavigate();
@@ -24,42 +24,26 @@ export default function TaskList() {
       navigate("/admin/task-page");
     };
 
-  const columns = [
-    { field: "taskId", headerName: "Task-Id", flex: 1 },
-    { field: "type", headerName: "Type", flex: 1 },
-    { field: "reward", headerName: "Reward ($USD)", flex: 1 },
-    { field: "status", headerName: "Status", flex: 1 },
-
-    {
-      field: "action",
-      type: "actions",
-      headerName: "Action",
-      getActions: (params) => [
-        <Button
-          variant="contained"
-          onClick={() => selectTask(params.row.taskId)}
-        >
-          VIEW
-        </Button>,
-      ],
-    },
-  ];
 
   return (
     <>
       <Typography variant="h5" color="success" mt={4}>
         Available Task For You
       </Typography>
-      <DataGrid
-        rows={task}
-        columns={columns}
-        getRowId={(row) => row.taskId}
-        autoHeight
-        pageSizeOptions={[50, 100,]}
-        initialState={{
-          pagination: { paginationModel: { page: 0, pageSize: 50 } },
-        }}
-      />
+      <Box sx={{ flex: 1, minHeight: 0 }}>
+        <Virtuoso
+          style={{ height: "100vh" }}
+          data={task}
+          itemContent={(index, item) => (
+            <TaskCard
+              taskId={item.taskId}
+              reward={item.reward}
+              type={item.type}
+              status={item.status}
+            />
+          )}
+        />
+      </Box>
     </>
   );
 }

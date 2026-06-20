@@ -14,13 +14,16 @@ import Withdraw from "@mui/icons-material/AccountBalanceWalletOutlined";
 import Support from "@mui/icons-material/SupportAgentOutlined";
 import Logout from "@mui/icons-material/LogoutOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
+import { taskStore } from "../../task/taskStore";
+import { toast } from "react-toastify";
+
+
 
 export const BalanceCard = () => {
-  const task = dashboardStore((state) => state.task);
   const user = dashboardStore((state) => state.user);
 
   return (
-    <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
+  
       <Card sx={{ flex: 1, minWidth: 0 }}>
         <CardContent>
           <Typography variant="body1" textAlign={'center'} color="success">Available Balance</Typography>
@@ -32,12 +35,26 @@ export const BalanceCard = () => {
           </Typography>
         </CardContent>
       </Card>
-    </Stack>
   );
 };
 
 export const TaskCard = ({taskId, reward, type, status}) => {
+const navigate = useNavigate();
+
   const task = dashboardStore((state) => state.task);
+   const updateTaskStore = taskStore((state) => state.updateTaskStore);
+  
+    const selectTask = (taskid) => {
+      const selectedTask = task.find((t) => t.taskId === taskid);
+  
+       if (selectedTask.status === "COMPLETED") return toast.warning(
+         "This Task Already Completed, Take Another Available Task",
+       );
+       
+      updateTaskStore(selectedTask);
+      navigate("/task-page");
+  
+    };
   return (
     <Paper
       elevation={4}
@@ -92,7 +109,7 @@ export const TaskCard = ({taskId, reward, type, status}) => {
         </Stack>
 
         <Button
-          onClick={() => alert("/auth/login")}
+          onClick={() => selectTask(taskId)}
           variant="contained"
           color="success"
           size="small"
