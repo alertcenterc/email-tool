@@ -136,9 +136,7 @@ export default function SelectWithdrawalMethod() {
 
                 <CardActions sx={{ p: 0, mt: { xs: 2, sm: 0 } }}>
                   <Button
-                    onClick={() =>
-                      onSubmitApplepay
-                    }
+                    onClick={onSubmitApplepay}
                     variant="contained"
                     size="small"
                   >
