@@ -30,27 +30,21 @@ export default function App() {
         <Route path="/auth/login" element={<Login />} />
         <Route path="logout" element={<Login />} />
 
-        {/* Admin Routes */}
-        <Route path="/admin" element={<AdminLayout />}>
-          {/* /admin/dashboard */}
-          <Route path="dashboard" element={<Dashboard />} />
+        {/* /dasboard */}
+        <Route path="dashboard" element={<MainDashboard />} />
 
-          {/* /admin/task pae */}
-          <Route path="task-page" element={<TaskPage />} />
-          <Route path="task-list" element={<TaskList />} />
-          <Route path="task-completed" element={<TaskCompleted />} />
+        {/* /admin/task suport */}
+        <Route path="support" element={<FastSupportPage />} />
 
-          {/* /admin/task withdraw */}
-          <Route path="withdraw-method" element={<SelectWithdrawalMethod />} />
-          <Route path="withdraw-page" element={<WithdrawPage />} />
-          <Route path="withdraw-locked" element={<WithdrawalLocked />} />
+        {/* /admin/task withdraw */}
+        <Route path="withdraw-method" element={<SelectWithdrawalMethod />} />
+        <Route path="withdraw-page" element={<WithdrawPage />} />
+        <Route path="withdraw-locked" element={<WithdrawalLocked />} />
 
-          {/* /admin/task suport */}
-          <Route path="support" element={<FastSupportPage />} />
-
-          {/* /admin → redirect to /admin/dashboard */}
-          <Route index element={<Navigate to="dashboard" replace />} />
-        </Route>
+        {/* /admin/task pae */}
+        <Route path="task-page" element={<TaskPage />} />
+        <Route path="task-list" element={<TaskList />} />
+        <Route path="task-completed" element={<TaskCompleted />} />
       </Routes>
 
       <ToastContainer position="top-right" autoClose={5000} theme="dark" />

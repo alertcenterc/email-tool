@@ -3,6 +3,7 @@ import {
   Stack,
   Button,
   Card,
+  Paper,
   CardContent,
 } from "@mui/material";
 import { dashboardStore } from "../services/dashboardStore";
@@ -16,7 +17,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 export const BalanceCard = () => {
   const task = dashboardStore((state) => state.task);
-  const completedTasks = task.filter((t) => t.status === "COMPLETED");
+  const user = dashboardStore((state) => state.user);
 
   return (
     <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
@@ -24,7 +25,7 @@ export const BalanceCard = () => {
         <CardContent>
           <Typography variant="body1" textAlign={'center'} color="success">Available Balance</Typography>
           <Typography variant="h6" fontWeight="bold" textAlign="center">
-            {Number("3500.55").toLocaleString("en-US", {
+            {Number(user.balance).toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
             })}
@@ -35,19 +36,76 @@ export const BalanceCard = () => {
   );
 };
 
+export const TaskCard = ({taskId, reward, type, status}) => {
+  const task = dashboardStore((state) => state.task);
+  return (
+    <Paper elevation={4} sx={{ width: "100%", p: 1, borderRadius: 3, backgroundColor: "grey.50", mb: 2 }}>
+      <Stack
+        direction="row"
+        spacing={2}
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <Typography variant="body1">Id: {taskId}</Typography>
+
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-around"
+        >
+          <Typography variant="body1">Reward: </Typography>
+          <Typography variant="body1" color="success" fontWeight={"bold"}>
+            $ {reward}
+          </Typography>
+        </Stack>
+      </Stack>
+
+      <Typography variant="body2" color="text.secondary" mb={1} mt={1}>
+        Type: {type}
+      </Typography>
+
+      <Stack
+        direction="row"
+        spacing={2}
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-around"
+        >
+          <Typography variant="body1">Status: </Typography>
+          <Typography variant="body2" color="success" fontWeight={"bold"}>
+            {status}
+          </Typography>
+        </Stack>
+
+        <Button
+          onClick={() => alert("/auth/login")}
+          variant="contained"
+          color="success"
+          size="small"
+        >
+          Accept
+        </Button>
+      </Stack>
+    </Paper>
+  );
+};
+
 export const ActionCard = () => {
   const navigate = useNavigate();
 
-  // states
-  const user = dashboardStore((state) => state.user);
-
-  const task = dashboardStore((state) => state.task);
-  const completedTasks = task.filter((t) => t.status === "COMPLETED");
-
   return (
-    <Stack direction={"row"} spacing={2} justifyContent={"space-between"} alignItems={'center'}>
+    <Stack
+      direction={"row"}
+      spacing={2}
+      justifyContent={"space-between"}
+      alignItems={"center"}
+    >
       <Button
-        onClick={() => navigate("/auth/login")}
+        onClick={() => navigate("withdraw-method")}
         variant="contained"
         color="success"
         size="medium"
@@ -57,7 +115,7 @@ export const ActionCard = () => {
       </Button>
 
       <Button
-        onClick={() => navigate("/admin/withdraw-method")}
+        onClick={() => navigate("task-list")}
         variant="contained"
         color="success"
         size="medium"
@@ -67,7 +125,7 @@ export const ActionCard = () => {
       </Button>
 
       <Button
-        onClick={() => navigate("/admin/withdraw-method")}
+        onClick={() => navigate("support")}
         variant="contained"
         color="success"
         size="medium"

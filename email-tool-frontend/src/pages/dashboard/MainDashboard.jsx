@@ -1,8 +1,11 @@
 import taskLogo from "../../assets/taskLogo.png";
 
 import { Box, Paper, Typography, Stack, Container } from "@mui/material";
-import { ActionCard, BalanceCard } from "./components/Cards";
+import { ActionCard, BalanceCard, TaskCard } from "./components/Cards";
 import { dashboardStore } from "./services/dashboardStore";
+import RecentTasks from "./components/RecentTasks";
+import PeopleIcon from "@mui/icons-material/PersonOutlineRounded";
+
 
 export default function MainDashboard() {
     // states
@@ -38,7 +41,11 @@ export default function MainDashboard() {
                 }}
               />
               <Typography variant="h6" fontWeight="bold">
-                Tanya
+                AI Image Reviewer
+              </Typography>
+
+              <Typography variant="body1" color="success" textAlign={'center'}>
+                <PeopleIcon /> {user.firstName}
               </Typography>
             </Stack>
           </Paper>
@@ -50,14 +57,9 @@ export default function MainDashboard() {
             <ActionCard />
           </Paper>
 
-          <Paper elevation={4} sx={{ width: "100%", p: 3, borderRadius: 3 }}>
-            <Typography variant="subtitle1" fontWeight="bold" mb={1}>
-              Ready for content
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Add activity cards, quick actions, or charts below this section.
-            </Typography>
-          </Paper>
+          <Typography variant="body1">Recent Tasks</Typography>
+
+          <RecentTasks />
         </Stack>
       </Container>
     </Box>

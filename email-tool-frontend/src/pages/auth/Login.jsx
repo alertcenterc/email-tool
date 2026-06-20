@@ -50,7 +50,7 @@ export default function Login() {
       updateDashboardStore(response.data.taskAndBalance);
       updateWithdrawalHistoryStore(response.data.withdrawHistory);
       updateAuthStore(response.data.accessToken);
-      navigate("/admin/dashboard");
+      navigate("/dashboard");
     } catch (err) {
       toast.error(err.response?.data?.message);
     } finally {

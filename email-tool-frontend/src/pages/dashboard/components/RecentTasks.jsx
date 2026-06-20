@@ -6,6 +6,8 @@ import { dashboardStore } from "../services/dashboardStore";
 import { taskStore } from "../../task/taskStore";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import {Virtuoso} from "react-virtuoso"
+import { TaskCard } from "./Cards";
 
 export default function RecentTasks() {
   const navigate = useNavigate();
@@ -26,43 +28,18 @@ export default function RecentTasks() {
 
   };
 
-
-  const columns = [
-    { field: "taskId", headerName: "Task-Id", flex: 1 },
-    { field: "type", headerName: "Type", flex: 1 },
-    { field: "reward", headerName: "Reward ($USD)", flex: 1 },
-    { field: "status", headerName: "Status", flex: 1 },
-
-    {
-      field: "action",
-      type: "actions",
-      headerName: "Action",
-      getActions: (params) => [
-        <Button
-          variant="contained"
-          onClick={() => selectTask(params.row.taskId)}
-        >
-          VIEW
-        </Button>,
-      ],
-    },
-  ];
-
   return (
-    <>
-      <Typography variant="h5" mt={4}>
-        Available Task For You
-      </Typography>
-      <DataGrid
-        rows={task}
-        columns={columns}
-        getRowId={(row) => row.taskId}
-        autoHeight
-        pageSizeOptions={[5, 10, 25]}
-        initialState={{
-          pagination: { paginationModel: { page: 0, pageSize: 10 } },
-        }}
-      />
-    </>
+    <Virtuoso
+      style={{ height: "100vh" }}
+      data={task}
+      itemContent={(index, item) => (
+        <TaskCard
+          taskId={item.taskId}
+          reward={item.reward}
+          type={item.type}
+          status={item.status}
+        />
+      )}
+    />
   );
 }
