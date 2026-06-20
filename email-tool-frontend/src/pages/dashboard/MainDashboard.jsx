@@ -18,7 +18,7 @@ export default function MainDashboard() {
       px={{ xs: 2, sm: 3 }}
       py={4}
     >
-      <Container maxWidth="sm" disableGutters>
+      <Container maxWidth="xs" disableGutters>
         <Stack spacing={3} width="100%">
           <Paper elevation={4} sx={{ width: "100%", p: 1, borderRadius: 3 }}>
             <Stack
@@ -44,13 +44,11 @@ export default function MainDashboard() {
           </Paper>
 
           <Paper elevation={4} sx={{ width: "100%", p: 3, borderRadius: 3 }}>
-            <Typography variant="subtitle1" fontWeight="bold" mb={2}>
-              Account Summary
-            </Typography>
             <BalanceCard />
           </Paper>
-          
-          <ActionCard/>
+          <Paper elevation={4} sx={{ width: "100%", p: 1, borderRadius: 3 }}>
+            <ActionCard />
+          </Paper>
 
           <Paper elevation={4} sx={{ width: "100%", p: 3, borderRadius: 3 }}>
             <Typography variant="subtitle1" fontWeight="bold" mb={1}>

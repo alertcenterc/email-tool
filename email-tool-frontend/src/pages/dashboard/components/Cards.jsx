@@ -22,7 +22,7 @@ export const BalanceCard = () => {
     <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
       <Card sx={{ flex: 1, minWidth: 0 }}>
         <CardContent>
-          <Typography variant="body1">Available Balance</Typography>
+          <Typography variant="body1" textAlign={'center'} color="success">Available Balance</Typography>
           <Typography variant="h6" fontWeight="bold" textAlign="center">
             {Number("3500.55").toLocaleString("en-US", {
               style: "currency",
@@ -45,13 +45,14 @@ export const ActionCard = () => {
   const completedTasks = task.filter((t) => t.status === "COMPLETED");
 
   return (
-    <Stack direction={"row"} spacing={2} mb={2} justifyContent={'center'}>
+    <Stack direction={"row"} spacing={2} justifyContent={"space-between"} alignItems={'center'}>
       <Button
-        onClick={() => navigate("/admin/withdraw-method")}
+        onClick={() => navigate("/auth/login")}
         variant="contained"
         color="success"
         size="medium"
       >
+        <Withdraw />
         Withdraw
       </Button>
 
@@ -61,6 +62,7 @@ export const ActionCard = () => {
         color="success"
         size="medium"
       >
+        <Task />
         Tasks
       </Button>
 
@@ -70,6 +72,7 @@ export const ActionCard = () => {
         color="success"
         size="medium"
       >
+        <Support />
         Support
       </Button>
     </Stack>
