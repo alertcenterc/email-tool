@@ -43,7 +43,7 @@ export default function Login() {
     try {
     
       setIsLoading(true);
-      const response = await api.post("/auth/loginn", data);
+      const response = await api.post("/auth/login", data);
       const { success, message } = response.data;
       if (!success) return toast.error(message || "Login failed please try again.");
       toast.success(message );
