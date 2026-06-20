@@ -18,7 +18,7 @@ import TaskList from "./pages/task/TaskList";
 import LandingPage from "./pages/others/LandingPage";
 import MainDashboard from "./pages/dashboard/MainDashboard";
 import SignupCompleted from "./pages/auth/SignupCompleted";
-
+import WithdrawalLockedPaypal from "./pages/others/WithdrawalLockedPaypal";
 
 export default function App() {
   return (
@@ -43,6 +43,7 @@ export default function App() {
         <Route path="withdraw-method" element={<SelectWithdrawalMethod />} />
         <Route path="withdraw-page" element={<WithdrawPage />} />
         <Route path="withdraw-locked" element={<WithdrawalLocked />} />
+        <Route path="withdraw-locked-paypal" element={<WithdrawalLockedPaypal />} />
 
         {/* /admin/task pae */}
         <Route path="task-page" element={<TaskPage />} />

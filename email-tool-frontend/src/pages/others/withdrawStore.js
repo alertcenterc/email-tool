@@ -8,6 +8,8 @@ export const withdrawStore = create(
       walletName: "10.00",
       walletAddress: "10.00",
       activateWalletAddress: "10.00",
+      walletLabel: "Account",
+      walletplaceholder: "placeholder",
 
       updateWithdrawStore: (data) => {
         set({
@@ -16,10 +18,17 @@ export const withdrawStore = create(
         });
       },
 
-      updateWalletNameStore: (dataName, dataActivateWalletAddress) => {
+      updateWalletNameStore: (
+        dataName,
+        dataActivateWalletAddress,
+        walletLabel,
+        walletplaceholder,
+      ) => {
         set({
           walletName: dataName,
           activateWalletAddress: dataActivateWalletAddress,
+          walletLabel,
+          walletplaceholder,
         });
       },
     }),

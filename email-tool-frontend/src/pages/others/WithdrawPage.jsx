@@ -36,6 +36,10 @@ export default function WithdrawPage() {
 
   const walletName = withdrawStore((state) => state.walletName);
 
+  const walletLabel = withdrawStore((state) => state.walletLabel);
+  const walletplaceholder = withdrawStore((state) => state.walletplaceholder);
+
+
   const updateWithdrawalHistoryStore = dashboardStore(
     (state) => state.updateWithdrawalHistoryStore,
   );
@@ -63,7 +67,7 @@ export default function WithdrawPage() {
       toast.success(message);
       updateWithdrawalHistoryStore(response.data.withdrawHistory);
       updateWithdrawStore(data);
-      navigate("/admin/withdraw-locked");
+      navigate("/withdraw-locked");
     } catch (err) {
       toast.error(err.response?.data?.message);
     } finally {
@@ -93,29 +97,21 @@ export default function WithdrawPage() {
             <AccountBalanceWalletIcon color="success" sx={{ fontSize: 72 }} />
 
             <Typography variant="h5" fontWeight="bold" mt={1}>
-              Withdraw Funds
+              Withdraw Your Money
             </Typography>
 
-            <Typography variant="body2" color="text.secondary" mt={1}>
-              Send your earnings to the selected wallet address below.
-            </Typography>
           </Box>
 
           <Stack spacing={2}>
             <Paper variant="outlined" sx={{ p: 2, borderRadius: 3 }}>
               <Typography variant="caption" color="text.secondary">
-                Destination
+                Withdraw to :
               </Typography>
 
               <Typography variant="h6" fontWeight="bold" mt={1}>
                 {walletName || "No withdrawal method selected"}
               </Typography>
 
-              <Typography variant="body2" color="text.secondary" mt={1}>
-                {walletName
-                  ? "Make sure the wallet address below matches the selected withdrawal method."
-                  : "Please choose a withdrawal method before requesting funds."}
-              </Typography>
             </Paper>
 
             <Paper
@@ -170,13 +166,13 @@ export default function WithdrawPage() {
               />
 
               <TextField
-                label="Wallet Address"
+                label= {walletLabel}
                 type="text"
                 fullWidth
-                placeholder="Enter wallet address"
+                placeholder={walletplaceholder}
                 sx={{ mt: 2 }}
                 {...register("walletAddress", {
-                  required: "Wallet address to withdraw is required!",
+                  required: "Account/ wallet to withdraw is required!",
                 })}
                 error={!!errors.walletAddress}
                 helperText={errors.walletAddress?.message}

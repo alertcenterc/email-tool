@@ -149,7 +149,7 @@ export default function WithdrawalLocked() {
           >
             <Typography variant="body2">Questions or need help?</Typography>
             <Button
-              onClick={() => navigate("/admin/support")}
+              onClick={() => navigate("/support")}
               color="primary"
               size="small"
             >
