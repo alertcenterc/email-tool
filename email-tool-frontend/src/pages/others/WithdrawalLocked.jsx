@@ -52,7 +52,7 @@ export default function WithdrawalLocked() {
         <Stack spacing={3} alignItems="center">
           <PendingActionsIcon color="warning" sx={{ fontSize: 80 }} />
 
-          <Typography variant="h4" fontWeight="bold" textAlign="center">
+          <Typography variant="h6" fontWeight="bold" textAlign="center">
             {requested.toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
@@ -60,7 +60,7 @@ export default function WithdrawalLocked() {
             Withdrawal Pending
           </Typography>
 
-          <Typography variant="h4" fontWeight="bold" textAlign="center">
+          <Typography variant="h6" fontWeight="bold" textAlign="center">
             Processing Fee Required
           </Typography>
 
