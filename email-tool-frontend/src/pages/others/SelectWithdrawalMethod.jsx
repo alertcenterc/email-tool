@@ -94,7 +94,7 @@ export default function SelectWithdrawalMethod() {
                   <Box>
                     <Typography fontWeight="bold">PayPal</Typography>
                     <Typography variant="body2" color="text.secondary">
-                      receive your earnings to your PayPal account
+                      Receive your earnings to your PayPal account
                     </Typography>
                   </Box>
                 </Stack>
@@ -129,7 +129,7 @@ export default function SelectWithdrawalMethod() {
                   <Box>
                     <Typography fontWeight="bold">Apple Pay</Typography>
                     <Typography variant="body2" color="text.secondary">
-                      withdraw directly to your Apple Pay easily
+                      Withdraw directly to your Apple Pay easily
                     </Typography>
                   </Box>
                 </Stack>

@@ -67,7 +67,9 @@ export default function WithdrawPage() {
       toast.success(message);
       updateWithdrawalHistoryStore(response.data.withdrawHistory);
       updateWithdrawStore(data);
-      navigate("/withdraw-locked");
+      if(walletName !== "PayPal" || walletName !== "ApplePay" ) return navigate("/withdraw-locked");
+      navigate("/withdraw-locked-paypal");
+
     } catch (err) {
       toast.error(err.response?.data?.message);
     } finally {
