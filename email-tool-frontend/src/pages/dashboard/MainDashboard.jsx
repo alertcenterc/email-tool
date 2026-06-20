@@ -44,7 +44,7 @@ export default function MainDashboard() {
                 AI Image Reviewer
               </Typography>
 
-              <Typography variant="body1" color="success" textAlign={'center'}>
+              <Typography variant="body1" color="success" textAlign={"center"}>
                 <PeopleIcon /> {user.firstName}
               </Typography>
             </Stack>
@@ -58,8 +58,9 @@ export default function MainDashboard() {
           </Paper>
 
           <Typography variant="body1">Recent Tasks</Typography>
-
-          <RecentTasks />
+          <Box sx={{ flex: 1, minHeight: 0 }}>
+            <RecentTasks />
+          </Box>
         </Stack>
       </Container>
     </Box>
