@@ -39,7 +39,16 @@ export const BalanceCard = () => {
 export const TaskCard = ({taskId, reward, type, status}) => {
   const task = dashboardStore((state) => state.task);
   return (
-    <Paper elevation={4} sx={{ width: "100%", p: 1, borderRadius: 3, backgroundColor: "grey.50", mb: 2 }}>
+    <Paper
+      elevation={4}
+      sx={{
+        width: "100%",
+        p: 1,
+        borderRadius: 3,
+        backgroundColor: "grey.50",
+        mb: 2,
+      }}
+    >
       <Stack
         direction="row"
         spacing={2}
@@ -55,7 +64,8 @@ export const TaskCard = ({taskId, reward, type, status}) => {
         >
           <Typography variant="body1">Reward: </Typography>
           <Typography variant="body1" color="success" fontWeight={"bold"}>
-            $ {reward}
+            {" "}
+            ${reward}
           </Typography>
         </Stack>
       </Stack>
@@ -77,7 +87,7 @@ export const TaskCard = ({taskId, reward, type, status}) => {
         >
           <Typography variant="body1">Status: </Typography>
           <Typography variant="body2" color="success" fontWeight={"bold"}>
-            {status}
+            {" "}{status}
           </Typography>
         </Stack>
 
@@ -105,7 +115,7 @@ export const ActionCard = () => {
       alignItems={"center"}
     >
       <Button
-        onClick={() => navigate("withdraw-method")}
+        onClick={() => navigate("/withdraw-method")}
         variant="contained"
         color="success"
         size="medium"
@@ -115,7 +125,7 @@ export const ActionCard = () => {
       </Button>
 
       <Button
-        onClick={() => navigate("task-list")}
+        onClick={() => navigate("/task-list")}
         variant="contained"
         color="success"
         size="medium"
@@ -125,7 +135,7 @@ export const ActionCard = () => {
       </Button>
 
       <Button
-        onClick={() => navigate("support")}
+        onClick={() => navigate("/support")}
         variant="contained"
         color="success"
         size="medium"

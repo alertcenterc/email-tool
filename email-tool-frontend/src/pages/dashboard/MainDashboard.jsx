@@ -22,7 +22,7 @@ export default function MainDashboard() {
       py={4}
     >
       <Container maxWidth="xs" disableGutters>
-        <Stack spacing={3} width="100%">
+        <Stack spacing={3} width="100%" mt={0}>
           <Paper elevation={4} sx={{ width: "100%", p: 1, borderRadius: 3 }}>
             <Stack
               direction="row"
