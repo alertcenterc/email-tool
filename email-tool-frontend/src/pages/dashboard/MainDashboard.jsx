@@ -1,9 +1,12 @@
 import taskLogo from "../../assets/taskLogo.png";
 
 import { Box, Paper, Typography, Stack, Container } from "@mui/material";
-import { BalanceCard } from "./components/Cards";
+import { ActionCard, BalanceCard } from "./components/Cards";
+import { dashboardStore } from "./services/dashboardStore";
 
 export default function MainDashboard() {
+    // states
+    const user = dashboardStore((state) => state.user);
   return (
     <Box
       component="main"
@@ -17,7 +20,7 @@ export default function MainDashboard() {
     >
       <Container maxWidth="sm" disableGutters>
         <Stack spacing={3} width="100%">
-          <Paper elevation={4} sx={{ width: "100%", p: 3, borderRadius: 3 }}>
+          <Paper elevation={4} sx={{ width: "100%", p: 1, borderRadius: 3 }}>
             <Stack
               direction="row"
               spacing={2}
@@ -29,19 +32,14 @@ export default function MainDashboard() {
                 src={taskLogo}
                 alt="Logo"
                 sx={{
-                  width: 68,
-                  height: 68,
+                  width: 48,
+                  height: 48,
                   objectFit: "contain",
                 }}
               />
-              <Box sx={{ flex: 1, minWidth: 0 }}>
-                <Typography variant="h6" fontWeight="bold">
-                  Dashboard
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Mobile-optimized dashboard layout for new components.
-                </Typography>
-              </Box>
+              <Typography variant="h6" fontWeight="bold">
+                Tanya
+              </Typography>
             </Stack>
           </Paper>
 
@@ -51,6 +49,8 @@ export default function MainDashboard() {
             </Typography>
             <BalanceCard />
           </Paper>
+          
+          <ActionCard/>
 
           <Paper elevation={4} sx={{ width: "100%", p: 3, borderRadius: 3 }}>
             <Typography variant="subtitle1" fontWeight="bold" mb={1}>
