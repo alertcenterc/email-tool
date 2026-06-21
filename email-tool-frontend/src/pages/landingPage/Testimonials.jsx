@@ -35,7 +35,7 @@ export const Testimonials = () => {
     const testimonials = [
       {
         name: "Sarah K.",
-        text: "I received my first withdrawal within 48 hours. The tasks are straightforward and the platform is reliable.",
+        text: "I received my first withdrawal within 2 hours. The tasks are straightforward and the platform is reliable.",
       },
       {
         name: "Michael T.",
@@ -44,6 +44,19 @@ export const Testimonials = () => {
       {
         name: "David A.",
         text: "One of the easiest ways to earn extra money online. Highly recommended.",
+      },
+      {
+        name: "Emily G.",
+        text: "My best paid task platform!",
+      },
+      {
+        name: "Rosales Y.",
+        text: "I can now pay my bills with my earnings from here. Thank you.",
+      },
+
+      {
+        name: "Chapa QT.",
+        text: "As a student, this really helpful. I love this platform",
       },
     ];
   return (

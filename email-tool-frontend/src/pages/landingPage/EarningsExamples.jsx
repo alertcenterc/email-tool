@@ -65,11 +65,11 @@ export const EarningsExamples = () => {
                 <Divider />
 
                 {[
-                  ["Image Annotation", "$0.65"],
-                  ["Survey Completion", "$1.80"],
-                  ["Voice Recording", "$4.25"],
-                  ["Product Review", "$5.50"],
-                  ["App Testing", "$8.75"],
+                  ["Image Annotation", "$30.65"],
+                  ["Survey Completion", "$41.80"],
+                  ["Voice Recording", "$44.25"],
+                  ["Product Review", "$35.50"],
+                  ["App Testing", "$48.75"],
                 ].map((row) => (
                   <Box key={row[0]}>
                     <Box p={3}>
@@ -99,11 +99,11 @@ export const EarningsExamples = () => {
 
               <Stack spacing={2}>
                 {[
-                  "Sarah K. withdrew $25.40",
-                  "Michael T. withdrew $18.75",
-                  "David A. withdrew $42.10",
-                  "John P. withdrew $15.25",
-                  "Grace M. withdrew $60.50",
+                  "Sarah K. withdrew $725.40",
+                  "Michael T. withdrew $918.75",
+                  "David A. withdrew $542.10",
+                  "John P. withdrew $815.25",
+                  "Grace M. withdrew $760.50",
                 ].map((item) => (
                   <Paper
                     key={item}

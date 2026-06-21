@@ -112,7 +112,7 @@ export const Stats = () => {
             <Grid item xs={6} md={3}>
               <Stack alignItems="center">
                 <Typography variant="h3" fontWeight={800} color="#1B5E20">
-                  $4.8M+
+                  $1.8M+
                 </Typography>
 
                 <Typography textAlign="center">Rewards Paid</Typography>

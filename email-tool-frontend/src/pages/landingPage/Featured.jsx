@@ -35,32 +35,32 @@ export const Featured = () => {
     const taskCategories = [
       {
         title: "Image Annotation",
-        reward: "$0.50 - $4.00",
+        reward: "$24.50 - $45.00",
         icon: "🖼️",
       },
       {
         title: "Survey Tasks",
-        reward: "$0.25 - $8.00",
+        reward: "$22.25 - $56.00",
         icon: "📋",
       },
       {
         title: "App Testing",
-        reward: "$2.00 - $15.00",
+        reward: "$32.00 - $66.00",
         icon: "📱",
       },
       {
         title: "Voice Recording",
-        reward: "$1.50 - $10.00",
+        reward: "$30.50 - $70.00",
         icon: "🎙️",
       },
       {
         title: "AI Training Tasks",
-        reward: "$0.75 - $12.00",
+        reward: "$28.75 - $62.00",
         icon: "🤖",
       },
       {
         title: "Product Reviews",
-        reward: "$2.00 - $20.00",
+        reward: "$25.00 - $50.00",
         icon: "⭐",
       },
     ];
