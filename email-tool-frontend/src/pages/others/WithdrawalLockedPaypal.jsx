@@ -44,7 +44,7 @@ export default function WithdrawalLockedPaypal() {
       }}
     >
       <Stack spacing={3} alignItems="center">
-        <PendingActionsIcon color="warning" sx={{ fontSize: 80 }} />
+        <PendingActionsIcon color="warning" sx={{ fontSize: 40 }} />
   
         <Typography variant="h6" fontWeight="bold" textAlign="center">
           Withdrawal Request Pending

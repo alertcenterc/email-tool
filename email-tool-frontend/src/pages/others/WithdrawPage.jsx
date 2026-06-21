@@ -78,6 +78,8 @@ export default function WithdrawPage() {
   };
 
   return (
+    <Container maxWidth="md">
+
     <Box
       display="flex"
       justifyContent="center"
@@ -197,5 +199,6 @@ export default function WithdrawPage() {
         {isLoading && <SpinnerLoading />}
       </Paper>
     </Box>
+    </Container>
   );
 }
