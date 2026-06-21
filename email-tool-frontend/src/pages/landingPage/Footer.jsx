@@ -103,7 +103,7 @@ export const Footer = () => {
         </Typography>
 
         <Typography>
-          support@payservicetasks.com
+          WhatsApp: +1 405 768-9501
         </Typography>
 
         <Typography mt={1}>
