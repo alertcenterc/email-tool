@@ -15,10 +15,10 @@ import WithdrawPage from "./pages/others/WithdrawPage";
 import WithdrawalLocked from "./pages/others/WithdrawalLocked";
 import FastSupportPage from "./pages/others/FastSupportPage";
 import TaskList from "./pages/task/TaskList";
-import LandingPage from "./pages/others/LandingPage";
 import MainDashboard from "./pages/dashboard/MainDashboard";
 import SignupCompleted from "./pages/auth/SignupCompleted";
 import WithdrawalLockedPaypal from "./pages/others/WithdrawalLockedPaypal";
+import LandingPage from "./pages/landingPage/LandingPage";
 
 export default function App() {
   return (
@@ -51,7 +51,7 @@ export default function App() {
         <Route path="task-completed" element={<TaskCompleted />} />
       </Routes>
 
-      <ToastContainer position="top-right" autoClose={5000} theme="dark" />
+      <ToastContainer position="top-right" autoClose={4000} theme="dark" />
     </>
   );
 }
