@@ -45,7 +45,7 @@ export default function MainDashboard() {
               </Typography>
 
               <Typography variant="body1" color="success" textAlign={"center"}>
-                <PeopleIcon /> {user.firstName}
+                <PeopleIcon /> {user.firstName} - VIP2
               </Typography>
             </Stack>
           </Paper>
