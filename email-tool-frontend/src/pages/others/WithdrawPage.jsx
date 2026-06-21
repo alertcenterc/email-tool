@@ -99,7 +99,6 @@ export default function WithdrawPage() {
       >
         <Stack spacing={3}>
           <Box textAlign="center">
-            <AccountBalanceWalletIcon color="success" sx={{ fontSize: 72 }} />
 
             <Typography variant="h5" fontWeight="bold" mt={1}>
               Withdraw Your Money
