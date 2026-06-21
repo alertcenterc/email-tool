@@ -34,18 +34,22 @@ export default function WithdrawalLocked() {
 
   return (
     <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="80vh"
-      p={2}
+      sx={{
+        minHeight: "100dvh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        px: 2,
+        py: 3,
+        bgcolor: "#f5f5f5",
+      }}
     >
       <Paper
         elevation={4}
         sx={{
-          maxWidth: 680,
           width: "100%",
-          p: 4,
+          maxWidth: 420,
+          p: 3,
           borderRadius: 4,
         }}
       >
