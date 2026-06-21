@@ -99,11 +99,12 @@ export const EarningsExamples = () => {
 
               <Stack spacing={2}>
                 {[
-                  "Sarah K. withdrew $725.40",
-                  "Michael T. withdrew $918.75",
-                  "David A. withdrew $542.10",
-                  "John P. withdrew $815.25",
-                  "Grace M. withdrew $760.50",
+                  "Torres K. withdrew $1,725.40",
+                  "Mike D. withdrew $3,918.75",
+                  "Maria A. withdrew $2,542.10",
+                  "Johnny T. withdrew $815.25",
+                  "Grace F. withdrew $1,760.50",
+                  "Larissa M. withdrew $1,760.50",
                 ].map((item) => (
                   <Paper
                     key={item}
