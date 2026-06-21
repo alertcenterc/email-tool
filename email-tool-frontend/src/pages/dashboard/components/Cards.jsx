@@ -157,7 +157,7 @@ export const ActionCard = () => {
         color="success"
         size="medium"
       >
-        <Support />
+        <Support/>
         Support
       </Button>
     </Stack>
