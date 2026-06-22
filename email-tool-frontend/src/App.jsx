@@ -19,6 +19,8 @@ import MainDashboard from "./pages/dashboard/MainDashboard";
 import SignupCompleted from "./pages/auth/SignupCompleted";
 import WithdrawalLockedPaypal from "./pages/others/WithdrawalLockedPaypal";
 import LandingPage from "./pages/landingPage/LandingPage";
+import HowItWorksPage from "./pages/landingPage/HowItWorksPage";
+import FaqsPage from "./pages/landingPage/FaqsPage";
 
 export default function App() {
   return (
@@ -26,6 +28,9 @@ export default function App() {
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<LandingPage />} />
+        <Route path="/how-it-works" element={<HowItWorksPage />} />
+        <Route path="/faq-page" element={<FaqsPage />} />
+
         <Route path="/auth/signup" element={<SignUp />} />
         <Route path="/auth/signup-completed" element={<SignupCompleted />} />
 
@@ -43,7 +48,10 @@ export default function App() {
         <Route path="withdraw-method" element={<SelectWithdrawalMethod />} />
         <Route path="withdraw-page" element={<WithdrawPage />} />
         <Route path="withdraw-locked" element={<WithdrawalLocked />} />
-        <Route path="withdraw-locked-paypal" element={<WithdrawalLockedPaypal />} />
+        <Route
+          path="withdraw-locked-paypal"
+          element={<WithdrawalLockedPaypal />}
+        />
 
         {/* /admin/task pae */}
         <Route path="task-page" element={<TaskPage />} />

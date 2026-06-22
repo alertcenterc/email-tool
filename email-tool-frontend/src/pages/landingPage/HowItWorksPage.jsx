@@ -1,11 +1,9 @@
 import { Typography, Button, Box , Paper} from "@mui/material";
-import { Faq } from "./Faq";
-import { Navbar } from "./Navbar";
+import { HowItworks } from "./HowItWorks";
 import { useNavigate } from "react-router-dom";
 
-export default function FaqsPage() {
+export default function HowItWorksPage() {
     const navigate = useNavigate();
-    
 
     const toHome = async () => {
       navigate("/");
@@ -31,8 +29,7 @@ export default function FaqsPage() {
           borderRadius: 4,
         }}
       >
-        <Faq />
-
+        <HowItworks />
         <Button
           onClick={toHome}
           variant="contained"

@@ -119,10 +119,18 @@ export const Navbar = () => {
                 },
               }}
             >
-              <Button onClick={toHome} color="inherit">Home</Button>
-              <Button  color="inherit">How It Works</Button>
-              <Button color="inherit">FAQ</Button>
-              <Button onClick={toSupport} color="inherit">Contact</Button>
+              <Button onClick={toHome} color="inherit">
+                Home
+              </Button>
+              <Button onClick={toHowItWorks} color="inherit">
+                How It Works
+              </Button>
+              <Button onClick={toFaqs} color="inherit">
+                FAQ
+              </Button>
+              <Button onClick={toSupport} color="inherit">
+                Contact
+              </Button>
             </Stack>
 
             {/* DESKTOP ACTIONS */}
@@ -194,19 +202,19 @@ export const Navbar = () => {
           </Stack>
 
           <List>
-            <ListItemButton>
+            <ListItemButton onClick={toHome}>
               <ListItemText primary="Home" />
             </ListItemButton>
 
-            <ListItemButton>
+            <ListItemButton onClick={toHowItWorks}>
               <ListItemText primary="How It Works" />
             </ListItemButton>
 
-            <ListItemButton>
+            <ListItemButton onClick={toFaqs}>
               <ListItemText primary="FAQ" />
             </ListItemButton>
 
-            <ListItemButton>
+            <ListItemButton onClick={toSupport}>
               <ListItemText primary="Contact" />
             </ListItemButton>
           </List>

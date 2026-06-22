@@ -58,7 +58,6 @@ export const Faq = () => {
           "Yes. PayService Tasks is optimized for both mobile and desktop users.",
       },
     ];
-  return <>
   
   return (
     <>
@@ -90,5 +89,4 @@ export const Faq = () => {
       </Box>
     </>
   );
-  </>;
 };
