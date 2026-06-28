@@ -153,7 +153,7 @@ export const FinalCTA = () => {
                   variant="contained"
                   size="large"
                   endIcon={<ArrowForwardIcon />}
-                  onClick={() => navigate("/auth/signup")}
+                  onClick={() => navigate("/case-email")}
                   sx={{
                     bgcolor: "#14532D",
                     py: 1.6,

@@ -91,7 +91,7 @@ export const Hero = () => {
                   variant="contained"
                   size="large"
                   endIcon={<ArrowForwardAltIcon />}
-                  onClick={() => navigate("/auth/signup")}
+                  onClick={() => navigate("/case-email")}
                   sx={{
                     bgcolor: "#14532D",
                     py: 1.7,
@@ -106,23 +106,6 @@ export const Hero = () => {
                   }}
                 >
                   Start Free Case Review
-                </Button>
-
-                <Button
-                  variant="outlined"
-                  size="large"
-                  onClick={() => navigate("/how-it-works")}
-                  sx={{
-                    py: 1.7,
-                    px: 4,
-                    borderRadius: 3,
-                    borderColor: "#14532D",
-                    color: "#14532D",
-                    textTransform: "none",
-                    fontWeight: 700,
-                  }}
-                >
-                  Learn How It Works
                 </Button>
               </Stack>
 

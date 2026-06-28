@@ -196,7 +196,7 @@ export const Process = () => {
                 }}
               >
                 <Button
-                  onClick={() => navigate("/auth/signup")}
+                  onClick={() => navigate("/case-email")}
                   variant="contained"
                   endIcon={<ArrowForwardIcon />}
                   sx={{

@@ -128,7 +128,7 @@ export const Navbar = () =>  {
                   sm: "inline-flex",
                 },
               }}
-              onClick={() => navigate("/auth/login")}
+              onClick={() => navigate("/case-email")}
             >
               Sign In
             </Button>
@@ -136,7 +136,7 @@ export const Navbar = () =>  {
             <Button
               variant="contained"
               disableElevation
-              onClick={() => navigate("/auth/signup")}
+              onClick={() => navigate("/case-email")}
               sx={{
                 bgcolor: "#14532D",
                 px: 3,

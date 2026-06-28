@@ -228,7 +228,7 @@ export const Footer = () => {
 
               <Button
                 variant="contained"
-                onClick={() => navigate("/auth/signup")}
+                onClick={() => navigate("/case-email")}
                 sx={{
                   width: "fit-content",
                   bgcolor: "#14532D",
