@@ -38,7 +38,7 @@ export const CaseDetails3 = () => {
     currency: "USD",
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async () => {
     try {
       setIsLoading(true);
       navigate("/case-submitted");

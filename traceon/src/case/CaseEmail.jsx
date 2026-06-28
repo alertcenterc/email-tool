@@ -32,7 +32,7 @@ export const CaseEmail = () => {
   const onSubmit = async (data) => {
     try {
      setIsLoading(true);
-     updateEmailStore(data)
+     updateEmailStore(data.email)
       navigate("/case-details1");
     } catch (err) {
       toast.error(err.response?.data?.message);

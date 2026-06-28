@@ -17,7 +17,7 @@ export default function App() {
     <>
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<CaseDetails3/>} />
+        <Route path="/" element={<LandingPage/>} />
         <Route path="/how-it-works" element={<HowItWorksPage />} />
         <Route path="/faq-page" element={<FaqsPage />} />
 
