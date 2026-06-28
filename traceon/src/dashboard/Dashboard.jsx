@@ -17,10 +17,8 @@ export default function Dashboard() {
         }}
       >
         <Stack spacing={4}>
-          <WelcomeCard />
           <CaseOverviewCard/>
           <ActionsCard/>
-          <RecentActivityCard/>
         </Stack>
       </Container>
     </Box>

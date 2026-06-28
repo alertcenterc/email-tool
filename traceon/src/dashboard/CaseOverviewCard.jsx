@@ -12,8 +12,11 @@ import AssignmentRoundedIcon from "@mui/icons-material/AssignmentRounded";
 import ScheduleRoundedIcon from "@mui/icons-material/ScheduleRounded";
 import AccountBalanceWalletRoundedIcon from "@mui/icons-material/AccountBalanceWalletRounded";
 import CategoryRoundedIcon from "@mui/icons-material/CategoryRounded";
+import { dashboardStore } from "./dashboardStore";
 
 export default function CaseOverviewCard() {
+    // states
+  const updateEmailStore = dashboardStore((state) => state.progress);
   const progress = 68;
 
   return (
@@ -45,7 +48,7 @@ export default function CaseOverviewCard() {
             </Typography>
 
             <Typography variant="h5" fontWeight={800}>
-              TG-2026-00452
+             Case_Code-TG-2026-00452
             </Typography>
 
             <Chip
@@ -90,9 +93,9 @@ export default function CaseOverviewCard() {
             />
 
             <Typography color="text.secondary" lineHeight={1.8}>
-              Our AI engine has completed the initial transaction analysis and
-              is correlating blockchain activity with external intelligence
-              sources.
+              Our AI investigation engine is analyzing your submitted evidence,
+              transaction history, and blockchain activity. You'll receive
+              updates here as your investigation progresses.
             </Typography>
           </Stack>
         </Grid>
