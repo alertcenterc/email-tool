@@ -48,13 +48,13 @@ export default function DashboardNavbar() {
     {
       title: "Dashboard",
       icon: <DashboardRoundedIcon />,
-      path: "/dashboard",
+      path: "/case-dashboard",
     },
     
     {
       title: "Support",
       icon: <SupportAgentRoundedIcon />,
-      path: "/dashboard/support",
+      path: "/support",
     },
   ];
 

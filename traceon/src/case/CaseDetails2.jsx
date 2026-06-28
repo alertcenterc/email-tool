@@ -40,6 +40,7 @@ export const CaseDetails2 = () => {
 
   const onSubmit = async (data) => {
     if (files.length > 5) return toast.warning("Max 5 pictures allowed!");
+    if (files.length <= 0) return toast.warning("add atleast 1 image evidence");
     
     try {
       setIsLoading(true);
