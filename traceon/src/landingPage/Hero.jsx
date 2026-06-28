@@ -162,19 +162,7 @@ export const Hero = () => {
                   borderRadius: 4,
                 }}
               >
-                <Typography fontWeight={700} mb={2}>
-                  Investigation Status
-                </Typography>
-
-                <Stack spacing={2}>
-                  <Chip color="success" label="Case Submitted" />
-
-                  <Chip color="success" label="Blockchain Analysis" />
-
-                  <Chip color="success" label="Wallet Trace Complete" />
-
-                  <Chip color="warning" label="Expert Review In Progress" />
-                </Stack>
+               
               </Paper>
 
               <Paper
@@ -188,18 +176,6 @@ export const Hero = () => {
                   width: 250,
                 }}
               >
-                <Typography color="text.secondary" variant="body2">
-                  Investigation Confidence
-                </Typography>
-
-                <Typography fontWeight={800} color="#166534" fontSize="2rem">
-                  96%
-                </Typography>
-
-                <Typography color="text.secondary">
-                  AI has successfully mapped transaction relationships and
-                  generated supporting evidence for specialist review.
-                </Typography>
               </Paper>
             </Box>
           </Grid>
