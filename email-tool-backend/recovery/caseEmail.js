@@ -26,7 +26,7 @@ export const caseEmail = async (req, res) => {
 
       return res.status(200).json({
         success: true,
-        caseLevel: caseExist.caseData.caseLevel,
+        caseLevel: "/case-details1",
         message: "We Received Your Response, Please Continue.",
       });
     
