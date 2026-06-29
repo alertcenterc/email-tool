@@ -10,6 +10,7 @@ export const findCase = async ({ email }) => {
       scamType: true,
       amount: true,
       caseId: true,
+      caseLevel: true,
     },
   });
   // if unknown , return
