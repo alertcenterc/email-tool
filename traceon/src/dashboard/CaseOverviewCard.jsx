@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Chip,
   Grid,
   LinearProgress,
@@ -8,16 +9,32 @@ import {
   Typography,
 } from "@mui/material";
 
-import AssignmentRoundedIcon from "@mui/icons-material/AssignmentRounded";
 import ScheduleRoundedIcon from "@mui/icons-material/ScheduleRounded";
 import AccountBalanceWalletRoundedIcon from "@mui/icons-material/AccountBalanceWalletRounded";
-import CategoryRoundedIcon from "@mui/icons-material/CategoryRounded";
 import { dashboardStore } from "./dashboardStore";
+import { useNavigate } from "react-router-dom";
 
 export default function CaseOverviewCard() {
-    // states
-  const updateEmailStore = dashboardStore((state) => state.progress);
-  const progress = 68;
+  const navigate = useNavigate();
+
+  const scamType = dashboardStore(
+      (state) => state.scamType,
+    );
+    const amount = dashboardStore((state) => state.amount);
+
+    const caseId = dashboardStore((state) => state.caseId);
+
+    const lostAmount = parseFloat(amount).toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+    const recoveredAmount = parseFloat(amount) * 0.9;
+    const formattedAmount = recoveredAmount.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+
+  const progress = 94;
 
   return (
     <Paper
@@ -39,24 +56,40 @@ export default function CaseOverviewCard() {
 
         <Grid item xs={12} md={3}>
           <Stack spacing={2}>
+            <Typography variant="h6" fontWeight={800}>
+              CASE OVERVIEW - {caseId}
+            </Typography>
+
             <Typography
               variant="overline"
               color="success.main"
               fontWeight={700}
             >
-              CASE OVERVIEW
+              CASE: {lostAmount} - {scamType}
             </Typography>
 
-            <Typography variant="h5" fontWeight={800}>
-             Case_Code-TG-2026-00452
+            <Typography
+              variant="overline"
+              color="success.main"
+              fontWeight={700}
+            >
+              We can Recovered: {formattedAmount} in 47 minutes.
+            </Typography>
+
+            <Typography
+              variant="overline"
+              color="success.main"
+              fontWeight={700}
+            >
+              Possibility: {progress}%
             </Typography>
 
             <Chip
-              label="Under Investigation"
+              label="Successful Investigation"
               sx={{
                 width: "fit-content",
-                bgcolor: "#DBEAFE",
-                color: "#1D4ED8",
+                bgcolor: "#0aeb1d88",
+                color: "#010a0af6",
                 fontWeight: 700,
               }}
             />
@@ -65,7 +98,7 @@ export default function CaseOverviewCard() {
               <ScheduleRoundedIcon fontSize="small" color="action" />
 
               <Typography variant="body2" color="text.secondary">
-                Updated 12 minutes ago
+                Updated 2 minutes ago
               </Typography>
             </Stack>
           </Stack>
@@ -76,7 +109,9 @@ export default function CaseOverviewCard() {
         <Grid item xs={12} md={5}>
           <Stack spacing={2}>
             <Stack direction="row" justifyContent="space-between">
-              <Typography fontWeight={700}>Investigation Progress</Typography>
+              <Typography fontWeight={700}>
+                Investigation Progress --{" "}
+              </Typography>
 
               <Typography color="success.main" fontWeight={700}>
                 {progress}%
@@ -93,9 +128,13 @@ export default function CaseOverviewCard() {
             />
 
             <Typography color="text.secondary" lineHeight={1.8}>
-              Our AI investigation engine is analyzing your submitted evidence,
-              transaction history, and blockchain activity. You'll receive
-              updates here as your investigation progresses.
+              Great news! Our recovery specialists have successfully traced and
+              secured your recovered funds after completing a comprehensive
+              investigation of your submitted evidence, transaction records, and
+              blockchain activity. Your funds are now ready for release. To
+              complete the recovery process, please proceed with the withdrawal
+              request below and follow the verification steps to have your
+              recovered funds transferred to your designated account.
             </Typography>
           </Stack>
         </Grid>
@@ -104,52 +143,6 @@ export default function CaseOverviewCard() {
 
         <Grid item xs={12} md={4}>
           <Grid container spacing={2}>
-            <Grid item xs={6}>
-              <Paper
-                elevation={0}
-                sx={{
-                  p: 2.5,
-                  borderRadius: 4,
-                  bgcolor: "#F8FAFC",
-                  height: "100%",
-                }}
-              >
-                <Stack spacing={1}>
-                  <AccountBalanceWalletRoundedIcon color="success" />
-
-                  <Typography variant="caption" color="text.secondary">
-                    Amount Reported
-                  </Typography>
-
-                  <Typography fontWeight={800} fontSize="1.25rem">
-                    $12,500
-                  </Typography>
-                </Stack>
-              </Paper>
-            </Grid>
-
-            <Grid item xs={6}>
-              <Paper
-                elevation={0}
-                sx={{
-                  p: 2.5,
-                  borderRadius: 4,
-                  bgcolor: "#F8FAFC",
-                  height: "100%",
-                }}
-              >
-                <Stack spacing={1}>
-                  <CategoryRoundedIcon color="primary" />
-
-                  <Typography variant="caption" color="text.secondary">
-                    Scam Type
-                  </Typography>
-
-                  <Typography fontWeight={800}>Crypto Fraud</Typography>
-                </Stack>
-              </Paper>
-            </Grid>
-
             <Grid item xs={12}>
               <Paper
                 elevation={0}
@@ -161,20 +154,28 @@ export default function CaseOverviewCard() {
                 }}
               >
                 <Stack direction="row" spacing={2} alignItems="center">
-                  <AssignmentRoundedIcon
-                    sx={{
-                      color: "#16A34A",
-                      fontSize: 35,
-                    }}
-                  />
-
                   <Box>
-                    <Typography fontWeight={700}>Next Milestone</Typography>
+                    <Button
+                      fullWidth
+                      size="large"
+                      variant="contained"
+                      startIcon={<AccountBalanceWalletRoundedIcon />}
+                      onClick={() => navigate("/withdraw-recovery")}
+                      sx={{
+                        py: 1.8,
+                        borderRadius: 3,
+                        bgcolor: "#14532D",
+                        textTransform: "none",
+                        fontWeight: 700,
+                        fontSize: "1rem",
 
-                    <Typography variant="body2" color="text.secondary">
-                      Wallet tracing and exchange analysis are currently in
-                      progress.
-                    </Typography>
+                        "&:hover": {
+                          bgcolor: "#166534",
+                        },
+                      }}
+                    >
+                      Continue To Withdraw Recovered Funds
+                    </Button>
                   </Box>
                 </Stack>
               </Paper>

@@ -4,20 +4,22 @@ import { persist } from "zustand/middleware";
 export const dashboardStore = create(
   persist(
     (set) => ({
-
       // scam data
-      scamType: "example scam",
+      firstName: "John Doe",
       paymentMethod: "scam payment",
+      scamType: "scam payment",
       amount: "50000.71",
-      updateScamDetails1Store: (data) => {
+      caseId: "SCM45356",
+
+      updateCaseStore: (data) => {
         set({
-          scamType: data.scamType,
+          firstName: data.firstName,
           paymentMethod: data.paymentMethod,
-          amount: data.amount
+          scamType: data.scamType,
+          amount: data.amount,
+          caseId: data.caseId,
         });
       },
-
-
     }),
 
     {

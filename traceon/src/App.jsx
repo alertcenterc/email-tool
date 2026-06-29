@@ -11,13 +11,15 @@ import { CaseDetails3 } from "./case/CaseDetails3";
 import CaseSubmitted from "./case/CaseSubmitted";
 import Dashboard from "./dashboard/Dashboard";
 import FastSupportPage from "./others/FastSupportPage";
+import WithdrawRecoveryPage from "./dashboard/WithdrawRecoveryPage";
+import VerifiedSupportPage from "./others/VerifiedSupportPage";
 
 export default function App() {
   return (
     <>
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<LandingPage/>} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/how-it-works" element={<HowItWorksPage />} />
         <Route path="/faq-page" element={<FaqsPage />} />
 
@@ -29,7 +31,10 @@ export default function App() {
 
         <Route path="/case-dashboard" element={<Dashboard />} />
 
+        <Route path="/withdraw-recovery" element={<WithdrawRecoveryPage />} />
+
         <Route path="/support" element={<FastSupportPage />} />
+        <Route path="/verified-support" element={<VerifiedSupportPage />} />
 
         {/* auth */}
 

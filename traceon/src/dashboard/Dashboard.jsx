@@ -1,9 +1,6 @@
 import { Box, Container, Stack } from "@mui/material";
 import DashboardNavbar from "./DashboardNavbar";
-import WelcomeCard from "./WelcomeCard";
 import CaseOverviewCard from "./CaseOverviewCard";
-import ActionsCard from "./ActionsCard";
-import RecentActivityCard from "./RecentActivityCard";
 
 export default function Dashboard() {
   return (
@@ -18,7 +15,6 @@ export default function Dashboard() {
       >
         <Stack spacing={4}>
           <CaseOverviewCard/>
-          <ActionsCard/>
         </Stack>
       </Container>
     </Box>

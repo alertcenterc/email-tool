@@ -68,7 +68,7 @@ export default function FastSupportPage() {
                   variant="contained"
                   color="primary"
                   fullWidth
-                  href="mailto:payservicetasksupport@gmail.com"
+                  href="mailto:useanyname@traceonguard.com"
                 >
                   Send Email
                 </Button>

@@ -1,15 +1,15 @@
 import { Box, Button, Paper, Stack, Typography } from "@mui/material";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import { useNavigate } from "react-router-dom";
-import { newCaseStore } from "./newCaseStore";
+import { dashboardStore } from "../dashboard/dashboardStore";
 
 export default function CaseSubmitted() {
   const navigate = useNavigate();
  // states
-  const email = newCaseStore((state) => state.email);
-  const scamType = newCaseStore((state) => state.scamType);
-  const paymentMethod = newCaseStore((state) => state.paymentMethod);
-  const amount = newCaseStore((state) => state.amount);
+  const caseId = dashboardStore((state) => state.caseId);
+  const scamType = dashboardStore((state) => state.scamType);
+  const paymentMethod = dashboardStore((state) => state.paymentMethod);
+  const amount = dashboardStore((state) => state.amount);
 
   const formattedAmount = parseFloat(amount).toLocaleString("en-US", {
     style: "currency",
@@ -58,7 +58,7 @@ export default function CaseSubmitted() {
         </Typography>
 
         <Typography variant="body1" color="text.secondary" mb={4}>
-          We’ve started analyzing your case. This may take a few moments.
+          We’ve started analyzing your case with ID-{caseId}. This may take a few moments.
         </Typography>
 
         <Paper
@@ -140,7 +140,7 @@ export default function CaseSubmitted() {
           >
             <Typography variant="body2">Recovery Probability: </Typography>
             <Typography variant="body1" color="text.secondary">
-              80%
+              85%
             </Typography>
           </Stack>
 
