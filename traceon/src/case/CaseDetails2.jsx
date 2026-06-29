@@ -54,22 +54,11 @@ export const CaseDetails2 = () => {
         formData.append("email", email);
 
         // images appending
-        files.forEach((image, index) => {
-          formData.append("images", {
-            uri: image.uri,
-            name: image.fileName || `image_${index}.jpg`,
-            type: image.mimeType || "image/jpeg",
-          });
+        files.forEach((file) => {
+          formData.append("images", file, file.name);
         });
 
-        // post to endpoint
-        const headers = formData.getHeaders
-          ? formData.getHeaders()
-          : { "Content-Type": "multipart/form-data" };
-
-        const response = await api.post("/case/details-2", formData, {
-          headers,
-        });
+        const response = await api.post("/case/details-2", formData);
         const { success, message } = response.data;
 
         if (!success)
