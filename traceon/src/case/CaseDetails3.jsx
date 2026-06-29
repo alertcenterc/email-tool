@@ -15,6 +15,8 @@ import {
   Stack,
 } from "@mui/material";
 import { SpinnerLoading } from "../components/SpinnerLoading";
+import api from "../../utils/axios";
+import { dashboardStore } from "../dashboard/dashboardStore";
 
 export const CaseDetails3 = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -33,21 +35,39 @@ export const CaseDetails3 = () => {
   const paymentMethod = newCaseStore((state) => state.paymentMethod);
   const amount = newCaseStore((state) => state.amount);
 
+  const updateCaseStore = dashboardStore((state) => state.updateCaseStore);
+
   const formattedAmount = parseFloat(amount).toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
   });
 
-  const onSubmit = async () => {
-    try {
-      setIsLoading(true);
-      navigate("/case-submitted");
-    } catch (err) {
-      toast.error(err.response?.data?.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+   const onSubmit = async (data) => {
+      try {
+        setIsLoading(true);
+        const response = await api.post("/case/details-3", {
+          email,
+          firstName: data.firstName,
+          lastName: data.lastName,
+        });
+  
+        const { success, message } = response.data;
+  
+        if (!success) return toast.error(message || "Failed, please try again.");
+  
+        toast.success(message);
+  
+        updateCaseStore(response.data.user);
+
+        navigate("/case-submitted");
+  
+      } catch (err) {
+        toast.error(err.response?.data?.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
 
   return (
     <Box

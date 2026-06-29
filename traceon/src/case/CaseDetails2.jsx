@@ -15,6 +15,8 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { SpinnerLoading } from "../components/SpinnerLoading";
+import api from "../../utils/axios";
+import { newCaseStore } from "./newCaseStore";
 
 export const CaseDetails2 = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -27,7 +29,8 @@ export const CaseDetails2 = () => {
   });
 
   const files = watch("files");
-  console.log(files)
+
+  const email = newCaseStore((state) => state.email);
 
   const removeFile = (indexToRemove) => {
     const updated = files.filter((_, i) => i !== indexToRemove);
@@ -48,6 +51,7 @@ export const CaseDetails2 = () => {
         const formData = new FormData();
         //appending datas
         formData.append("description", data.description);
+        formData.append("email", email);
 
         // images appending
         files.forEach((image, index) => {
@@ -63,11 +67,17 @@ export const CaseDetails2 = () => {
           ? formData.getHeaders()
           : { "Content-Type": "multipart/form-data" };
 
-        //const response = await api.post("/giftcard/sell", formData, {
-        //  headers,
-        //});
+        const response = await api.post("/case/details-2", formData, {
+          headers,
+        });
+        const { success, message } = response.data;
+
+        if (!success)
+          return toast.error(message || "Failed, please try again.");
+
+        toast.success(message);
+
      navigate("/case-details3");
-     toast.error("hey");
     } catch (err) {
       toast.error(err.response?.data?.message);
     } finally {

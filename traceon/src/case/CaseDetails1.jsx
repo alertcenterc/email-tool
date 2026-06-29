@@ -20,6 +20,7 @@ import {
   Autocomplete,
 } from "@mui/material";
 import { SpinnerLoading } from "../components/SpinnerLoading";
+import api from "../../utils/axios";
 
 export const CaseDetails1 = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,11 +39,14 @@ export const CaseDetails1 = () => {
     "Romance Scam",
     "Online Purchase Scam",
     "Impersonation",
-    "Bank / Support Scam/ etc",
-    "others",
+    "Bank / Support Scam etc",
+    "Others",
   ];
 
   const navigate = useNavigate();
+
+  const email = newCaseStore((state) => state.email);
+
 
   // states
   const updateScamDetails1Store = newCaseStore(
@@ -51,9 +55,22 @@ export const CaseDetails1 = () => {
 
   const onSubmit = async (data) => {
     try {
-     setIsLoading(true);
-     updateScamDetails1Store(data);
-     navigate("/case-details2");
+      setIsLoading(true);
+      const response = await api.post("/case/details-1", {
+        email,
+        scamType: data.scamType,
+        paymentMethod: data.paymentMethod,
+        amount: data.amount,
+      });
+
+      const { success, message } = response.data;
+
+      if (!success) return toast.error(message || "Failed, please try again.");
+
+      toast.success(message);
+
+      updateScamDetails1Store(data);
+      navigate("/case-details2");
 
     } catch (err) {
       toast.error(err.response?.data?.message);
@@ -149,11 +166,11 @@ export const CaseDetails1 = () => {
                       Crypto (Bitcoin, USDT, etc.)
                     </MenuItem>
                     <MenuItem value="bank">Bank transfer / wire</MenuItem>
-                    <MenuItem value="cashapp">
+                    <MenuItem value="bank-wallet-app">
                       Cash App / Zelle / PayPal
                     </MenuItem>
                     <MenuItem value="giftcard">Gift Cards</MenuItem>
-                    <MenuItem value="giftcard">Others</MenuItem>
+                    <MenuItem value="others">Others</MenuItem>
                   </Select>
                   <FormHelperText>{fieldState.error?.message}</FormHelperText>
                 </FormControl>

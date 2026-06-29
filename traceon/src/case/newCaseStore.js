@@ -17,6 +17,7 @@ export const newCaseStore = create(
       scamType: "example scam",
       paymentMethod: "scam payment",
       amount: "50000.71",
+      
       updateScamDetails1Store: (data) => {
         set({
           scamType: data.scamType,
