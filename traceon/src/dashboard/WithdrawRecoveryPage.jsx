@@ -149,7 +149,6 @@ export default function WithdrawRecoveryPage() {
                 <Stack spacing={3}>
                   <Stack
                     direction="row"
-                    spacing={3}
                     justifyContent="space-between"
                   >
                     <Typography>Amount Lost:</Typography>
@@ -162,14 +161,12 @@ export default function WithdrawRecoveryPage() {
                   <Stack
                     direction="row"
                     justifyContent="space-between"
-                    spacing={3}
                   >
-                    <Typography variant="h6" fontWeight={700}>
+                    <Typography fontWeight={700}>
                       Investigation Service Fee (10%):
                     </Typography>
 
                     <Typography
-                      variant="h5"
                       fontWeight={800}
                       color="success.main"
                     >
