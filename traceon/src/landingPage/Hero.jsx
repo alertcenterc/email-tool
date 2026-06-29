@@ -4,7 +4,6 @@ import {
   Chip,
   Container,
   Grid,
-  Paper,
   Stack,
   Typography,
 } from "@mui/material";
@@ -150,33 +149,6 @@ export const Hero = () => {
                   objectFit: "contain",
                 }}
               />
-
-              <Paper
-                elevation={8}
-                sx={{
-                  position: "absolute",
-                  top: 20,
-                  right: 0,
-                  p: 3,
-                  width: 270,
-                  borderRadius: 4,
-                }}
-              >
-               
-              </Paper>
-
-              <Paper
-                elevation={8}
-                sx={{
-                  position: "absolute",
-                  bottom: 40,
-                  left: -20,
-                  p: 3,
-                  borderRadius: 4,
-                  width: 250,
-                }}
-              >
-              </Paper>
             </Box>
           </Grid>
         </Grid>
