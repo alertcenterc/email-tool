@@ -92,6 +92,9 @@ model Case {
 
   caseId  String   @default("unavailable")
 
+  caseLevel  String   @default("/case-details1")
+
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

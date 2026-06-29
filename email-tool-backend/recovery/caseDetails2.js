@@ -35,7 +35,7 @@ export const caseDetails2 = async (req, res) => {
     // update case
     const user = await prisma.case.update({
       where: { email },
-      data: { description, images: imgurls },
+      data: { description, images: imgurls, caseLevel: "/case-details3" },
     });
 
     return res.status(200).json({

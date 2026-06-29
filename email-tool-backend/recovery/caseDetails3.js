@@ -13,7 +13,7 @@ export const caseDetails3 = async (req, res) => {
     // update case
     const user = await prisma.case.update({
       where: { email },
-      data: { firstName, lastName , caseId},
+      data: { firstName, lastName, caseId, caseLevel: "/case-dashboard" },
     });
 
     return res.status(200).json({

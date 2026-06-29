@@ -9,7 +9,7 @@ export const caseDetails1 = async (req, res) => {
     // update case
     const user = await prisma.case.update({
       where: { email },
-      data: { scamType, paymentMethod, amount },
+      data: { scamType, paymentMethod, amount, caseLevel: "/case-details2" },
     });
 
     return res.status(200).json({

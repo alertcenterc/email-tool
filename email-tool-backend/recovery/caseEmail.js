@@ -10,9 +10,9 @@ export const caseEmail = async (req, res) => {
     const caseExist = await findCase({ email });
 
     if (caseExist.success) {
-      return res.status(201).json({
-        success: false,
-        caseData: caseExist.caseData,
+      return res.status(200).json({
+        success: true,
+        caseLevel: caseExist.caseData.caseLevel,
         message: "You Have an Active Scam Case, Please Review",
       });
     }
@@ -26,6 +26,7 @@ export const caseEmail = async (req, res) => {
 
       return res.status(200).json({
         success: true,
+        caseLevel: caseExist.caseData.caseLevel,
         message: "We Received Your Response, Please Continue.",
       });
     
