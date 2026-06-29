@@ -28,7 +28,7 @@ router.post(
 
 router.post(
   "/case/details-2",
-  upload.array("images", 10), // 1️⃣ Multer parses multipart form (images + fields)
+  upload.array("images", 5), // 1️⃣ Multer parses multipart form (images + fields)
   validate(caseDetails2Schema), // 2️⃣ Validate fields from req.body
   uploadRateLimiter, // 4️⃣ Optional: throttle abuse
   validateImages, // 5️⃣ Optional: validate image count, type, size

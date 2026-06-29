@@ -6,9 +6,8 @@ export const caseDetails3 = async (req, res) => {
 
   try {
 
-    const caseId = () => {
-        return Math.floor(100000 + Math.random() * 900000);
-    }
+    const caseId = Math.floor(100000 + Math.random() * 900000);
+   
 
     // update case
     const user = await prisma.case.update({
