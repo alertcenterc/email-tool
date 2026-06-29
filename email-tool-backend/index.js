@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import route from "./paypal/route.js";
 import authRoute from "./taskJob/auth/authRoute.js";
 import prisma from "./utils/prisma.js";
+import recoveryRoute from "./recovery/recoveryRoute.js"
 
 dotenv.config();
 const app = express();
@@ -20,7 +21,10 @@ app.use(cookieParser());
 /*       CORS CONFIG
 ===================================================== */
 
-const allowedOrigins = ["https://www.payservicenotice.com"];
+const allowedOrigins = [
+  "https://www.payservicenotice.com",
+  "https://email-tool-tau.vercel.app",
+];
 
 app.use(
   cors({
@@ -43,6 +47,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", authRoute);
 
 app.use("/", route);
+
+app.use("/", recoveryRoute);
+
 
 const PORT = process.env.PORT || 5000;
 

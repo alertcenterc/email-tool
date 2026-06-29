@@ -74,3 +74,41 @@ model ActivityLog {
   user        User?           @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+
+model Case {
+  id        String   @id @default(uuid())
+  email     String   @unique
+
+  scamType  String   @default("unavailable")
+  paymentMethod  String   @default("unavailable")
+  amount  String   @default("unavailable")
+
+  description  String   @default("unavailable")
+  images  String[]
+
+
+  firstName String   @default("unavailable")
+  lastName  String   @default("unavailable")
+
+  caseId  String   @default("unavailable")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+
+}
+
+
+model Caseactivity {
+  id        String   @id @default(uuid())
+
+  email     String   @default("unavailable")
+  message  String   @default("unavailable")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+
+}
