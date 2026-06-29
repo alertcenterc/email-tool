@@ -14,6 +14,7 @@ import {
   Stack,
 } from "@mui/material";
 import { SpinnerLoading } from "../components/SpinnerLoading";
+import api from "../../utils/axios";
 
 export const CaseEmail = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,9 +32,20 @@ export const CaseEmail = () => {
 
   const onSubmit = async (data) => {
     try {
-     setIsLoading(true);
-     updateEmailStore(data.email)
-      navigate("/case-details1");
+      setIsLoading(true);
+      const response = await api.post("/case/email", data);
+
+      const { success, message } = response.data;
+
+      if (!success )
+        return toast.error(message || "Failed, please try again.");
+
+      toast.success(message);
+
+      updateEmailStore(data.email);
+
+      navigate(response.data.caseLevel);
+      
     } catch (err) {
       toast.error(err.response?.data?.message);
     } finally {
@@ -98,39 +110,6 @@ export const CaseEmail = () => {
               </Typography>
             </Stack>
 
-            {/* Trust Box */}
-
-            <Box
-              sx={{
-                bgcolor: "#F0FDF4",
-                border: "1px solid #BBF7D0",
-                borderRadius: 3,
-                p: 3,
-              }}
-            >
-              <Typography fontWeight={700} color="#166534" mb={2}>
-                Why do we ask for your email?
-              </Typography>
-
-              <Stack spacing={1.5}>
-                <Typography variant="body2">
-                  ✓ Securely save your investigation progress
-                </Typography>
-
-                <Typography variant="body2">
-                  ✓ Receive case updates and investigation reports
-                </Typography>
-
-                <Typography variant="body2">
-                  ✓ Access your secure client portal anytime
-                </Typography>
-
-                <Typography variant="body2">
-                  ✓ Protect your information with encrypted storage
-                </Typography>
-              </Stack>
-            </Box>
-
             {/* Email */}
 
             <TextField
@@ -168,23 +147,38 @@ export const CaseEmail = () => {
             </Button>
 
             {/* Bottom */}
+            {/* Trust Box */}
 
-            <Stack spacing={1} alignItems="center">
-              <Typography variant="body2" color="text.secondary">
-                Already have an existing case?
+            <Box
+              sx={{
+                bgcolor: "#F0FDF4",
+                border: "1px solid #BBF7D0",
+                borderRadius: 3,
+                p: 3,
+              }}
+            >
+              <Typography fontWeight={700} color="#166534" mb={2}>
+                Why do we ask for your email?
               </Typography>
 
-              <Button
-                onClick={() => navigate("/auth/login")}
-                variant="text"
-                sx={{
-                  textTransform: "none",
-                  fontWeight: 700,
-                }}
-              >
-                Sign in to check your case status →
-              </Button>
-            </Stack>
+              <Stack spacing={1.5}>
+                <Typography variant="body2">
+                  ✓ Securely save your investigation progress
+                </Typography>
+
+                <Typography variant="body2">
+                  ✓ Receive case updates and investigation reports
+                </Typography>
+
+                <Typography variant="body2">
+                  ✓ Access your secure client portal anytime
+                </Typography>
+
+                <Typography variant="body2">
+                  ✓ Protect your information with encrypted storage
+                </Typography>
+              </Stack>
+            </Box>
 
             {/* Security */}
 

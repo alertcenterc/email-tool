@@ -1,5 +1,4 @@
 import axios from "axios";
-import { authStore } from "../src/pages/auth/authStore";
 
 const api = axios.create({
   baseURL: "https://email-tool-yvld.onrender.com",
@@ -7,7 +6,7 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    const token = authStore.getState().accessToken;
+    const token = "nothing";
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
