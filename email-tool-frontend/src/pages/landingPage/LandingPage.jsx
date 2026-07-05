@@ -1,6 +1,10 @@
 import {
   Box,
-  
+  Button,
+  Paper,
+  Stack,
+  Toolbar,
+  Typography,
 } from "@mui/material";
 
 import { Navbar } from "./Navbar";
@@ -19,7 +23,6 @@ export default function LandingPage() {
   
   return (
     <Box bgcolor="#F8FAFC">
-      
       <Navbar />
       <Hero/>
       <Stats/>
