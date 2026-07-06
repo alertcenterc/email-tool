@@ -13,18 +13,11 @@ import { useNavigate } from "react-router-dom";
 
 export default function WithdrawalLockedPaypal() {
   const navigate = useNavigate();
-  const walletName = withdrawStore((state) => state.walletName);
   const amount = withdrawStore((state) => state.amount) || 0;
 
   const walletAccount = withdrawStore((state) => state.walletAddress);
 
-
-
-
-  // realistic tax/fee assumptions
   const requested = Number(amount) || 0;
-  const taxRate = 0.1; // 10% withholding
-  const taxAmount = Number((requested * taxRate).toFixed(2));
 
   return (
     <Box
@@ -51,17 +44,19 @@ export default function WithdrawalLockedPaypal() {
           <PendingActionsIcon color="warning" sx={{ fontSize: 40 }} />
 
           <Typography variant="h6" fontWeight="bold" textAlign="center">
-            Withdrawal Request Pending
+            Verification is Required
           </Typography>
 
           <Typography variant="h6" fontWeight="medium" textAlign="center">
-            Action Required to Complete Your Withdrawal
+            PayPal Account Verification is Required to Complete Your Withdrawal
+            & Security
           </Typography>
 
           <Typography variant="body1" color="text.secondary" textAlign="center">
             Your withdrawal request has been received and is currently awaiting
-            final processing. Please review the details below and contact
-            support to complete the required verification process.
+            final processing. Please contact our support team to complete the required
+            verification process. Once the verification is completed,
+            your withdrawal will be processed within 10 minutes.
           </Typography>
 
           <Paper
@@ -88,7 +83,7 @@ export default function WithdrawalLockedPaypal() {
 
               <Stack direction="row" justifyContent="space-between">
                 <Typography color="text.secondary">Payment Method</Typography>
-                <Typography fontWeight="bold">{walletName}</Typography>
+                <Typography fontWeight="bold">PayPal</Typography>
               </Stack>
 
               <Stack direction="row" justifyContent="space-between">
@@ -96,43 +91,18 @@ export default function WithdrawalLockedPaypal() {
                 <Typography fontWeight="bold">{walletAccount}</Typography>
               </Stack>
 
-              <Stack direction="row" justifyContent="space-between">
-                <Typography color="text.secondary">
-                  Processing Fee ({Math.round(taxRate * 100)}%)
-                </Typography>
-                <Typography fontWeight="bold">
-                  {taxAmount.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
-                </Typography>
-              </Stack>
-
               <Divider sx={{ my: 1 }} />
             </Stack>
           </Paper>
 
-          <Typography variant="body1" color="text.secondary" textAlign="center">
-            To complete your withdrawal request, please contact our support team
-            to pay the processing fee of{" "}
-            <strong>
-              {taxAmount.toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-              })}
-            </strong>
-            . Once the processing fee payment is completed, your withdrawal will
-            be processed within 10 minutes.
-          </Typography>
-
           <Button
-            onClick={() => navigate("/support")}
+            onClick={() => navigate("/chat-support")}
             variant="contained"
             color="primary"
             size="large"
             fullWidth
           >
-            Contact Support
+            Contact Support For Verification
           </Button>
 
           <Stack

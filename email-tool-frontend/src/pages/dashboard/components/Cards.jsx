@@ -132,7 +132,7 @@ export const ActionCard = () => {
       alignItems={"center"}
     >
       <Button
-        onClick={() => navigate("/withdraw-method")}
+        onClick={() => navigate("/withdraw-page")}
         variant="contained"
         color="success"
         size="medium"

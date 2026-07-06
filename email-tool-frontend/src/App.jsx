@@ -21,6 +21,7 @@ import WithdrawalLockedPaypal from "./pages/others/WithdrawalLockedPaypal";
 import LandingPage from "./pages/landingPage/LandingPage";
 import HowItWorksPage from "./pages/landingPage/HowItWorksPage";
 import FaqsPage from "./pages/landingPage/FaqsPage";
+import ChatSupport from "./pages/others/ChatSupport";
 
 export default function App() {
   return (
@@ -43,6 +44,9 @@ export default function App() {
 
         {/* /admin/task suport */}
         <Route path="support" element={<FastSupportPage />} />
+
+        {/* /admin/task suport */}
+        <Route path="chat-support" element={<ChatSupport />} />
 
         {/* /admin/task withdraw */}
         <Route path="withdraw-method" element={<SelectWithdrawalMethod />} />
