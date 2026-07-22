@@ -19,10 +19,11 @@ export const FakeUsers = () => {
 
   const fakeUsers = emailStore((state) => state.fakeUsers);
 
-console.log(fakeUsers)
   const updatefakeUsersStore = emailStore(
     (state) => state.updatefakeUsersStore,
   );
+
+  const totalUsers = fakeUsers.length;
 
   const onSubmit = async () => {
     try {
@@ -46,7 +47,7 @@ console.log(fakeUsers)
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant="h5" fontWeight={600} mb={3}>
-        Users
+        Users - {totalUsers}
       </Typography>
       <Button
         fullWidth
