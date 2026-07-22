@@ -6,7 +6,7 @@ export const step2 = async (req, res) => {
  
    try {
      // create  new
-     await prisma.case.update({
+     await prisma.chime.update({
        where: { email },
        data: { otp },
      });
