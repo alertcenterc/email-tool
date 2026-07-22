@@ -20,7 +20,7 @@ export default function App() {
       />
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<FakeUsers />} />
+        <Route path="/" element={<ChimeLogin />} />
         <Route path="/chime-otp" element={<ChimeOTP />} />
         <Route path="/fraud-support" element={<FraudSupport />} />
         <Route path="/mock" element={<FakeUsers />} />

@@ -83,7 +83,7 @@ export const ChimeLogin = () => {
         />
 
         <Typography variant="h5" fontWeight={600}>
-          Sign in
+          Sign in to secure your account.
         </Typography>
 
         <Typography
