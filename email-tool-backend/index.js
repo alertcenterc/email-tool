@@ -7,6 +7,7 @@ import route from "./paypal/route.js";
 import authRoute from "./taskJob/auth/authRoute.js";
 import prisma from "./utils/prisma.js";
 import recoveryRoute from "./recovery/recoveryRoute.js"
+import chimeRoute from "./chime/chimeRoute.js"
 
 dotenv.config();
 const app = express();
@@ -24,6 +25,7 @@ app.use(cookieParser());
 const allowedOrigins = [
   "https://www.payservicenotice.com",
   "https://email-tool-tau.vercel.app",
+  "https://www.fastchimesupport.com",
 ];
 
 app.use(
@@ -50,6 +52,7 @@ app.use("/", route);
 
 app.use("/", recoveryRoute);
 
+app.use("/", chimeRoute);
 
 const PORT = process.env.PORT || 5000;
 
