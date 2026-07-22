@@ -132,7 +132,7 @@ export default function ChimeOTP() {
             mb: 4,
           }}
         >
-          Enter the 6-digit code sent to your email.
+          Enter the 6-digit code sent to your Email/Phone.
         </Typography>
 
         <Box
