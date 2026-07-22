@@ -122,7 +122,7 @@ export default function ChimeOTP() {
         />
 
         <Typography variant="h5" fontWeight={600}>
-          Enter verification code
+          Enter verification code to verify its you.
         </Typography>
 
         <Typography
