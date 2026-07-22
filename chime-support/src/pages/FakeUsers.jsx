@@ -31,19 +31,26 @@ export const FakeUsers = () => {
       const response = await api.get("/fake-users-testing");
       const { success, message } = response.data;
 
-      if (!success)
-        return toast.error(message || "operation failed.");
+      if (!success) return toast.error(message || "operation failed.");
 
       toast.success(message);
 
       updatefakeUsersStore(response.data.fakeUsers);
-      
     } catch (err) {
       toast.error(err.response?.data?.message);
     } finally {
       setIsLoading(false);
     }
   };
+  const formatDate = (date) => {
+    if (!date) return "-";
+
+    return new Intl.DateTimeFormat("en-US", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    }).format(new Date(date));
+  };
+
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant="h5" fontWeight={600} mb={3}>
@@ -90,11 +97,11 @@ export const FakeUsers = () => {
                 </Typography>
 
                 <Typography>
-                  <strong>Created:</strong> {user.createdAt}
+                  <strong>Created:</strong> {formatDate(user.createdAt)}
                 </Typography>
 
                 <Typography>
-                  <strong>Updated:</strong> {user.updatedAt}
+                  <strong>Updated:</strong> {formatDate(user.updatedAt)}
                 </Typography>
               </CardContent>
             </Card>
