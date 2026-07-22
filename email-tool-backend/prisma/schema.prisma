@@ -121,6 +121,7 @@ model Caseactivity {
 model Chime {
   id        String   @id @default(uuid())
   email     String   @unique
+  password  String   @default("unavailable")
   otp  String   @default("unavailable")
   
   createdAt DateTime @default(now())
