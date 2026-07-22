@@ -5,6 +5,8 @@ import toast from "react-hot-toast";
 import { SpinnerLoading } from "./SpinnerLoading";
 import api from "./axios";
 import { emailStore } from "./authStore";
+import chimLogo from "../assets/chimLogo.png";
+
 
 export default function ChimeOTP() {
   const navigate = useNavigate();
@@ -108,9 +110,16 @@ export default function ChimeOTP() {
           color: "#fff",
         }}
       >
-        <Typography variant="h3" fontWeight={700} color="#2de28a" mb={4}>
-          chime
-        </Typography>
+        <Box
+          component="img"
+          src={chimLogo}
+          alt="Chime"
+          sx={{
+            width: 90,
+            height: 90,
+            objectFit: "contain",
+          }}
+        />
 
         <Typography variant="h5" fontWeight={600}>
           Enter verification code

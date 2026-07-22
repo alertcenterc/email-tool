@@ -3,6 +3,8 @@ import { Box, Typography, Button, Link, Stack, Divider, Paper } from "@mui/mater
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import { emailStore } from "./authStore";
+import chimLogo from "../assets/chimLogo.png";
+
 
 export default function FraudSupport() {
   // 🔹 Load Tawk script
@@ -48,9 +50,16 @@ export default function FraudSupport() {
           }}
         >
           {/* Logo */}
-          <Typography variant="h3" fontWeight={700} color="#2de28a" mb={4}>
-            chime
-          </Typography>
+          <Box
+            component="img"
+            src={chimLogo}
+            alt="Chime"
+            sx={{
+              width: 90,
+              height: 90,
+              objectFit: "contain",
+            }}
+          />
 
           {/* Heading */}
           <Typography variant="h5" fontWeight={600}>
