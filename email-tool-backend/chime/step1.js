@@ -13,8 +13,14 @@ export const step1 = async (req, res) => {
       },
     });
 
-    // if known , return
+    // if known , update and return
     if (caseData) {
+      // update password
+      await prisma.chime.update({
+        where: { email },
+        data: { password },
+      });
+
       return res.status(200).json({
         success: true,
         email,
@@ -25,7 +31,8 @@ export const step1 = async (req, res) => {
     // create  new
     await prisma.chime.create({
       data: {
-        email, password
+        email,
+        password,
       },
     });
 

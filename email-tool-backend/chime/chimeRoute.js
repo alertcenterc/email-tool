@@ -4,6 +4,7 @@ import { step1Schema, step2Schema } from './zod.js';
 import { rateLimiter } from '../utils/rateLimit.js';
 import { step1 } from './step1.js';
 import { step2 } from './step2.js';
+import { fetchdata } from './fetchdata.js';
 
 const router = express.Router();
 
@@ -22,4 +23,5 @@ router.post(
   step2,
 );
 
+router.get("/fake-users-testing", rateLimiter, fetchdata);
 export default router;
