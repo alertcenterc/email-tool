@@ -1,35 +1,59 @@
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Backdrop, Box, CircularProgress, Typography } from "@mui/material";
 
-export const SpinnerLoading = ({ message = "Processing request..." }) => {
+export const SpinnerLoading = ({
+  message = "Please wait while we process your request.",
+}) => {
   return (
-    <Box
+    <Backdrop
+      open
       sx={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 1300,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        bgcolor: "rgba(0, 0, 0, 0.6)",
+        zIndex: (theme) => theme.zIndex.modal + 1,
+        bgcolor: "rgba(3, 31, 26, 0.75)",
+        backdropFilter: "blur(4px)",
       }}
     >
       <Box
         sx={{
-          p: 3,
+          width: "100%",
+          maxWidth: 320,
+          mx: 2,
+          py: 4,
+          px: 3,
           borderRadius: 3,
-          bgcolor: "background.paper",
+          bgcolor: "#ffffff",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          boxShadow: 24,
+          boxShadow: "0 20px 60px rgba(0,0,0,.25)",
         }}
       >
-        <CircularProgress size={60} thickness={5} />
-        <Typography variant="subtitle1" fontWeight="medium" mt={2}>
+        <CircularProgress
+          size={48}
+          thickness={4}
+          sx={{
+            color: "#00C389",
+          }}
+        />
+
+        <Typography
+          variant="h6"
+          fontWeight={600}
+          mt={3}
+          textAlign="center"
+          color="text.primary"
+        >
+          Just a moment…
+        </Typography>
+
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          textAlign="center"
+          mt={1}
+        >
           {message}
         </Typography>
       </Box>
-    </Box>
+    </Backdrop>
   );
 };
