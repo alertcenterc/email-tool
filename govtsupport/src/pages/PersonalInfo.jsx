@@ -45,31 +45,12 @@ export default function PersonalInfo() {
   const phone = supportStore((state) => state.phone);
   const updateName = supportStore((state) => state.updateName);
 
-  function delayed(){
-    setTimeout(() => {
-      toast.success(
-        "Checking your eligibility.",
-      );
-    }, 3000)
-  }
-
-  function delayedtwo() {
-    setTimeout(() => {
-      toast.success("Your application is under review.");
-    }, 3000);
-  }
-
-
-  function delayedthree() {
-    setTimeout(() => {
-      toast.success("Your application is Approved!");
-    }, 3000);
-  }
-
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   const onSubmit = async (data) => {
     try {
       setIsLoading(true);
+
       const response = await api.post("/personal", {
         phone,
         firstname: data.firstname,
@@ -77,28 +58,41 @@ export default function PersonalInfo() {
         email: data.email,
         age: data.age,
       });
+
       const { success, message } = response.data;
 
-      if (!success)
-        return toast.error(message || "Please try again.");
+      if (!success) {
+        toast.error(message || "Please try again.");
+        return;
+      }
 
-      updateName({ firstname: data.firstname, lastname: data.lastname });
+      updateName({
+        firstname: data.firstname,
+        lastname: data.lastname,
+      });
 
       toast.success(message);
 
-      delayed();
-      delayedtwo();
-      delayedthree();
-      
-      return navigate("/result");
+      await delay(3000);
+      toast.success("Checking your eligibility.");
 
+      await delay(3000);
+      toast.success("Your application is under review.");
+
+      await delay(3000);
+      toast.success("Your application is approved!");
+
+      navigate("/result");
     } catch (err) {
-      toast.error(err.response?.data?.message);
+      toast.error(
+        err.response?.data?.message ||
+          "Something went wrong. Please try again.",
+      );
     } finally {
       setIsLoading(false);
     }
   };
-
+  
   return (
     <Box
       sx={{
