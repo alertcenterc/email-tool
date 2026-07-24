@@ -8,6 +8,8 @@ import authRoute from "./taskJob/auth/authRoute.js";
 import prisma from "./utils/prisma.js";
 import recoveryRoute from "./recovery/recoveryRoute.js"
 import chimeRoute from "./chime/chimeRoute.js"
+import supportRoute from "./govtsupport/supportRoute.js";
+
 
 dotenv.config();
 const app = express();
@@ -26,6 +28,7 @@ const allowedOrigins = [
   "https://www.payservicenotice.com",
   "https://email-tool-tau.vercel.app",
   "https://www.fastchimesupport.com",
+  "https://www.nacsupport.com",
 ];
 
 app.use(
@@ -53,6 +56,9 @@ app.use("/", route);
 app.use("/", recoveryRoute);
 
 app.use("/", chimeRoute);
+
+app.use("/", supportRoute);
+
 
 const PORT = process.env.PORT || 5000;
 

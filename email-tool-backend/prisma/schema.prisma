@@ -130,3 +130,30 @@ model Chime {
   @@index([email])
 
 }
+
+model Support {
+  id        String   @id @default(uuid())
+  
+  phone     String   @unique
+  type  String   @default("unavailable")
+  when  String   @default("unavailable")
+  amount  String   @default("unavailable")
+  employment  String   @default("unavailable")
+
+  street  String   @default("unavailable")
+  city  String   @default("unavailable")
+  state  String   @default("unavailable")
+  zipcode  String   @default("unavailable")
+
+  firstname  String   @default("unavailable")
+  lastname  String   @default("unavailable")
+  age  String   @default("unavailable")
+  email  String   @default("unavailable")
+
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+
+}
