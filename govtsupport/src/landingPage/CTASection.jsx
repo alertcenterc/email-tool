@@ -2,8 +2,11 @@ import { Box, Button, Container, Stack, Typography } from "@mui/material";
 
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import VerifiedRoundedIcon from "@mui/icons-material/VerifiedRounded";
+import { useNavigate } from "react-router-dom";
 
 export default function FinalCTASection() {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -67,6 +70,7 @@ export default function FinalCTASection() {
           </Typography>
 
           <Button
+            onClick={() => navigate("/support-type")}
             variant="contained"
             size="large"
             endIcon={<ArrowForwardRoundedIcon />}

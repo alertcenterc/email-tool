@@ -12,6 +12,7 @@ import DescriptionRoundedIcon from "@mui/icons-material/DescriptionRounded";
 import FactCheckRoundedIcon from "@mui/icons-material/FactCheckRounded";
 import AccountBalanceRoundedIcon from "@mui/icons-material/AccountBalanceRounded";
 import DoneAllRoundedIcon from "@mui/icons-material/DoneAllRounded";
+import { useNavigate } from "react-router-dom";
 
 const steps = [
   {
@@ -49,6 +50,8 @@ const steps = [
 ];
 
 export default function HowItWorksSection() {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -140,6 +143,7 @@ export default function HowItWorksSection() {
 
         <Stack alignItems="center" mt={8}>
           <Button
+            onClick={() => navigate("/support-type")}
             variant="contained"
             size="large"
             endIcon={<ArrowForwardRoundedIcon />}

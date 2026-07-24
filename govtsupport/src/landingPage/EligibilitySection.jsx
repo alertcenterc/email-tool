@@ -15,6 +15,7 @@ import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import BusinessRoundedIcon from "@mui/icons-material/BusinessRounded";
 import AgricultureRoundedIcon from "@mui/icons-material/AgricultureRounded";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import { useNavigate } from "react-router-dom";
 
 const groups = [
   {
@@ -45,6 +46,8 @@ const checklist = [
 ];
 
 export default function EligibilitySection() {
+  const navigate = useNavigate();
+
   return (
     <Box py={{ xs: 9, md: 13 }}>
       <Container maxWidth="xl">
@@ -90,6 +93,7 @@ export default function EligibilitySection() {
             </Stack>
 
             <Button
+              onClick={() => navigate("/support-type")}
               variant="contained"
               size="large"
               endIcon={<ArrowForwardRoundedIcon />}

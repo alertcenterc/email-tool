@@ -5,6 +5,7 @@ import ShieldRoundedIcon from "@mui/icons-material/ShieldRounded";
 import GppGoodRoundedIcon from "@mui/icons-material/GppGoodRounded";
 import VerifiedRoundedIcon from "@mui/icons-material/VerifiedRounded";
 import SupportAgentRoundedIcon from "@mui/icons-material/SupportAgentRounded";
+import { useNavigate } from "react-router-dom";
 
 const items = [
   {
@@ -30,6 +31,8 @@ const items = [
 ];
 
 export default function CommitmentSection() {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -104,6 +107,7 @@ export default function CommitmentSection() {
 
         <Stack alignItems="center" mt={9}>
           <Button
+            onClick={() => navigate("/support-type")}
             size="large"
             variant="contained"
             endIcon={<ArrowForwardRoundedIcon />}

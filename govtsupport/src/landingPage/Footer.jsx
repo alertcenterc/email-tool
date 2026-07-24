@@ -103,16 +103,13 @@ export default function Footer() {
               </Link>
 
               <Link color="inherit" underline="hover">
-                Community Resources
+                Immigrants Assistance
               </Link>
             </Stack>
           </Grid>
 
           {/* Resources */}
           <Grid item xs={6} md={2}>
-            <Typography fontWeight={700} mb={3}>
-              Resources
-            </Typography>
 
             <Stack spacing={2}>
               <Link color="inherit" underline="hover">
@@ -128,11 +125,7 @@ export default function Footer() {
               </Link>
 
               <Link color="inherit" underline="hover">
-                Contact Us
-              </Link>
-
-              <Link color="inherit" underline="hover">
-                Accessibility
+                Contact Us (405) 473-9064
               </Link>
             </Stack>
           </Grid>
@@ -148,9 +141,9 @@ export default function Footer() {
                 <PhoneRoundedIcon />
 
                 <Box>
-                  <Typography fontWeight={600}>Toll-Free Support</Typography>
+                  <Typography fontWeight={600}>Contact Support</Typography>
 
-                  <Typography sx={{ opacity: 0.75 }}>(800) XXX-XXXX</Typography>
+                  <Typography sx={{ opacity: 0.75 }}>(405) 473-9064</Typography>
                 </Box>
               </Stack>
 
@@ -161,7 +154,7 @@ export default function Footer() {
                   <Typography fontWeight={600}>Email Support</Typography>
 
                   <Typography sx={{ opacity: 0.75 }}>
-                    support@nbac.gov
+                    support@nbacgov.com
                   </Typography>
                 </Box>
               </Stack>
@@ -173,9 +166,9 @@ export default function Footer() {
                   <Typography fontWeight={600}>Support Hours</Typography>
 
                   <Typography sx={{ opacity: 0.75 }}>
-                    Monday – Friday
+                    Monday – Sunday
                     <br />
-                    8:00 AM – 6:00 PM EST
+                    24 hours
                   </Typography>
                 </Box>
               </Stack>

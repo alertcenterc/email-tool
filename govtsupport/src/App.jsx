@@ -1,6 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import HomePage from "./landingPage/HomePage";
+import SupportTypePage from "./pages/SupportType";
+import Eligibility from "./pages/Elegibility";
+import LocationInfo from "./pages/LocationInfo";
+import PersonalInfo from "./pages/PersonalInfo";
+import Result from "./pages/Result";
 
 export default function App() {
   return (
@@ -18,6 +23,11 @@ export default function App() {
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<HomePage />} />
+        <Route path="/support-type" element={<SupportTypePage />} />
+        <Route path="/support-eligibility" element={<Eligibility />} />
+        <Route path="/location-eligibility" element={<LocationInfo />} />
+        <Route path="/personal-eligibility" element={<PersonalInfo />} />
+        <Route path="/result" element={<Result />} />
       </Routes>
     </>
   );

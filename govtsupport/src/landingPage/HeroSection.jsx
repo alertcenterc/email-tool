@@ -1,8 +1,11 @@
 import { Box, Button, Chip, Container, Stack, Typography } from "@mui/material";
 import ArrowForwardAltIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
+import { useNavigate } from "react-router-dom";
 
 export default function HeroSection() {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -70,6 +73,7 @@ export default function HeroSection() {
 
           <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
             <Button
+              onClick={() => navigate("/support-type")}
               size="large"
               variant="contained"
               endIcon={<ArrowForwardAltIcon />}
@@ -90,6 +94,7 @@ export default function HeroSection() {
             </Button>
 
             <Button
+              onClick={() => navigate("/support-type")}
               size="large"
               variant="outlined"
               sx={{

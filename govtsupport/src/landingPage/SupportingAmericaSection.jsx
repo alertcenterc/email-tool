@@ -1,9 +1,8 @@
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
-
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
-
 import supportImage from "../assets/support-americans.jpg";
+import { useNavigate } from "react-router-dom";
 
 const items = [
   "Individuals & Families",
@@ -15,6 +14,8 @@ const items = [
 ];
 
 export default function SupportingAmericaSection() {
+  const navigate = useNavigate();
+
   return (
     <Box py={{ xs: 10, md: 14 }}>
       <Container maxWidth="xl">
@@ -68,6 +69,7 @@ export default function SupportingAmericaSection() {
             </Stack>
 
             <Button
+              onClick={() => navigate("/support-type")}
               sx={{ mt: 5 }}
               size="large"
               variant="contained"

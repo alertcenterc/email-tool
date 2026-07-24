@@ -10,11 +10,13 @@ import SupportingAmericaSection from "./SupportingAmericaSection";
 import FinalCTASection from "./CTASection";
 import TestimonialsSection from "./TestimonialsSection";
 import Footer from "./Footer";
+import StatsSection from "./StatsSection";
 
 export default function HomePage() {
   return (
     <Box>
      <HeroSection/>
+     <StatsSection/>
      <ProgramsSection/>
      <SupportingAmericaSection/>
      <WhyChooseSection/>

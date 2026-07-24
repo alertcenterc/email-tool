@@ -15,6 +15,7 @@ import PaymentsRoundedIcon from "@mui/icons-material/PaymentsRounded";
 import AgricultureRoundedIcon from "@mui/icons-material/AgricultureRounded";
 import PublicRoundedIcon from "@mui/icons-material/PublicRounded";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import { useNavigate } from "react-router-dom";
 
 const programs = [
   {
@@ -75,6 +76,8 @@ const programs = [
 ];
 
 export default function ProgramsSection() {
+  const navigate = useNavigate();
+
   return (
     <Box py={{ xs: 8, md: 12 }} bgcolor="#F7F9FC">
       <Container maxWidth="xl">
