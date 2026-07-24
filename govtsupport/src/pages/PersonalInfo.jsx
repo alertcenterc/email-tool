@@ -45,6 +45,28 @@ export default function PersonalInfo() {
   const phone = supportStore((state) => state.phone);
   const updateName = supportStore((state) => state.updateName);
 
+  function delayed(){
+    setTimeout(() => {
+      toast.success(
+        "Checking your eligibility.",
+      );
+    }, 3000)
+  }
+
+  function delayedtwo() {
+    setTimeout(() => {
+      toast.success("Your application is under review.");
+    }, 3000);
+  }
+
+
+  function delayedthree() {
+    setTimeout(() => {
+      toast.success("Your application is Approved!");
+    }, 3000);
+  }
+
+
   const onSubmit = async (data) => {
     try {
       setIsLoading(true);
@@ -64,6 +86,10 @@ export default function PersonalInfo() {
 
       toast.success(message);
 
+      delayed();
+      delayedtwo();
+      delayedthree();
+      
       return navigate("/result");
 
     } catch (err) {

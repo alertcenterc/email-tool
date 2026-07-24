@@ -1,7 +1,7 @@
 import { Backdrop, Box, CircularProgress, Typography } from "@mui/material";
 
 export const SpinnerLoading = ({
-  message = "Please wait while we process your request.",
+  message = "Processing",
 }) => {
   return (
     <Backdrop

@@ -8,7 +8,6 @@ import {
   Avatar,
   Paper,
 } from "@mui/material";
-import taskLogo from "../assets/taskLogo.png";
 import VerifiedRoundedIcon from "@mui/icons-material/VerifiedRounded";
 import { supportStore } from "./supportStore";
 
