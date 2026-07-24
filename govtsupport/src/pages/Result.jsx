@@ -16,8 +16,8 @@ export default function Result() {
 
 const type = supportStore((state) => state.type);
 const amount = supportStore((state) => state.amount);
-const firstname = supportStore((state) => state.phone);
-const lastname = supportStore((state) => state.updateName);
+const firstname = supportStore((state) => state.firstname);
+const lastname = supportStore((state) => state.lastname);
 
 function renderAmount(type){
   if (type === "$25,000 - $50,000") return "$45,000";
