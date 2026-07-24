@@ -149,7 +149,7 @@ export default function Eligibility() {
                   <InputLabel>Amount Needed</InputLabel>
                   <Select {...field} label="How much do you need?">
       
-                    <MenuItem value="$25,000 - $50,000">
+                    <MenuItem value="$5,000 - $50,000">
                       $25,000 - $50,000
                     </MenuItem>
                     <MenuItem value="$50,000 - $100,000">

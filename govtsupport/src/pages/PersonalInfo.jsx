@@ -73,7 +73,7 @@ export default function PersonalInfo() {
 
       toast.success(message);
 
-      await delay(3000);
+      await delay(6000);
       toast.success("Checking your eligibility.");
 
       await delay(3000);
