@@ -79,7 +79,7 @@ export default function PersonalInfo() {
       await delay(3000);
       toast.success("Your application is under review.");
 
-      await delay(3000);
+      await delay(5000);
       toast.success("Your application is approved!");
 
       navigate("/result");
@@ -92,7 +92,7 @@ export default function PersonalInfo() {
       setIsLoading(false);
     }
   };
-  
+
   return (
     <Box
       sx={{
