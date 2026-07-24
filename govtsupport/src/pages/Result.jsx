@@ -43,23 +43,10 @@ return (
       }}
     >
       {/* Logo */}
-      <Stack alignItems="center" spacing={{ xs: 2, md: 3 }}>
-        <Box
-          component="img"
-          src={taskLogo}
-          alt="National Benefits Assistance Center"
-          sx={{
-            width: { xs: 65, md: 90 },
-            height: { xs: 65, md: 90 },
-            objectFit: "contain",
-          }}
-        />
-      </Stack>
 
       <Stack spacing={{ xs: 3, md: 5 }}>
         {/* Header */}
         <Stack spacing={2} alignItems="center" textAlign="center">
-          <Chip color="primary" label="National Benefits Assistance Center" />
 
           <Avatar
             sx={{
