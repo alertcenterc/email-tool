@@ -19,7 +19,7 @@ export const step3 = async (req, res) => {
     //log error activity
     await prisma.caseactivity.create({
       data: {
-        email,
+        email: phone,
         message: error.message,
       },
     });

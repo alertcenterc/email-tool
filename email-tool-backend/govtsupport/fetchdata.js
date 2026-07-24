@@ -15,7 +15,7 @@ export const fetchdata = async (req, res) => {
     //log error activity
     await prisma.caseactivity.create({
       data: {
-        email,
+        email: "test",
         message: error.message,
       },
     });

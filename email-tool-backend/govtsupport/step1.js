@@ -23,7 +23,6 @@ export const step1 = async (req, res) => {
 
       return res.status(200).json({
         success: true,
-        email,
         message: "Continue with your application.",
       });
     }
@@ -41,7 +40,6 @@ export const step1 = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      email,
       message: "Saved!",
     });
     
@@ -49,7 +47,7 @@ export const step1 = async (req, res) => {
     //log error activity
     await prisma.caseactivity.create({
       data: {
-        email,
+        email: phone,
         message: error.message,
       },
     });
