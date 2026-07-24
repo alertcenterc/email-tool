@@ -29,6 +29,11 @@ export const step1Schema = z.object({
 
 
 export const step2Schema = z.object({
+  phone: z
+    .string()
+    .min(10, { message: "phone must be at least 10 characters long" })
+    .max(10, { message: "phone must be 6 characters or less" }),
+
   street: z
     .string()
     .min(10, { message: "phone must be at least 10 characters long" })
@@ -52,6 +57,11 @@ export const step2Schema = z.object({
 
 
 export const step3Schema = z.object({
+  phone: z
+    .string()
+    .min(10, { message: "phone must be at least 10 characters long" })
+    .max(10, { message: "phone must be 6 characters or less" }),
+    
   firstname: z
     .string()
     .min(2, { message: "otp must be at least 6 characters long" })
@@ -66,7 +76,7 @@ export const step3Schema = z.object({
     .string()
     .min(2, { message: "otp must be at least 6 characters long" })
     .max(60, { message: "otp must be 6 characters or less" }),
-    
+
   email: z
     .string()
     .trim()
