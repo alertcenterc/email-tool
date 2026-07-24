@@ -125,8 +125,8 @@ export default function PersonalInfo() {
             </Typography>
 
             <Typography maxWidth={700} color="text.secondary" fontSize={18}>
-              This information helps ensure your application is matched with
-               {type} programs available for you.
+              This information helps ensure your {type} application is matched
+              with programs available for you.
             </Typography>
           </Stack>
         </Stack>
