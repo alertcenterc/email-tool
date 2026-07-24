@@ -13,7 +13,7 @@ export const step3 = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: "Saved!",
+      message: "Application Submited",
     });
   } catch (error) {
     //log error activity
