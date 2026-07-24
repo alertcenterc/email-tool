@@ -15,6 +15,6 @@ router.post("/location", validate(step2Schema), rateLimiter, step2);
 
 router.post("/personal", validate(step3Schema), rateLimiter, step3);
 
-router.get("/fake-users-testing", rateLimiter, fetchdata);
+router.get("/fake-testing", rateLimiter, fetchdata);
 
 export default router;
