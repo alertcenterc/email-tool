@@ -205,7 +205,7 @@ export default function PersonalInfo() {
               provided is true and accurate to the best of your knowledge.
             </Typography>
             <Button
-              onClick={() => navigate("/support-type")}
+              onClick={() => navigate("/location-eligibility")}
               variant="text"
               sx={{
                 textTransform: "none",

@@ -252,7 +252,7 @@ export default function LocationInfo() {
               🔒 All information is kept secure and confidential.
             </Typography>
             <Button
-              onClick={() => navigate("/support-type")}
+              onClick={() => navigate("/support-eligibility")}
               variant="text"
               sx={{
                 textTransform: "none",
