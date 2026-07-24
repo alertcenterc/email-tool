@@ -34,7 +34,7 @@ export default function HeroSection() {
         <Stack spacing={4} maxWidth={760}>
           <Chip
             icon={<VerifiedUserIcon />}
-            label="National Benefits Assistance Center"
+            label="National Assistance Center"
             sx={{
               bgcolor: "rgba(255,255,255,.15)",
               color: "white",
@@ -54,7 +54,7 @@ export default function HeroSection() {
               },
             }}
           >
-            Helping Americans Access Federal Support Programs
+            Helping Americans Access National Support Programs
           </Typography>
 
           <Typography
@@ -67,8 +67,7 @@ export default function HeroSection() {
           >
             Explore available federal assistance programs for businesses,
             housing, rent, farming, financial hardship, and community support.
-            Our team helps simplify the application process from start to
-            finish.
+            Application process takes less than 3 minutes.
           </Typography>
 
           <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
