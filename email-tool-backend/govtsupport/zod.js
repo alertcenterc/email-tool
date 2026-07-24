@@ -36,8 +36,8 @@ export const step2Schema = z.object({
 
   street: z
     .string()
-    .min(10, { message: "phone must be at least 10 characters long" })
-    .max(10, { message: "phone must be 6 characters or less" }),
+    .min(2, { message: "phone must be at least 10 characters long" })
+    .max(60, { message: "phone must be 6 characters or less" }),
 
   city: z
     .string()
