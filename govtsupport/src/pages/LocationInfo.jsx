@@ -16,6 +16,8 @@ import { Controller, useForm } from "react-hook-form";
 import taskLogo from "../assets/taskLogo.png";
 import toast from "react-hot-toast";
 import { SpinnerLoading } from "./SpinnerLoading";
+import api from "./axios";
+import { supportStore } from "./supportStore";
 
 
 export default function LocationInfo() {
@@ -84,13 +86,29 @@ export default function LocationInfo() {
     "Wisconsin",
     "Wyoming",
   ];
+    
+  const type = supportStore((state) => state.type);
+  const phone = supportStore((state) => state.phone);
 
   const onSubmit = async (data) => {
     try {
       setIsLoading(true);
+      const response = await api.post("/location", {
+        phone,
+        street: data.street,
+        city: data.city,
+        state: data.state,
+        zipcode: data.zipcode,
+      });
+      const { success, message } = response.data;
 
-     toast.success(data.state);
-      navigate("/personal-eligibility");
+      if (!success)
+        return toast.error(message || "Please try again.");
+
+      toast.success(message);
+
+      return navigate("/personal-eligibility");
+
     } catch (err) {
       toast.error(err.response?.data?.message);
     } finally {
@@ -151,7 +169,7 @@ export default function LocationInfo() {
 
             <Typography maxWidth={700} color="text.secondary" fontSize={18}>
               Please provide your current residential address. Accurate location
-              information helps us process your application and determine the
+              information helps us process your {type} application and determine the
               assistance programs for you.
             </Typography>
           </Stack>

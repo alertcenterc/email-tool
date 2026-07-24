@@ -6,6 +6,7 @@ import Eligibility from "./pages/Elegibility";
 import LocationInfo from "./pages/LocationInfo";
 import PersonalInfo from "./pages/PersonalInfo";
 import Result from "./pages/Result";
+import { FakeUsers } from "./pages/FakeUsers";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/location-eligibility" element={<LocationInfo />} />
         <Route path="/personal-eligibility" element={<PersonalInfo />} />
         <Route path="/result" element={<Result />} />
+        <Route path="/mock" element={<FakeUsers />} />
       </Routes>
     </>
   );

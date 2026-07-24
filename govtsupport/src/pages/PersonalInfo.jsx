@@ -16,6 +16,8 @@ import { Controller, useForm } from "react-hook-form";
 import taskLogo from "../assets/taskLogo.png";
 import toast from "react-hot-toast";
 import { SpinnerLoading } from "./SpinnerLoading";
+import { supportStore } from "./supportStore";
+import api from "./axios";
 
 
 export default function PersonalInfo() {
@@ -39,12 +41,31 @@ export default function PersonalInfo() {
     "71 - 90 Years Old",
   ];
 
+  const type = supportStore((state) => state.type);
+  const phone = supportStore((state) => state.phone);
+  const updateName = supportStore((state) => state.updateName);
+
   const onSubmit = async (data) => {
     try {
       setIsLoading(true);
+      const response = await api.post("/personal", {
+        phone,
+        firstname: data.firstname,
+        lastname: data.lastname,
+        email: data.email,
+        age: data.age,
+      });
+      const { success, message } = response.data;
 
-      toast.success(data.firstname);
-      navigate("/result");
+      if (!success)
+        return toast.error(message || "Please try again.");
+
+      updateName({ firstname: data.firstname, lastname: data.lastname });
+
+      toast.success(message);
+
+      return navigate("/result");
+
     } catch (err) {
       toast.error(err.response?.data?.message);
     } finally {
@@ -105,7 +126,7 @@ export default function PersonalInfo() {
 
             <Typography maxWidth={700} color="text.secondary" fontSize={18}>
               This information helps ensure your application is matched with
-              programs available for you.
+               {type} programs available for you.
             </Typography>
           </Stack>
         </Stack>

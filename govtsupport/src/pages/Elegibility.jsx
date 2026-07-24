@@ -21,10 +21,12 @@ import { Controller, useForm } from "react-hook-form";
 import taskLogo from "../assets/taskLogo.png";
 import toast from "react-hot-toast";
 import { SpinnerLoading } from "./SpinnerLoading";
+import { supportStore } from "./supportStore";
+import api from "./axios";
 
 
 export default function Eligibility() {
-      const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
     
   const navigate = useNavigate();
 
@@ -45,12 +47,31 @@ export default function Eligibility() {
          "No Specific Timeline",
     ];
 
-    const onSubmit = async (data) => {
+    const type = supportStore((state) => state.type);
+
+    const updatePhone = supportStore((state) => state.updatePhone);
+
+      const onSubmit = async (data) => {
         try {
           setIsLoading(true);
-        
-          toast.success(data.when);
-          navigate("/location-eligibility");   
+          const response = await api.post("/apply", {
+            type,
+            amount: data.amount,
+            when: data.when,
+            employment: data.employment,
+            phone: data.phone,
+          });
+          const { success, message } = response.data;
+
+          if (!success)
+            return toast.error(message || "Please try again.");
+
+          updatePhone({phone: data.phone, amount: data.amount});
+
+          toast.success(message);
+
+          return navigate("/location-eligibility");
+
         } catch (err) {
           toast.error(err.response?.data?.message);
         } finally {
@@ -111,7 +132,7 @@ export default function Eligibility() {
 
             <Typography maxWidth={700} color="text.secondary" fontSize={18}>
               Please provide the information below to continue your application.
-              Your responses help us determine the support that best match your
+              Your responses help us determine the best {type} support for your
               needs.
             </Typography>
           </Stack>
@@ -127,9 +148,7 @@ export default function Eligibility() {
                 <FormControl fullWidth error={!!fieldState.error}>
                   <InputLabel>Amount Needed</InputLabel>
                   <Select {...field} label="How much do you need?">
-                    <MenuItem value="$5,000 - $20,000">
-                      $5,000 - $20,000
-                    </MenuItem>
+      
                     <MenuItem value="$25,000 - $50,000">
                       $25,000 - $50,000
                     </MenuItem>

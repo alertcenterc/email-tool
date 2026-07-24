@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import {
   Box,
-  Button,
   Card,
   CardContent,
   Chip,
@@ -20,12 +19,12 @@ import PaymentsRoundedIcon from "@mui/icons-material/PaymentsRounded";
 import AgricultureRoundedIcon from "@mui/icons-material/AgricultureRounded";
 import PublicRoundedIcon from "@mui/icons-material/PublicRounded";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
-import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import toast from "react-hot-toast";
+import { supportStore } from "./supportStore";
 
 const supportTypes = [
   {
-    id: "business",
+    id: "Business Support",
     title: "Business Support",
     amount: "Up to $250,000",
     description:
@@ -34,7 +33,7 @@ const supportTypes = [
     color: "#1565C0",
   },
   {
-    id: "housing",
+    id: "Housing & Rent Assistance",
     title: "Housing & Rent Assistance",
     amount: "Up to $25,000",
     description:
@@ -43,7 +42,7 @@ const supportTypes = [
     color: "#2E7D32",
   },
   {
-    id: "financial",
+    id: "Financial Assistance",
     title: "Financial Assistance",
     amount: "Up to $15,000",
     description:
@@ -52,7 +51,7 @@ const supportTypes = [
     color: "#EF6C00",
   },
   {
-    id: "farming",
+    id: "Farming Support",
     title: "Farming Support",
     amount: "Up to $500,000",
     description:
@@ -61,7 +60,7 @@ const supportTypes = [
     color: "#2E7D32",
   },
   {
-    id: "community",
+    id: "Immigrant & Community Support",
     title: "Immigrant & Community Support",
     amount: "Up to $20,000",
     description:
@@ -76,8 +75,11 @@ export default function SupportTypePage() {
 
   const [selected, setSelected] = useState(null);
 
-  const handleContinue = (id) => {
-    toast.success(id);
+  const updateType = supportStore((state) => state.updateType);
+  
+  const handleContinue = (type) => {
+    toast.success("Saved!");
+    updateType(type);
     navigate("/support-eligibility");
   };
 
