@@ -16,6 +16,8 @@ import AgricultureRoundedIcon from "@mui/icons-material/AgricultureRounded";
 import PublicRoundedIcon from "@mui/icons-material/PublicRounded";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { supportStore } from "../pages/supportStore";
 
 const programs = [
   {
@@ -77,6 +79,14 @@ const programs = [
 
 export default function ProgramsSection() {
   const navigate = useNavigate();
+
+  const updateType = supportStore((state) => state.updateType);
+
+  const handleContinue = (type) => {
+    toast.success("Saved!");
+    updateType(type);
+    navigate("/support-eligibility");
+  };
 
   return (
     <Box py={{ xs: 8, md: 12 }} bgcolor="#F7F9FC">
@@ -161,6 +171,7 @@ export default function ProgramsSection() {
                   </Stack>
 
                   <Button
+                  onClick={() => handleContinue(program.title)}
                     fullWidth
                     variant="contained"
                     endIcon={<ArrowForwardRoundedIcon />}

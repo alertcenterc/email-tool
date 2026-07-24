@@ -89,8 +89,9 @@ export default function LocationInfo() {
     
   const type = supportStore((state) => state.type);
   const phone = supportStore((state) => state.phone);
-
+  console.log("hey");
   const onSubmit = async (data) => {
+    
     try {
       setIsLoading(true);
       const response = await api.post("/location", {
