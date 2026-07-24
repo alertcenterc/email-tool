@@ -196,14 +196,13 @@ export default function PersonalInfo() {
 
             {/* Security */}
             <Typography
-              variant="caption"
+              variant="body2"
               color="text.secondary"
               textAlign="center"
-              sx={{
-                lineHeight: 1.7,
-              }}
+              mt={2}
             >
-              🔒 All information is kept secure and confidential.
+              By submitting this application, you confirm that the information
+              provided is true and accurate to the best of your knowledge.
             </Typography>
             <Button
               onClick={() => navigate("/support-type")}

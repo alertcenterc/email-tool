@@ -76,9 +76,8 @@ export default function SupportTypePage() {
 
   const [selected, setSelected] = useState(null);
 
-  const handleContinue = () => {
-    if (!selected) return;
-    toast.success(selected);
+  const handleContinue = (id) => {
+    toast.success(id);
     navigate("/support-eligibility");
   };
 
@@ -97,17 +96,13 @@ export default function SupportTypePage() {
           <Box>
             <Stack direction="row" justifyContent="space-between" mb={1}>
               <Typography fontWeight={700} color="primary">
-                Step 1 of 5
-              </Typography>
-
-              <Typography color="text.secondary">
-                Choose Support Type
+                Step 1 of 4
               </Typography>
             </Stack>
 
             <LinearProgress
               variant="determinate"
-              value={20}
+              value={25}
               sx={{
                 height: 10,
                 borderRadius: 20,
@@ -139,7 +134,7 @@ export default function SupportTypePage() {
               return (
                 <Grid item xs={12} md={6} key={item.id}>
                   <Card
-                    onClick={() => setSelected(item.id)}
+                    onClick={() => handleContinue(item.id)}
                     sx={{
                       cursor: "pointer",
                       borderRadius: 5,
@@ -206,62 +201,7 @@ export default function SupportTypePage() {
             })}
           </Grid>
 
-          {/* Bottom Continue */}
-
-          <Box
-            sx={{
-              position: "sticky",
-              bottom: 20,
-              zIndex: 10,
-            }}
-          >
-            <Card
-              sx={{
-                borderRadius: 5,
-                p: 2,
-              }}
-            >
-              <Stack
-                direction={{
-                  xs: "column",
-                  md: "row",
-                }}
-                spacing={3}
-                justifyContent="space-between"
-                alignItems="center"
-              >
-                <Box>
-                  <Typography fontWeight={700}>
-                    {selected
-                      ? supportTypes.find((x) => x.id === selected).title
-                      : "No Support Type Selected"}
-                  </Typography>
-
-                  <Typography color="text.secondary">
-                    Select a program category to continue.
-                  </Typography>
-                </Box>
-
-                <Button
-                  variant="contained"
-                  size="large"
-                  disabled={!selected}
-                  endIcon={<ArrowForwardRoundedIcon />}
-                  onClick={handleContinue}
-                  sx={{
-                    px: 5,
-                    py: 1.6,
-                    borderRadius: 3,
-                    fontWeight: 700,
-                  }}
-                >
-                  Continue
-                </Button>
-              </Stack>
-            </Card>
-          </Box>
         </Stack>
-        
       </Container>
     </Box>
   );

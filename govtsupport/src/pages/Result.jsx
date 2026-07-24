@@ -1,20 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import {
   Box,
   Button,
   Chip,
   Container,
- 
   Stack,
   Typography,
   Alert,
   Avatar,
-
   Paper,
- 
-  
 } from "@mui/material";
 import taskLogo from "../assets/taskLogo.png";
 import toast from "react-hot-toast";
