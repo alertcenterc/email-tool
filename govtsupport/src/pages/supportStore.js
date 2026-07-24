@@ -5,10 +5,10 @@ import { persist } from "zustand/middleware";
 export const supportStore = create(
   persist(
     (set) => ({
-      type: "",
+      type: "data",
       updateType: (data) => {
         set({
-          email: data,
+          type: data,
         });
       },
 
