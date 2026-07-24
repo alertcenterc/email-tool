@@ -108,7 +108,7 @@ export default function HeroSection() {
                 },
               }}
             >
-              Learn More
+              Apply Now
             </Button>
           </Stack>
 

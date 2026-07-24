@@ -42,9 +42,9 @@ export default function Footer() {
                 />
 
                 <Typography variant="h5" fontWeight={800}>
-                  National Benefits
+                  National Assistance
                   <br />
-                  Assistance Center
+                   Center
                 </Typography>
               </Stack>
 
