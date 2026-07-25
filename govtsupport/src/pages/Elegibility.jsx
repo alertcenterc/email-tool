@@ -88,6 +88,7 @@ export default function Eligibility() {
       }}
     >
       <Container maxWidth="lg">
+        
         {/* Logo */}
         <Stack alignItems="center" spacing={2}>
           <Box
