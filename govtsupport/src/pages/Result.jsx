@@ -46,7 +46,6 @@ return (
       <Stack spacing={{ xs: 3, md: 5 }}>
         {/* Header */}
         <Stack spacing={2} alignItems="center" textAlign="center">
-
           <Avatar
             sx={{
               width: { xs: 80, md: 110 },
@@ -111,11 +110,10 @@ return (
               maxWidth: 650,
             }}
           >
-            We're pleased to inform you that your application has successfully
-            completed the review process and has been approved. Please review
-            your approval details below and follow any remaining instructions
-            provided by your assigned case representative to receive your support fund. 
-            Contact: (405) 473-9064
+            Congratulations! Your application has been reviewed and approved.
+            Please review your approval details below and contact your assigned
+            case representative to complete the final steps and receive your
+            support fund. Contact: (405) 473-9064
           </Typography>
         </Stack>
 
@@ -195,7 +193,7 @@ return (
                 color="primary.main"
                 textAlign={{ xs: "left", sm: "right" }}
               >
-              {renderAmount(amount)}
+                {renderAmount(amount)}
               </Typography>
             </Stack>
 

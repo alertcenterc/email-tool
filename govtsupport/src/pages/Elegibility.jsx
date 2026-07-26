@@ -67,9 +67,7 @@ export default function Eligibility() {
             return toast.error(message || "Please try again.");
 
           updatePhone({phone: data.phone, amount: data.amount});
-
           toast.success(message);
-
           return navigate("/location-eligibility");
 
         } catch (err) {
@@ -88,7 +86,7 @@ export default function Eligibility() {
       }}
     >
       <Container maxWidth="lg">
-        
+
         {/* Logo */}
         <Stack alignItems="center" spacing={2}>
           <Box

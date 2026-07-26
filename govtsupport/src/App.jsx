@@ -14,6 +14,7 @@ export default function App() {
       <Toaster
         position="top-center"
         toastOptions={{
+          duration: 4000, // stays visible for 4 seconds
           style: {
             background: "#062923",
             color: "#fff",
