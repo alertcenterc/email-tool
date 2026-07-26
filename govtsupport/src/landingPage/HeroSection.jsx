@@ -11,7 +11,6 @@ import {
   Typography,
 } from "@mui/material";
 import ArrowForwardAltIcon from "@mui/icons-material/ArrowForwardIosOutlined";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import { useNavigate } from "react-router-dom";
 import taskLogo from "../assets/taskLogo.png";
@@ -116,37 +115,7 @@ export default function HeroSection() {
                 process. Application process takes less than 3 minutes.
               </Typography>
 
-              {/* Trust */}
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                spacing={3}
-                flexWrap="wrap"
-              >
-                {[
-                  "Secure Online Application",
-                  "Available Nationwide",
-                  "Fast Eligibility Review",
-                ].map((item) => (
-                  <Stack
-                    key={item}
-                    direction="row"
-                    spacing={1}
-                    alignItems="center"
-                  >
-                    <CheckCircleIcon sx={{ color: "#4ADE80", fontSize: 20 }} />
-
-                    <Typography
-                      sx={{
-                        color: "rgba(255,255,255,.9)",
-                        fontWeight: 500,
-                      }}
-                    >
-                      {item}
-                    </Typography>
-                  </Stack>
-                ))}
-              </Stack>
-
+             
               {/* Buttons */}
               <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
                 <Button
