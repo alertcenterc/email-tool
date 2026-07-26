@@ -19,12 +19,15 @@ const firstname = supportStore((state) => state.firstname);
 const lastname = supportStore((state) => state.lastname);
 
 function renderAmount(type){
-  if (type === "$5,000 - $50,000") return "$23,000";
-  if (type === "$50,000 - $100,000") return "$92,000";
-  if (type === "$100,000 - $300,000") return "$285,000";
-  if (type === "$300,000 - $500,000") return "$490,000";
-  if (type === "$300,000 - $900,000") return "$860,000";
-  return "$92,000"
+  if (type === "$5,000") return "$4,600";
+  if (type === "$10,000") return "$8,600";
+  if (type === "$20,000") return "$18,600";
+  if (type === "$50,000") return "$48,600";
+  if (type === "$100,000") return "$98,600";
+  if (type === "$200,000") return "$198,600";
+  if (type === "$300,000") return "$298,600";
+  if (type === "$500,000") return "$498,600";
+  return "$52,600"
 }
 
 return (

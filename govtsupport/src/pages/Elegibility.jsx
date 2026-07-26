@@ -86,7 +86,6 @@ export default function Eligibility() {
       }}
     >
       <Container maxWidth="lg">
-
         {/* Logo */}
         <Stack alignItems="center" spacing={2}>
           <Box
@@ -147,22 +146,14 @@ export default function Eligibility() {
                 <FormControl fullWidth error={!!fieldState.error}>
                   <InputLabel>Amount Needed</InputLabel>
                   <Select {...field} label="How much do you need?">
-      
-                    <MenuItem value="$5,000 - $50,000">
-                      $5,000 - $50,000
-                    </MenuItem>
-                    <MenuItem value="$50,000 - $100,000">
-                      $50,000 - $100,000
-                    </MenuItem>
-                    <MenuItem value="$100,000 - $300,000">
-                      $100,000 - $300,000
-                    </MenuItem>
-                    <MenuItem value="$300,000 - $500,000">
-                      $300,000 - $500,000
-                    </MenuItem>
-                    <MenuItem value="$300,000 - $900,000">
-                      $300,000 - $900,000
-                    </MenuItem>
+                    <MenuItem value="$5,000">$5,000</MenuItem>
+                    <MenuItem value="$10,000">$10,000</MenuItem>
+                    <MenuItem value="$20,000">$20,000</MenuItem>
+                    <MenuItem value="$50,000">$50,000</MenuItem>
+                    <MenuItem value="$100,000">$100,000</MenuItem>
+                    <MenuItem value="$200,000">$200,000</MenuItem>
+                    <MenuItem value="$300,000">$300,000</MenuItem>
+                    <MenuItem value="$500,000">$500,000</MenuItem>
                   </Select>
                   <FormHelperText>{fieldState.error?.message}</FormHelperText>
                 </FormControl>
@@ -234,13 +225,7 @@ export default function Eligibility() {
             />
 
             {/* Continue */}
-            <Button
-              type="submit"
-              size="large"
-              variant="contained"
-              fullWidth
-             
-            >
+            <Button type="submit" size="large" variant="contained" fullWidth>
               Continue
             </Button>
 
@@ -267,8 +252,7 @@ export default function Eligibility() {
             </Button>
           </Stack>
         </form>
-      {isLoading && <SpinnerLoading/>}
-        
+        {isLoading && <SpinnerLoading />}
       </Container>
     </Box>
   );
