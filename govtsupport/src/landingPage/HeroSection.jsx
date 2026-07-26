@@ -1,7 +1,20 @@
-import { Box, Button, Chip, Container, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Chip,
+  Container,
+  Divider,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
 import ArrowForwardAltIcon from "@mui/icons-material/ArrowForwardIosOutlined";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import { useNavigate } from "react-router-dom";
+import taskLogo from "../assets/taskLogo.png";
 
 export default function HeroSection() {
   const navigate = useNavigate();
@@ -9,141 +22,311 @@ export default function HeroSection() {
   return (
     <Box
       sx={{
+        position: "relative",
+        overflow: "hidden",
         background:
           "linear-gradient(135deg,#0B2E59 0%, #123E73 55%, #1C5AA6 100%)",
-        color: "white",
-        py: { xs: 9, md: 14 },
-        overflow: "hidden",
-        position: "relative",
+        color: "#fff",
+        py: { xs: 8, md: 12 },
       }}
     >
       {/* Background Glow */}
       <Box
         sx={{
           position: "absolute",
-          width: 500,
-          height: 500,
+          width: 550,
+          height: 550,
           borderRadius: "50%",
           bgcolor: "rgba(255,255,255,.05)",
-          top: -180,
-          right: -120,
+          top: -220,
+          right: -180,
+          filter: "blur(8px)",
+        }}
+      />
+
+      <Box
+        sx={{
+          position: "absolute",
+          width: 320,
+          height: 320,
+          borderRadius: "50%",
+          bgcolor: "rgba(255,255,255,.04)",
+          bottom: -150,
+          left: -120,
         }}
       />
 
       <Container maxWidth="lg">
-        <Stack spacing={4} maxWidth={760}>
-          <Chip
-            icon={<VerifiedUserIcon />}
-            label="Guaranteed Help Available Now"
-            sx={{
-              bgcolor: "rgba(255,255,255,.15)",
-              color: "white",
-              width: "fit-content",
-              fontWeight: 600,
-            }}
-          />
+        <Grid container spacing={8} alignItems="center">
+          {/* LEFT */}
+          <Grid size={{ xs: 12, md: 7 }}>
+            <Stack spacing={5}>
+              <Box
+                component="img"
+                src={taskLogo}
+                alt="Program"
+                sx={{
+                  width: { xs: 58, md: 70 },
+                  height: { xs: 58, md: 70 },
+                  objectFit: "contain",
+                }}
+              />
 
-          <Typography
-            variant="h2"
-            fontWeight={800}
-            lineHeight={1.1}
+              <Chip
+                icon={<VerifiedUserIcon />}
+                label="National Assistance Support Program"
+                sx={{
+                  width: "fit-content",
+                  bgcolor: "rgba(255,255,255,.14)",
+                  color: "#fff",
+                  borderRadius: 10,
+                  px: 1,
+                  fontWeight: 600,
+                }}
+              />
+
+              <Typography
+                sx={{
+                  fontWeight: 800,
+                  lineHeight: 1.08,
+                  maxWidth: 620,
+                  fontSize: {
+                    xs: "2.5rem",
+                    sm: "3rem",
+                    md: "4.4rem",
+                  },
+                }}
+              >
+                Financial Support for Americans Who Need It Most
+              </Typography>
+
+              <Typography
+                sx={{
+                  maxWidth: 620,
+                  fontSize: {
+                    xs: 18,
+                    md: 20,
+                  },
+                  lineHeight: 1.8,
+                  color: "rgba(255,255,255,.86)",
+                }}
+              >
+                Apply online for housing, rent, business, farming, and emergency
+                financial assistance through our secure nationwide application
+                process. Application process takes less than 3 minutes.
+              </Typography>
+
+              {/* Trust */}
+              <Stack
+                direction={{ xs: "column", sm: "row" }}
+                spacing={3}
+                flexWrap="wrap"
+              >
+                {[
+                  "Secure Online Application",
+                  "Available Nationwide",
+                  "Fast Eligibility Review",
+                ].map((item) => (
+                  <Stack
+                    key={item}
+                    direction="row"
+                    spacing={1}
+                    alignItems="center"
+                  >
+                    <CheckCircleIcon sx={{ color: "#4ADE80", fontSize: 20 }} />
+
+                    <Typography
+                      sx={{
+                        color: "rgba(255,255,255,.9)",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {item}
+                    </Typography>
+                  </Stack>
+                ))}
+              </Stack>
+
+              {/* Buttons */}
+              <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
+                <Button
+                  onClick={() => navigate("/support-type")}
+                  variant="contained"
+                  size="large"
+                  endIcon={<ArrowForwardAltIcon />}
+                  sx={{
+                    bgcolor: "#FFC72C",
+                    color: "#09254A",
+                    fontWeight: 700,
+                    px: 5,
+                    height: 58,
+                    borderRadius: 4,
+                    textTransform: "none",
+                    fontSize: 17,
+                    "&:hover": {
+                      bgcolor: "#F0BE20",
+                    },
+                  }}
+                >
+                  Check Eligibility
+                </Button>
+
+                <Button
+                  onClick={() => navigate("/support-type")}
+                  variant="outlined"
+                  size="large"
+                  sx={{
+                    color: "#fff",
+                    borderColor: "rgba(255,255,255,.35)",
+                    height: 58,
+                    px: 5,
+                    borderRadius: 4,
+                    textTransform: "none",
+                    fontWeight: 700,
+                    "&:hover": {
+                      borderColor: "#fff",
+                      bgcolor: "rgba(255,255,255,.05)",
+                    },
+                  }}
+                >
+                  Apply Now
+                </Button>
+              </Stack>
+
+              <Divider
+                sx={{
+                  borderColor: "rgba(255,255,255,.12)",
+                }}
+              />
+
+              {/* Stats */}
+              <Grid container spacing={2}>
+                {[
+                  {
+                    title: "50 States",
+                    subtitle: "Nationwide Coverage",
+                  },
+                  {
+                    title: "5 Programs",
+                    subtitle: "Support Categories",
+                  },
+                  {
+                    title: "100%",
+                    subtitle: "Secure Online Process",
+                  },
+                ].map((item) => (
+                  <Grid key={item.title} size={{ xs: 12, sm: 4 }}>
+                    <Card
+                      sx={{
+                        bgcolor: "rgba(255,255,255,.08)",
+                        backdropFilter: "blur(12px)",
+                        color: "#fff",
+                        borderRadius: 4,
+                        boxShadow: "none",
+                        border: "1px solid rgba(255,255,255,.08)",
+                      }}
+                    >
+                      <CardContent>
+                        <Typography fontWeight={800} fontSize={28}>
+                          {item.title}
+                        </Typography>
+
+                        <Typography
+                          sx={{
+                            color: "rgba(255,255,255,.75)",
+                          }}
+                        >
+                          {item.subtitle}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            </Stack>
+          </Grid>
+
+          {/* RIGHT */}
+          <Grid
+            size={{ xs: 12, md: 5 }}
             sx={{
-              fontSize: {
-                xs: "2.3rem",
-                md: "4rem",
+              display: {
+                xs: "none",
+                md: "block",
               },
             }}
           >
-            Financial Support for Americans Who Need It Most
-          </Typography>
-
-          <Typography
-            sx={{
-              fontSize: 22,
-              opacity: 0.92,
-              maxWidth: 650,
-              lineHeight: 1.7,
-            }}
-          >
-            Access real financial help for housing, rent, business, farming, and
-            emergency needs in just minutes. Apply now and receive a support
-            that can make a difference today.
-          </Typography>
-
-          <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-            <Button
-              onClick={() => navigate("/support-type")}
-              size="large"
-              variant="contained"
-              endIcon={<ArrowForwardAltIcon />}
+            <Card
               sx={{
-                bgcolor: "#FFC72C",
-                color: "#09254A",
-                fontWeight: 700,
-                px: 5,
-                py: 1.8,
-                borderRadius: 3,
-                fontSize: 18,
-                "&:hover": {
-                  bgcolor: "#F4BE20",
-                },
+                borderRadius: 6,
+                bgcolor: "#fff",
+                p: 2,
+                maxWidth: 420,
+                mx: "auto",
+                boxShadow: "0 40px 80px rgba(0,0,0,.25)",
               }}
             >
-              Check Eligibility
-            </Button>
+              <CardContent>
+                <Chip
+                  color="success"
+                  label="Application Preview"
+                  sx={{ mb: 3 }}
+                />
 
-            <Button
-              onClick={() => navigate("/support-type")}
-              size="large"
-              variant="outlined"
-              sx={{
-                color: "white",
-                borderColor: "rgba(255,255,255,.35)",
-                px: 5,
-                py: 1.8,
-                borderRadius: 3,
-                fontWeight: 700,
-                "&:hover": {
-                  borderColor: "white",
-                },
-              }}
-            >
-              Apply Now
-            </Button>
-          </Stack>
+                <Typography variant="h5" fontWeight={700} gutterBottom>
+                  Financial Assistance
+                </Typography>
 
-          <Stack direction={{ xs: "column", md: "row" }} spacing={5} pt={3}>
-            <Box>
-              <Typography variant="h4" fontWeight={800}>
-                50 States
-              </Typography>
+                <Divider sx={{ my: 2 }} />
 
-              <Typography color="rgba(255,255,255,.75)">
-                Nationwide Program Access
-              </Typography>
-            </Box>
+                <Stack spacing={2}>
+                  <Box>
+                    <Typography color="text.secondary" variant="body2">
+                      Program
+                    </Typography>
 
-            <Box>
-              <Typography variant="h4" fontWeight={800}>
-                5 Major
-              </Typography>
+                    <Typography fontWeight={700}>Housing Support</Typography>
+                  </Box>
 
-              <Typography color="rgba(255,255,255,.75)">
-                Assistance Categories
-              </Typography>
-            </Box>
+                  <Box>
+                    <Typography color="text.secondary" variant="body2">
+                      Eligibility Review
+                    </Typography>
 
-            <Box>
-              <Typography variant="h4" fontWeight={800}>
-                Secure
-              </Typography>
+                    <Chip color="warning" label="Ready to Begin" />
+                  </Box>
 
-              <Typography color="rgba(255,255,255,.75)">
-                Online Application Process
-              </Typography>
-            </Box>
-          </Stack>
-        </Stack>
+                  <Box>
+                    <Typography color="text.secondary" variant="body2">
+                      Application
+                    </Typography>
+
+                    <Typography fontWeight={700}>
+                      Secure Online Submission
+                    </Typography>
+                  </Box>
+
+                  <Divider />
+
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    size="large"
+                    sx={{
+                      mt: 2,
+                      borderRadius: 3,
+                      py: 1.6,
+                      textTransform: "none",
+                      fontWeight: 700,
+                    }}
+                  >
+                    Start Application
+                  </Button>
+                </Stack>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );
