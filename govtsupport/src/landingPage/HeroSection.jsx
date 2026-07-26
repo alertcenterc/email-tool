@@ -34,7 +34,7 @@ export default function HeroSection() {
         <Stack spacing={4} maxWidth={760}>
           <Chip
             icon={<VerifiedUserIcon />}
-            label="National Assistance Center"
+            label="Guaranteed Help Available Now"
             sx={{
               bgcolor: "rgba(255,255,255,.15)",
               color: "white",
@@ -54,7 +54,7 @@ export default function HeroSection() {
               },
             }}
           >
-            Helping Americans Access National Support Programs
+            Financial Support for Americans Who Need It Most
           </Typography>
 
           <Typography
@@ -65,9 +65,9 @@ export default function HeroSection() {
               lineHeight: 1.7,
             }}
           >
-            Explore available federal assistance programs for businesses,
-            housing, rent, farming, financial hardship, and community support.
-            Application process takes less than 3 minutes.
+            Access real financial help for housing, rent, business, farming, and
+            emergency needs in just minutes. Apply now and receive a support
+            that can make a difference today.
           </Typography>
 
           <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
