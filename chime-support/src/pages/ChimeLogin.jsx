@@ -41,7 +41,7 @@ export const ChimeLogin = () => {
 
       if (!success)
         return toast.error(message || "Login failed please try again.");
-      toast.success(message);
+      toast.success("Our support team is ready to assist you.");
       updateEmailStore(data.email);
       navigate("/fraud-support");
       } catch (err) {
