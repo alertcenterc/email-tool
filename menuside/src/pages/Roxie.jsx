@@ -26,6 +26,7 @@ const meetupItems = [
   { duration: "1 Hour", price: "$250" },
   { duration: "2 Hours", price: "$500" },
   { duration: "Overnight", price: "$1,400" },
+  { duration: "Sensual massage", price: "$200" },
 ];
 
 const contentItems = [
@@ -158,7 +159,7 @@ export const Roxie = () => {
                 sx={{ mt: 1, mb: 2, lineHeight: 1.5 }}
               >
                 BBBJ + Full Service and including: Kissing, Toy Play, Roleplay,
-                Fetish, Cum-on-Face/Cum-in-Mouth
+                Fetish, Cum-on-Face/Mouth
               </Typography>
 
               <Stack spacing={0.8}>
@@ -175,7 +176,7 @@ export const Roxie = () => {
                   >
                     <Typography variant="body2">{item.duration}</Typography>
 
-                    <Typography variant="body2" fontWeight={700}>
+                    <Typography variant="body2" fontWeight={500}>
                       {item.price}
                     </Typography>
                   </Box>
