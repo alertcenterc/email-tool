@@ -74,7 +74,7 @@ export default function MenuSideLanding() {
               fontSize: 14,
             }}
           >
-            Meetups · Services · Content · Contact
+            Links · Services · Content · Contact
           </Typography>
 
           {/* CTA */}
@@ -154,7 +154,7 @@ export default function MenuSideLanding() {
                   color: "text.secondary",
                 }}
               >
-                Curvy · Fun · Local
+                Creator · Bussiness · Blogger
               </Typography>
             </Box>
 
@@ -187,9 +187,9 @@ export default function MenuSideLanding() {
               </Typography>
 
               {[
-                ["💕", "Meet Me"],
-                ["💆", "Massage"],
-                ["🔥", "Content"],
+                ["💕", "Wedding Plan"],
+                ["💆", "Spa"],
+                ["🔥", "Repairs"],
               ].map(([icon, label]) => (
                 <Box
                   key={label}
