@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Roxie } from "./pages/Roxie";
 import MenuSideLanding from "./pages/MenuSideLanding";
-import { Emily } from "./pages/emily";
+import { Emily } from "./pages/Emily";
 
 export default function App() {
   return (
