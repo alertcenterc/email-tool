@@ -70,11 +70,23 @@ export default function MenuCount() {
 
           <Box>
             <Stack direction="row" justifyContent="space-between" mb={2}>
-              <Typography fontWeight={700} color="primary">
+              <Typography
+                variant="h5"
+                fontWeight={700}
+                sx={{ lineHeight: 1.15 }}
+              >
                 {view} - views
               </Typography>
+            </Stack>
+          </Box>
 
-              <Typography fontWeight={700} color="primary">
+          <Box>
+            <Stack direction="row" justifyContent="space-between" mb={2}>
+              <Typography
+                variant="h5"
+                fontWeight={700}
+                sx={{ lineHeight: 1.15 }}
+              >
                 {click} - clicks
               </Typography>
             </Stack>
