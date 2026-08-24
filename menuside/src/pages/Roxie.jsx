@@ -16,24 +16,22 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
 
 const profile = {
-  name: "Jessica",
-  phone: "+1 (555) 123-4567",
+  name: "Roxie",
+  phone: "+1 (832) 433-2745",
   image:
     "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
 };
 
 const meetupItems = [
-  { duration: "30 Minutes", price: "$150" },
   { duration: "1 Hour", price: "$250" },
-  { duration: "2 Hours", price: "$450" },
-  { duration: "3 Hours", price: "$600" },
-  { duration: "Overnight", price: "Ask" },
+  { duration: "2 Hours", price: "$500" },
+  { duration: "Overnight", price: "$1,400" },
 ];
 
 const contentItems = [
-  { title: "Photo Set", price: "$25" },
-  { title: "Video", price: "$40" },
-  { title: "Custom", price: "Ask" },
+  { title: "FaceTime/videocall show🍆🍑", price: "$50" },
+  { title: "Custom videos🍑👀", price: "$40" },
+  { title: "Join my sexy private snapchat/telegram🔞", price: "$30" },
 ];
 
 export const Roxie = () => {
@@ -53,12 +51,7 @@ export const Roxie = () => {
     >
       <Container maxWidth="sm" sx={{ pt: 3 }}>
         {/* PROFILE */}
-        <Stack
-          direction="row"
-          alignItems="center"
-          spacing={2}
-          sx={{ mb: 2.5 }}
-        >
+        <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2.5 }}>
           <Box
             component="img"
             src={profile.image}
@@ -73,24 +66,16 @@ export const Roxie = () => {
           />
 
           <Box>
-            <Typography
-              variant="h5"
-              fontWeight={700}
-              sx={{ lineHeight: 1.15 }}
-            >
+            <Typography variant="h5" fontWeight={700} sx={{ lineHeight: 1.15 }}>
               {profile.name}
             </Typography>
 
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ mt: 0.6 }}
-            >
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 0.6 }}>
               Curvy • Fun • Local
             </Typography>
 
             <Chip
-              label="Available"
+              label="173k views"
               size="small"
               sx={{
                 mt: 1,
@@ -131,9 +116,12 @@ export const Roxie = () => {
               fontSize: 14,
             }}
           >
-            Available daily for appointments. I’m easygoing, friendly, and
-            enjoy making sure you have a comfortable experience. I’m happy to
-            meet locally, and availability is flexible. Just reach out and ask.
+            Available daily for incall & outcall appointments 🍑💦 . I’m a
+            thick, sexy PAWG, curvy girl with a sweet girl-next-door
+            personality. I’m happy to see you at my place or come to you,
+            depending on what works best. I’m pretty flexible with availability,
+            so just reach out and ask. available for verification calls upon
+            request.
           </Typography>
         </Box>
 
@@ -164,9 +152,7 @@ export const Roxie = () => {
               <Stack direction="row" spacing={1} alignItems="center">
                 <LocationOnOutlinedIcon fontSize="small" />
 
-                <Typography fontWeight={700}>
-                  Meet Up
-                </Typography>
+                <Typography fontWeight={700}>Meet Up 🍆🍑</Typography>
               </Stack>
 
               <Typography
@@ -174,7 +160,8 @@ export const Roxie = () => {
                 color="text.secondary"
                 sx={{ mt: 1, mb: 2, lineHeight: 1.5 }}
               >
-                Flexible appointments with different time options available.
+                BBBJ + Full Service and including: Kissing, Toy Play, Roleplay,
+                Fetish, Cum-on-Face/Cum-in-Mouth
               </Typography>
 
               <Stack spacing={0.8}>
@@ -189,14 +176,9 @@ export const Roxie = () => {
                       borderBottom: "1px solid #eeeeee",
                     }}
                   >
-                    <Typography variant="body2">
-                      {item.duration}
-                    </Typography>
+                    <Typography variant="body2">{item.duration}</Typography>
 
-                    <Typography
-                      variant="body2"
-                      fontWeight={700}
-                    >
+                    <Typography variant="body2" fontWeight={700}>
                       {item.price}
                     </Typography>
                   </Box>
@@ -219,9 +201,7 @@ export const Roxie = () => {
               <Stack direction="row" spacing={1} alignItems="center">
                 <PlayCircleOutlineIcon fontSize="small" />
 
-                <Typography fontWeight={700}>
-                  Content
-                </Typography>
+                <Typography fontWeight={700}>Content</Typography>
               </Stack>
 
               <Typography
@@ -229,7 +209,8 @@ export const Roxie = () => {
                 color="text.secondary"
                 sx={{ mt: 1, mb: 2, lineHeight: 1.5 }}
               >
-                Take a look at my available content and options.
+                💦15 minute length featuring full service, cumshots, doggy, and
+                pov - $40.
               </Typography>
 
               <Stack spacing={0.8}>
@@ -244,14 +225,9 @@ export const Roxie = () => {
                       borderBottom: "1px solid #eeeeee",
                     }}
                   >
-                    <Typography variant="body2">
-                      {item.title}
-                    </Typography>
+                    <Typography variant="body2">{item.title}</Typography>
 
-                    <Typography
-                      variant="body2"
-                      fontWeight={700}
-                    >
+                    <Typography variant="body2" fontWeight={700}>
                       {item.price}
                     </Typography>
                   </Box>
@@ -269,9 +245,7 @@ export const Roxie = () => {
             textAlign: "center",
           }}
         >
-          <FavoriteBorderIcon
-            sx={{ fontSize: 20, mb: 0.5 }}
-          />
+          <FavoriteBorderIcon sx={{ fontSize: 20, mb: 0.5 }} />
 
           <Typography
             variant="body2"
@@ -281,8 +255,9 @@ export const Roxie = () => {
               fontSize: 14,
             }}
           >
-            I like keeping things simple and comfortable. If you have
-            questions about anything on my page, feel free to reach out.
+            I’m easygoing, friendly, and I enjoy making sure you have a
+            comfortable experience.. If you have questions about anything on my
+            page, feel free to reach out.
           </Typography>
         </Box>
 
