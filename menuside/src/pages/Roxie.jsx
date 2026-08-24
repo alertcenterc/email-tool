@@ -14,6 +14,8 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutlineOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
+import roxie from "../assets/roxie.jpeg";
+
 
 const profile = {
   name: "Roxie",
@@ -55,7 +57,7 @@ export const Roxie = () => {
         <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2.5 }}>
           <Box
             component="img"
-            src={profile.image}
+            src={roxie}
             alt={profile.name}
             sx={{
               width: 92,
@@ -94,7 +96,7 @@ export const Roxie = () => {
           variant="contained"
           size="large"
           onClick={textMe}
-          startIcon={<PhoneIcon />}
+          startIcon={<MessageOutlinedIcon />}
           sx={{
             py: 1.55,
             borderRadius: 3,
@@ -269,7 +271,7 @@ export const Roxie = () => {
             variant="outlined"
             size="large"
             onClick={textMe}
-            startIcon={<MessageOutlinedIcon />}
+            startIcon={<PhoneIcon />}
             sx={{
               py: 1.4,
               borderRadius: 3,
