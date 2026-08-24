@@ -15,6 +15,8 @@ import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutlineOutlined
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
 import roxie from "../assets/roxie.jpeg";
+import { useEffect } from "react";
+import api from "../axios";
 
 
 const profile = {
@@ -37,7 +39,32 @@ const contentItems = [
   { title: "Join my sexy private snapchat/telegram🔞", price: "$30" },
 ];
 
+
 export const Roxie = () => {
+
+  const profileId = "roxie";
+
+  useEffect(() => {
+    api.post("/views", { profileId }).catch(() => {});
+  }, [profileId]);
+
+  const phone = "+18324332745";
+
+  const handleTextMe = () => {
+    navigator.sendBeacon(
+      "https://email-tool-yvld.onrender.com/clicks",
+      new Blob(
+        [
+          JSON.stringify({
+            profileId,
+          }),
+        ],
+        { type: "application/json" },
+      ),
+    );
+  
+    window.location.href = `sms:${phone}`;
+  };
 
   const textMe = () => {
     window.location.href = `sms:${profile.phone.replace(/\D/g, "")}`;
@@ -95,7 +122,7 @@ export const Roxie = () => {
           fullWidth
           variant="contained"
           size="large"
-          onClick={textMe}
+          onClick={handleTextMe}
           startIcon={<MessageOutlinedIcon />}
           sx={{
             py: 1.55,
