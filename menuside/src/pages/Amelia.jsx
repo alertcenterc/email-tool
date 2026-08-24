@@ -14,7 +14,7 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutlineOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
-import amelia from "../assets/roxie.jpeg";
+import amelia from "../assets/amelia.jpeg";
 import { useEffect } from "react";
 import api from "../axios";
 
