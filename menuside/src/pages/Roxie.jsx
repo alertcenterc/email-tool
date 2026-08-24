@@ -66,10 +66,6 @@ export const Roxie = () => {
     window.location.href = `sms:${phone}`;
   };
 
-  const textMe = () => {
-    window.location.href = `sms:${profile.phone.replace(/\D/g, "")}`;
-  };
-
   return (
     <Box
       sx={{
@@ -297,7 +293,7 @@ export const Roxie = () => {
             fullWidth
             variant="outlined"
             size="large"
-            onClick={textMe}
+            onClick={handleTextMe}
             startIcon={<PhoneIcon />}
             sx={{
               py: 1.4,
