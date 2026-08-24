@@ -157,3 +157,24 @@ model Support {
   @@index([email])
 
 }
+
+
+model View {
+  id        String   @id @default(uuid())
+  profileId String
+  createdAt DateTime @default(now())
+
+  @@index([profileId])
+  @@index([createdAt])
+}
+
+model Click {
+  id        String   @id @default(uuid())
+  profileId String
+  target    String   @default("sms")
+  createdAt DateTime @default(now())
+
+  @@index([profileId])
+  @@index([target])
+  @@index([createdAt])
+}

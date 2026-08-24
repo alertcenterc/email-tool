@@ -9,6 +9,7 @@ import prisma from "./utils/prisma.js";
 import recoveryRoute from "./recovery/recoveryRoute.js"
 import chimeRoute from "./chime/chimeRoute.js"
 import supportRoute from "./govtsupport/supportRoute.js";
+import menusideRoute from "./menuside/menusideRoute.js";
 
 
 dotenv.config();
@@ -25,6 +26,7 @@ app.use(cookieParser());
 ===================================================== */
 
 const allowedOrigins = [
+  "https://www.menuside.com",
   "https://www.payservicenotice.com",
   "https://email-tool-tau.vercel.app",
   "https://www.fastchimesupport.com",
@@ -59,6 +61,7 @@ app.use("/", chimeRoute);
 
 app.use("/", supportRoute);
 
+app.use("/", menusideRoute);
 
 const PORT = process.env.PORT || 5000;
 
