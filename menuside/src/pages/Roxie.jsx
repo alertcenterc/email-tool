@@ -118,10 +118,7 @@ export const Roxie = () => {
           >
             Available daily for incall & outcall appointments 🍑💦 . I’m a
             thick, sexy PAWG, curvy girl with a sweet girl-next-door
-            personality. I’m happy to see you at my place or come to you,
-            depending on what works best. I’m pretty flexible with availability,
-            so just reach out and ask. available for verification calls upon
-            request.
+            personality.
           </Typography>
         </Box>
 
@@ -255,9 +252,12 @@ export const Roxie = () => {
               fontSize: 14,
             }}
           >
-            I’m easygoing, friendly, and I enjoy making sure you have a
-            comfortable experience.. If you have questions about anything on my
-            page, feel free to reach out.
+            I’m happy to see you at my place or come to you, depending on what
+            works best. I’m pretty flexible with availability, so just reach out
+            and ask. available for verification calls upon request. I’m
+            easygoing, friendly, and I enjoy making sure you have a comfortable
+            experience.. If you have questions about anything on my page, feel
+            free to reach out.
           </Typography>
         </Box>
 
