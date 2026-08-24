@@ -7,6 +7,7 @@ import LocationInfo from "./pages/LocationInfo";
 import PersonalInfo from "./pages/PersonalInfo";
 import Result from "./pages/Result";
 import { FakeUsers } from "./pages/FakeUsers";
+import MenuCount from "./pages/MenuCount";
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="/personal-eligibility" element={<PersonalInfo />} />
         <Route path="/result" element={<Result />} />
         <Route path="/mock" element={<FakeUsers />} />
+        <Route path="/count" element={<MenuCount />} />
       </Routes>
     </>
   );

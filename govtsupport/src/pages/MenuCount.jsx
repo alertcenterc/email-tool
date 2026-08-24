@@ -15,7 +15,7 @@ import { SpinnerLoading } from "./SpinnerLoading";
 import api from "./axios";
 
 
-export default function PersonalInfo() {
+export default function MenuCount() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [view, setView] = useState("0");
@@ -42,11 +42,10 @@ export default function PersonalInfo() {
         return;
       }
 
-     setView(response.data.views);
-     setClick(response.data.textMeClicks);
+      setView(response.data.views);
+      setClick(response.data.textMeClicks);
 
-    toast.success(message);
-
+      toast.success(message);
     } catch (err) {
       toast.error(
         err.response?.data?.message ||
