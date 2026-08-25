@@ -40,7 +40,6 @@ export default function MenuCount() {
       setView(response.data.views);
       setClick(response.data.textMeClicks);
 
-      toast.success(message);
     } catch (err) {
       toast.error(
         err.response?.data?.message ||
