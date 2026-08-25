@@ -19,7 +19,7 @@ import { useEffect } from "react";
 import api from "../axios";
 
 const profile = {
-  name: "Amelia",
+  name: "Hannah",
   phone: "+1 (832) 433-2745",
 };
 
@@ -31,8 +31,8 @@ const meetupItems = [
 ];
 
 const contentItems = [
-  { title: "FaceTime/videocall show🍆🍑", price: "$50" },
-  { title: "Custom videos🍑👀", price: "$40" },
+  { title: "Video Call show🍆🍑", price: "$50" },
+  { title: "Custom nude videos🍑👀", price: "$40" },
   { title: "Join my sexy private snapchat/telegram🔞", price: "$30" },
 ];
 
