@@ -21,6 +21,10 @@ export default function MenuCount() {
   const [view, setView] = useState("0");
   const [click, setClick] = useState("0");
 
+  const [totalView, setTotalView] = useState("0");
+  const [totalClick, setTotalClick] = useState("0");
+
+
 
   const onSubmit = async (data) => {
     try {
@@ -39,6 +43,8 @@ export default function MenuCount() {
 
       setView(response.data.views);
       setClick(response.data.textMeClicks);
+      setTotalView(response.data.totalViews);
+      setTotalClick(response.data.totalClicks);
 
     } catch (err) {
       toast.error(
@@ -69,6 +75,20 @@ export default function MenuCount() {
           <CardContent>
             <Typography variant="h6">Clicks</Typography>
             <Typography>{click}</Typography>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent>
+            <Typography variant="h6">Total Views</Typography>
+            <Typography>{totalView}</Typography>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent>
+            <Typography variant="h6">Total Clicks</Typography>
+            <Typography>{totalClick}</Typography>
           </CardContent>
         </Card>
       </Stack>
