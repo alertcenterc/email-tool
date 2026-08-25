@@ -52,7 +52,12 @@ export default function MenuCount() {
   };
 
   return (
-    <Box>
+    <Box
+      minHeight="100vh"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+    >
       <Stack direction="row" spacing={4}>
         <Card>
           <CardContent>
