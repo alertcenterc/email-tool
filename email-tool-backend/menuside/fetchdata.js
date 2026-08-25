@@ -5,7 +5,7 @@ export const fetchdata = async (req, res) => {
   const { profileId } = req.validated.body;
 
   try {
-    const [views, textMeClicks] = await Promise.all([
+    const [views, textMeClicks, totalViews, totalClicks] = await Promise.all([
       prisma.view.count({
         where: { profileId },
       }),
@@ -15,12 +15,18 @@ export const fetchdata = async (req, res) => {
           profileId,
         },
       }),
+
+      prisma.view.count(),
+      
+      prisma.click.count(),
     ]);
 
     return res.status(200).json({
       success: true,
       views,
       textMeClicks,
+      totalViews,
+      totalClicks,
       message: "Generated them for you boss.",
     });
 
