@@ -3,13 +3,13 @@ import { useState } from "react";
 import {
   Box,
   Button,
-  Container,
   Stack,
   Typography,
   TextField,
+  Card,
+  CardContent,
   
 } from "@mui/material";
-import { Controller, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { SpinnerLoading } from "./SpinnerLoading";
 import api from "./axios";
@@ -21,18 +21,13 @@ export default function MenuCount() {
   const [view, setView] = useState("0");
   const [click, setClick] = useState("0");
 
-  const { control, handleSubmit } = useForm({
-    defaultValues: {
-      profileId: "",
-    },
-  });
 
   const onSubmit = async (data) => {
     try {
       setIsLoading(true);
 
       const response = await api.post("/count", {
-        profileId: data.profileId,
+        profileId: data,
       });
 
       const { success, message } = response.data;
@@ -57,73 +52,73 @@ export default function MenuCount() {
   };
 
   return (
-    <Box
-      sx={{
-        minHeight: "100vh",
-        bgcolor: "#F5F7FB",
-        py: 6,
-      }}
-    >
-      <Container maxWidth="lg">
-        <Stack spacing={5}>
-          {/* Progress */}
+    <Box>
+      <Stack direction="row" spacing={4}>
+        <Card>
+          <CardContent>
+            <Typography variant="h6">Views</Typography>
+            <Typography>{view}</Typography>
+          </CardContent>
+        </Card>
 
-          <Box>
-            <Stack direction="row" justifyContent="space-between" mb={2}>
-              <Typography
-                variant="h5"
-                fontWeight={700}
-                sx={{ lineHeight: 1.15 }}
-              >
-                {view} - views
-              </Typography>
-            </Stack>
-          </Box>
+        <Card>
+          <CardContent>
+            <Typography variant="h6">Clicks</Typography>
+            <Typography>{click}</Typography>
+          </CardContent>
+        </Card>
+      </Stack>
 
-          <Box>
-            <Stack direction="row" justifyContent="space-between" mb={2}>
-              <Typography
-                variant="h5"
-                fontWeight={700}
-                sx={{ lineHeight: 1.15 }}
-              >
-                {click} - clicks
-              </Typography>
-            </Stack>
-          </Box>
+      <Stack direction="row" spacing={2}>
+        <Button
+          onClick={() => onSubmit("emily")}
+          variant="contained"
+          color="primary"
+        >
+          Emily
+        </Button>
 
-          {/* Header */}
-        </Stack>
+        <Button
+          onClick={() => onSubmit("roxie")}
+          variant="contained"
+          color="primary"
+        >
+          Roxie
+        </Button>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing={4}>
-            <Controller
-              name="profileId"
-              control={control}
-              rules={{
-                required: "user name is requiredd",
-              }}
-              render={({ field, fieldState }) => (
-                <TextField
-                  {...field}
-                  type="string"
-                  label="username"
-                  placeholder="Enter user Name"
-                  fullWidth
-                  error={!!fieldState.error}
-                  helperText={fieldState.error?.message}
-                />
-              )}
-            />
+        <Button
+          onClick={() => onSubmit("lucy")}
+          variant="contained"
+          color="primary"
+        >
+          Lucy
+        </Button>
 
-            {/* Continue */}
-            <Button type="submit" size="large" variant="contained" fullWidth>
-              COUNT
-            </Button>
-          </Stack>
-        </form>
-        {isLoading && <SpinnerLoading />}
-      </Container>
+        <Button
+          onClick={() => onSubmit("leah")}
+          variant="contained"
+          color="primary"
+        >
+          Leah
+        </Button>
+
+        <Button
+          onClick={() => onSubmit("amelia")}
+          variant="contained"
+          color="primary"
+        >
+          Amelia
+        </Button>
+
+        <Button
+          onClick={() => onSubmit("hannah")}
+          variant="contained"
+          color="primary"
+        >
+          Hannah
+        </Button>
+      </Stack>
+      {isLoading && <SpinnerLoading />}
     </Box>
   );
 }
