@@ -25,15 +25,19 @@ const profile = {
 };
 
 const meetupItems = [
-  { duration: "1 Hour", price: "$250" },
-  { duration: "2 Hours", price: "$500" },
+  { duration: "1 Hour", price: "$400" },
+  { duration: "2 Hours", price: "$700" },
   { duration: "Overnight", price: "$1,400" },
-  { duration: "Sensual massage", price: "$200" },
+  { duration: "2hrs Sensual massage", price: "$300" },
 ];
 
 const contentItems = [
-  { title: "FaceTime/videocall show🍆🍑", price: "$50" },
-  { title: "Custom videos🍑👀", price: "$40" },
+  { title: "Video Call show🍆🍑", price: "$100" },
+  { title: "Custom nude videos 🍑👀", price: "$50" },
+  {
+    title: "💦my new sex videos include, cumshots, doggy, and pov",
+    price: "$100",
+  },
   { title: "Join my sexy private snapchat/telegram🔞", price: "$30" },
 ];
 
@@ -141,7 +145,8 @@ export const Lucy = () => {
           >
             Available daily for incall & outcall appointments 🍑💦 . I’m a
             thick, sexy PAWG, curvy girl with a sweet girl-next-door
-            personality.
+            personality. Meetup includes Full Service + BBBJ, Kissing, Toy Play,
+            Roleplay, Fetish, Cum-on-Face/Mouth.
           </Typography>
         </Box>
 
@@ -180,8 +185,7 @@ export const Lucy = () => {
                 color="text.secondary"
                 sx={{ mt: 1, mb: 2, lineHeight: 1.5 }}
               >
-                BBBJ + Full Service and including: Kissing, Toy Play, Roleplay,
-                Fetish, Cum-on-Face/Mouth
+              
               </Typography>
 
               <Stack spacing={0.8}>
@@ -229,8 +233,7 @@ export const Lucy = () => {
                 color="text.secondary"
                 sx={{ mt: 1, mb: 2, lineHeight: 1.5 }}
               >
-                💦15 minute length featuring full service, cumshots, doggy, and
-                pov - $40.
+              
               </Typography>
 
               <Stack spacing={0.8}>
