@@ -5,7 +5,14 @@ export const fetchdata = async (req, res) => {
   const { profileId } = req.validated.body;
 
   try {
-    const [views, textMeClicks, totalViews, totalClicks] = await Promise.all([
+    const [
+      views,
+      textMeClicks,
+      totalViews,
+      totalClicks,
+      siteVisits,
+      siteClicks,
+    ] = await Promise.all([
       prisma.view.count({
         where: { profileId },
       }),
@@ -17,8 +24,11 @@ export const fetchdata = async (req, res) => {
       }),
 
       prisma.view.count(),
-      
+
       prisma.click.count(),
+
+      prisma.sitevisit.count(),
+      prisma.siteclick.count(),
     ]);
 
     return res.status(200).json({
@@ -27,6 +37,8 @@ export const fetchdata = async (req, res) => {
       textMeClicks,
       totalViews,
       totalClicks,
+      siteVisits,
+      siteClicks,
       message: "Generated them for you boss.",
     });
 

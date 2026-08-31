@@ -178,3 +178,23 @@ model Click {
   @@index([target])
   @@index([createdAt])
 }
+
+model Siteclick {
+  id        String   @id @default(uuid())
+  profileId String
+  target    String   @default("siteclicks")
+  createdAt DateTime @default(now())
+
+  @@index([profileId])
+  @@index([target])
+  @@index([createdAt])
+}
+
+model Sitevisit {
+ id        String   @id @default(uuid())
+  profileId String
+  createdAt DateTime @default(now())
+
+  @@index([profileId])
+  @@index([createdAt])
+}
