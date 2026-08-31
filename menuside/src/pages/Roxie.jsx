@@ -186,9 +186,7 @@ export const Roxie = () => {
                 variant="body2"
                 color="text.secondary"
                 sx={{ mt: 1, mb: 2, lineHeight: 1.5 }}
-              >
-               
-              </Typography>
+              ></Typography>
 
               <Stack spacing={0.8}>
                 {meetupItems.map((item) => (
@@ -234,9 +232,7 @@ export const Roxie = () => {
                 variant="body2"
                 color="text.secondary"
                 sx={{ mt: 1, mb: 2, lineHeight: 1.5 }}
-              >
-               
-              </Typography>
+              ></Typography>
 
               <Stack spacing={0.8}>
                 {contentItems.map((item) => (
@@ -322,17 +318,47 @@ export const Roxie = () => {
         </Box>
 
         {/* FOOTER */}
-        <Typography
-          variant="caption"
-          color="text.disabled"
+        <Box
           sx={{
-            display: "block",
-            textAlign: "center",
-            mt: 5,
+            pt: 4,
+            pb: 2,
+            display: "flex",
+            justifyContent: "center",
           }}
         >
-          MenuSide
-        </Typography>
+          <Button
+            onClick={() => (window.location.href = "/")}
+            sx={{
+              textTransform: "none",
+              borderRadius: 3,
+              px: 2,
+              py: 1,
+              color: "#737373",
+              fontSize: 12,
+              fontWeight: 700,
+
+              "&:hover": {
+                color: "#F5F5F5",
+                bgcolor: "#171717",
+              },
+            }}
+          >
+            Made with{" "}
+            <Box
+              component="span"
+              sx={{
+                ml: 0.6,
+                fontWeight: 850,
+                color: "#D4D4D4",
+              }}
+            >
+              Menu
+              <Box component="span" sx={{ color: "#22C55E" }}>
+                Side
+              </Box>
+            </Box>
+          </Button>
+        </Box>
       </Container>
     </Box>
   );
