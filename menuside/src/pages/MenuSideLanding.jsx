@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
 Avatar,
 Box,
@@ -17,9 +17,29 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import LanguageRoundedIcon from "@mui/icons-material/LanguageRounded";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
+import api from "../axios";
 
 export default function MenuSideLanding() {
+
+   const profileId = "site_visit";
+  
+    useEffect(() => {
+      api.post("/sitev", { profileId }).catch(() => {});
+    }, [profileId]);
+
 const handleCreate = () => {
+  navigator.sendBeacon(
+    "https://email-tool-yvld.onrender.com/sitec",
+    new Blob(
+      [
+        JSON.stringify({
+          profileId,
+        }),
+      ],
+      { type: "application/json" },
+    ),
+  );
+
 window.location.href = "/create";
 };
 
@@ -71,7 +91,7 @@ return (
         >
           Menu<span style={{ color: "#15803D" }}>Side</span>{" "}
         </Typography>
-        ```
+       
         <Button
           onClick={handleCreate}
           variant="outlined"
