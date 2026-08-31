@@ -5,7 +5,6 @@ import {
   Button,
   Stack,
   Typography,
-  TextField,
   Card,
   CardContent,
   
@@ -13,7 +12,6 @@ import {
 import toast from "react-hot-toast";
 import { SpinnerLoading } from "./SpinnerLoading";
 import api from "./axios";
-
 
 export default function MenuCount() {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +22,8 @@ export default function MenuCount() {
   const [totalView, setTotalView] = useState("0");
   const [totalClick, setTotalClick] = useState("0");
 
-
+  const [siteVisit, setSiteVisit] = useState("0");
+  const [siteClick, setSiteClick] = useState("0");
 
   const onSubmit = async (data) => {
     try {
@@ -45,6 +44,8 @@ export default function MenuCount() {
       setClick(response.data.textMeClicks);
       setTotalView(response.data.totalViews);
       setTotalClick(response.data.totalClicks);
+      setSiteVisit(response.data.siteVisits);
+      setSiteClick(response.data.siteClicks);
 
     } catch (err) {
       toast.error(
@@ -89,6 +90,22 @@ export default function MenuCount() {
           <CardContent>
             <Typography variant="h6">Total Clicks</Typography>
             <Typography>{totalClick}</Typography>
+          </CardContent>
+        </Card>
+      </Stack>
+
+      <Stack direction="row" spacing={4}>
+        <Card>
+          <CardContent>
+            <Typography variant="h6">S-Visits</Typography>
+            <Typography>{siteVisit}</Typography>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent>
+            <Typography variant="h6">S-Clicks</Typography>
+            <Typography>{siteClick}</Typography>
           </CardContent>
         </Card>
       </Stack>
