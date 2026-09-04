@@ -20,7 +20,7 @@ import api from "../axios";
 
 const profile = {
   name: "Hannah",
-  phone: "+1 (405) 200-3384",
+  phone: "+1 (786) 763-4750",
 };
 
 const meetupItems = [
@@ -45,7 +45,7 @@ export const Hannah = () => {
     api.post("/views", { profileId }).catch(() => {});
   }, [profileId]);
 
-  const phone = "+14052003384";
+  const phone = "+17867634750";
 
   const handleTextMe = () => {
     navigator.sendBeacon(
